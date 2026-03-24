@@ -74,7 +74,7 @@ function GiftCard({ gift, productData, loading }) {
             {getPriceLabel(gift.price_range)}
           </p>
           {isLive && (
-            <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" title="Live price from Amazon"></span>
+            <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse" title="Precio en vivo de Amazon"></span>
           )}
         </div>
       </div>

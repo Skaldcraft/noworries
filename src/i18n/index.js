@@ -1,19 +1,16 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import enUS from './locales/en-US.json';
 import esES from './locales/es-ES.json';
-import { AMAZON_CONFIG } from '@/config';
 
-// La detección de mercado ya está centralizada en config.js (subdominio / parámetro ?lang=).
-// Usamos AMAZON_CONFIG.LANGUAGE como fuente única de verdad para evitar doble lógica.
 i18n
   .use(initReactI18next)
   .init({
     resources: {
-      en: { translation: enUS },
+      // Keep both locale keys mapped to Spanish to enforce full Spanish UI.
+      en: { translation: esES },
       es: { translation: esES },
     },
-    lng: AMAZON_CONFIG.LANGUAGE,
+    lng: 'es',
     fallbackLng: 'es',
     interpolation: { escapeValue: false },
     initImmediate: false,        // init síncrono con recursos bundleados

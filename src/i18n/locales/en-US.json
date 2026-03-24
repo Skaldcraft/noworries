@@ -1,58 +1,57 @@
 {
   "site": {
-    "name": "One Click Gift",
-    "tagline": "Stop the endless search. The perfect gift for every person and every occasion."
+    "name": "Regalos Perfectos",
+    "tagline": "Déjate de búsquedas agobiantes entre productos casi idénticos. Un regalo perfecto para cada persona y cada ocasión."
   },
   "filters": {
-    "for_whom": "Who are you shopping for?",
-    "budget": "Budget",
-    "clear": "Clear filters",
-    "legal": "Links on this site go to Amazon products and are affiliate links. If you buy through them, we earn a small commission at no extra cost to you — and you skip the endless searching.",
-    "cta": "Use the filters and find the perfect gift — no hassle!",
+    "for_whom": "¿Para quién buscas?",
+    "budget": "Presupuesto",
+    "clear": "Limpiar filtros",
+    "legal": "Los enlaces de esta web van a productos de Amazon y son de afiliado. Si compras a través de ellos, nos llevamos una pequeña comisión, pero tú pagas exactamente lo mismo.",
+    "cta": "Ideas de regalo para perfiles y presupuestos a medida. ¡Utiliza los filtros y encuentra buenas opciones sin complicarte!",
     "categories": {
-      "all": "All",
-      "person": "People",
-      "personality": "Interests",
-      "occasion": "Occasions"
+      "all": "Todos",
+      "person": "Personas",
+      "personality": "Características",
+      "occasion": "Ocasiones"
     },
     "budget_ranges": {
-      "all": "All",
-      "under15_label": "Sweet Little Gift",
-      "under15_sub": "Under $15",
-      "r15_35_label": "Just Right",
-      "r15_35_sub": "$15–$35",
-      "r35_70_label": "Solid Pick",
-      "r35_70_sub": "$35–$70",
-      "r70_150_label": "The One They Remember",
-      "r70_150_sub": "$70–$150"
+      "all": "Todos",
+      "under15_label": "Detalle con encanto",
+      "under15_sub": "Hasta 15€",
+      "r15_35_label": "El toque justo",
+      "r15_35_sub": "15€–35€",
+      "r35_70_label": "Bien sin pasarte",
+      "r35_70_sub": "35€–70€",
+      "r70_150_label": "El que se recuerda",
+      "r70_150_sub": "70€–150€"
     }
   },
   "card": {
-    "view_details": "See details",
-    "error": "Failed to load product",
-    "unavailable": "Unavailable",
-    "no_image": "No image",
-    "verifying": "Verifying on Amazon...",
-    "price_ready": "Best Price",
-    "estimated_price": "Estimated Price",
-    "view_on_amazon": "View on Amazon"
+    "view_details": "Ver características",
+    "error": "Error al cargar datos",
+    "unavailable": "No disponible",
+    "no_image": "Sin imagen",
+    "verifying": "Verificando...",
+    "price_ready": "Ver en Amazon",
+    "go_to_amazon": "Ir a Amazon"
   },
   "home": {
-    "no_results": "No matches for that combination. Try adjusting filters or a different budget.",
-    "results_one": "{{count}} result",
-    "results_other": "{{count}} results",
-    "demo_title": "Demo mode active",
-    "demo_description": "Some products are showing placeholder data while you finalize the commercial integration."
+    "no_results": "No hay coincidencias para esa combinación. Ajusta filtros o prueba otro presupuesto.",
+    "results_one": "{{count}} resultado",
+    "results_other": "{{count}} resultados",
+    "demo_title": "Modo demostración activo",
+    "demo_description": "Algunos productos se están mostrando con datos de respaldo mientras finalizas la integración comercial."
   },
   "footer": {
-    "affiliate": "As an Amazon Associate we earn from qualifying purchases.",
-    "price_disclaimer": "We display approximate price ranges. Prices may vary slightly. The final price is always on Amazon — always verify before buying."
+    "affiliate": "Como Afiliado de Amazon obtenemos ingresos por las compras adscritas que cumplen los requisitos aplicables.",
+    "price_disclaimer": "Ofrecemos información de precios aproximados clasificados por rangos. Los precios pueden variar de rango por unos euros. El precio final es el de la web oficial de Amazon, verifica siempre antes de comprar."
   },
   "banner": {
-    "dismiss": "Dismiss seasonal banner"
+    "dismiss": "Cerrar banner estacional"
   },
   "seo": {
-    "home_title": "One Click Gift - Perfect Gift Ideas",
-    "home_description": "Find the perfect gift for everyone in your life without wasting time. Curated selection by profile and budget."
+    "home_title": "Ideas de Regalo Perfectas - Regalos Personalizados",
+    "home_description": "Encuentra el regalo perfecto para cada persona en tu vida sin perder tiempo. Selección curada por perfiles y presupuestos."
   }
 }

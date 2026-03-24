@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { X } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 
 function SeasonalBanner() {
   const [isDismissed, setIsDismissed] = useState(false);

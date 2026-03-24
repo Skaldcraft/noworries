@@ -10,7 +10,6 @@ import { getMarketGifts } from '@/data/market-gifts';
 import styleGuide from '@/config/style-guide.json';
 import { getImageUrl } from '../utils/getImageUrl';
 import { useTranslation } from 'react-i18next';
-import { AMAZON_CONFIG } from '@/config';
 
 const AmazonIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -37,12 +36,11 @@ const profileToGiftId = {
 };
 
 const getPriceLabel = (range) => {
-    const isUS = AMAZON_CONFIG.MARKET === 'us';
     const labels = {
-        'under15': isUS ? 'Up to $15' : 'Hasta 15€',
-        '15-35': isUS ? '$15-$35' : '15€-35€',
-        '35-70': isUS ? '$35-$70' : '35€-70€',
-        '70-150': isUS ? '$70-$150' : '70€-150€'
+        'under15': 'Hasta 15€',
+        '15-35': '15€-35€',
+        '35-70': '35€-70€',
+        '70-150': '70€-150€'
     };
     return labels[range] || range;
 };
