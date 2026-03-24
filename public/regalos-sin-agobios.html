@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regalos sin agobios | Ideas de regalo sin estrés</title>
+    <meta
+      name="description"
+      content="Encuentra ideas de regalo por perfil y presupuesto en segundos. Menos dudas, más aciertos."
+    />
+    <meta property="og:title" content="Regalos sin agobios | Ideas de regalo sin estrés" />
+    <meta
+      property="og:description"
+      content="Ideas curadas para cada persona y cada presupuesto. Ahorra tiempo y acierta más."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f4ef;
+        --bg-soft: #fffdf9;
+        --ink: #1f1a16;
+        --muted: #5f564f;
+        --brand: #be4b2f;
+        --brand-2: #e4a72e;
+        --card: #ffffff;
+        --line: #e9dfd4;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Manrope", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(900px 400px at 90% -10%, #ffe9c4 0%, transparent 60%),
+          radial-gradient(700px 400px at -10% 0%, #ffd8cf 0%, transparent 58%),
+          linear-gradient(180deg, var(--bg-soft), var(--bg));
+        line-height: 1.5;
+      }
+
+      .wrap {
+        width: min(1080px, 92vw);
+        margin: 0 auto;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+
+      .logo {
+        font-family: "Fraunces", serif;
+        font-size: 1.2rem;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+
+      .badge {
+        font-size: 0.78rem;
+        border: 1px solid var(--line);
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: #fff8ef;
+        color: #7a4a18;
+        font-weight: 700;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 28px;
+        align-items: stretch;
+        padding: 18px 0 28px;
+      }
+
+      .hero-copy h1 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(2.1rem, 4vw, 3.5rem);
+        line-height: 1.05;
+        margin: 0 0 14px;
+        letter-spacing: -0.6px;
+      }
+
+      .hero-copy p {
+        margin: 0 0 22px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 56ch;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .btn {
+        border: 0;
+        cursor: pointer;
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-weight: 800;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      }
+
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(135deg, var(--brand), #9d3118);
+        box-shadow: 0 10px 20px rgba(190, 75, 47, 0.22);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: #fff;
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+
+      .hero-card {
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, #fff, #fff9f1);
+        border-radius: 18px;
+        padding: 20px;
+        box-shadow: 0 14px 40px rgba(28, 19, 13, 0.08);
+        animation: floatIn 700ms ease both;
+      }
+
+      .hero-card h3 {
+        margin: 0 0 12px;
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #8b5f1f;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .stat {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        padding: 12px;
+      }
+
+      .stat b {
+        display: block;
+        font-size: 1.1rem;
+      }
+
+      .section {
+        margin: 24px 0;
+      }
+
+      .section h2 {
+        font-family: "Fraunces", serif;
+        margin: 0 0 10px;
+        font-size: clamp(1.5rem, 3vw, 2.1rem);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px;
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 1.02rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .final-cta {
+        margin: 30px 0 40px;
+        padding: 20px;
+        border-radius: 16px;
+        border: 1px solid #efd9bf;
+        background: linear-gradient(90deg, #fff8ef, #fff4e0);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .final-cta p {
+        margin: 0;
+        color: #684d2e;
+        font-weight: 700;
+      }
+
+      .foot {
+        color: #8b7e72;
+        font-size: 0.85rem;
+        padding-bottom: 28px;
+      }
+
+      @keyframes floatIn {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .final-cta {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <div class="logo">Regalos sin agobios</div>
+        <div class="badge">Sin búsquedas interminables</div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Encuentra el regalo ideal en minutos, no en horas.</h1>
+          <p>
+            Selecciona presupuesto y tipo de persona, y descubre ideas curadas para acertar más rápido.
+            Menos dudas, mejores regalos.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://es.noworries.gift/" target="_blank" rel="noopener noreferrer">Ver ideas ahora</a>
+            <a class="btn btn-secondary" href="#como-funciona">Cómo funciona</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>Qué puedes filtrar</h3>
+          <div class="chips">
+            <span class="chip">Para mamá</span>
+            <span class="chip">Para pareja</span>
+            <span class="chip">Características</span>
+            <span class="chip">Hasta 15€</span>
+            <span class="chip">35€-70€</span>
+            <span class="chip">70€-150€</span>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>+50</b> ideas activas</div>
+            <div class="stat"><b>3</b> clics para decidir</div>
+            <div class="stat"><b>0</b> estrés de búsqueda</div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section" id="como-funciona">
+        <h2>Cómo funciona</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>1. Elige presupuesto</h3>
+            <p>Filtra por rangos claros para no perder tiempo viendo opciones fuera de precio.</p>
+          </article>
+          <article class="card">
+            <h3>2. Define perfil</h3>
+            <p>Selecciona para quién compras o qué tipo de personalidad quieres sorprender.</p>
+          </article>
+          <article class="card">
+            <h3>3. Entra y decide</h3>
+            <p>Revisa recomendaciones concretas y ve directo al producto sin marearte.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <p>Empieza hoy y transforma la búsqueda de regalos en una decisión rápida.</p>
+        <a class="btn btn-primary" href="https://es.noworries.gift/" target="_blank" rel="noopener noreferrer">Ir a Regalos sin agobios</a>
+      </section>
+
+      <footer class="foot">
+        Como afiliados, algunos enlaces pueden generar una comisión sin coste extra para ti.
+      </footer>
+    </div>
+  </body>
+</html>

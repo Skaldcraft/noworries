@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Garlic Peeler",
+    "problem": "Peeling garlic is messy and leaves odor on hands.",
+    "category": "Kitchen",
+    "best_for": "Best for peeling garlic quickly",
+    "affiliate_url": "",
+    "profile_fit": ["cocinillas"]
+  },
+  {
+    "name": "Herb Scissors",
+    "problem": "Chopping herbs takes time and results are uneven.",
+    "category": "Kitchen",
+    "best_for": "Best for fast herb cutting",
+    "affiliate_url": "",
+    "profile_fit": ["cocinillas"]
+  },
+  {
+    "name": "Small Chopper",
+    "problem": "Cutting small veggies is slow and messy.",
+    "category": "Kitchen",
+    "best_for": "Best for compact food prep",
+    "affiliate_url": "",
+    "profile_fit": ["cocinillas"]
+  },
+  {
+    "name": "Smart Plug",
+    "problem": "You can't control appliances remotely.",
+    "category": "SmartHome",
+    "best_for": "Best for smart home beginners",
+    "affiliate_url": "",
+    "profile_fit": ["gente_tecnologica", "gente_casera"]
+  },
+  {
+    "name": "Folding Keyboard",
+    "problem": "Typing on phones/tablets is uncomfortable.",
+    "category": "Tech",
+    "best_for": "Best for portable typing",
+    "affiliate_url": "",
+    "profile_fit": ["gente_tecnologica"]
+  },
+  {
+    "name": "AI Webcam",
+    "problem": "Built‑in webcams are low quality.",
+    "category": "Tech",
+    "best_for": "Best for high‑quality video calls",
+    "affiliate_url": "",
+    "profile_fit": ["gente_tecnologica"]
+  },
+  {
+    "name": "Cable Management Box",
+    "problem": "Messy cables under desks.",
+    "category": "Home",
+    "best_for": "Best for hiding power strips",
+    "affiliate_url": "",
+    "profile_fit": ["gente_tecnologica", "gente_casera"]
+  },
+  {
+    "name": "Eye Massager",
+    "problem": "Screen time causes eye strain.",
+    "category": "Health",
+    "best_for": "Best for relieving eye fatigue",
+    "affiliate_url": "",
+    "profile_fit": ["cuidarse"]
+  },
+  {
+    "name": "Rechargeable Hand Warmer",
+    "problem": "Cold hands outdoors.",
+    "category": "Health",
+    "best_for": "Best for portable hand warmth",
+    "affiliate_url": "",
+    "profile_fit": ["cuidarse", "viajeros"]
+  },
+  {
+    "name": "Pimple Patches",
+    "problem": "Pimples take long to heal.",
+    "category": "PersonalCare",
+    "best_for": "Best for fast pimple healing",
+    "affiliate_url": "",
+    "profile_fit": ["cuidarse"]
+  },
+  {
+    "name": "LED String Lights",
+    "problem": "Room lighting feels bland.",
+    "category": "Lifestyle",
+    "best_for": "Best for cozy room lighting",
+    "affiliate_url": "",
+    "profile_fit": ["gente_casera"]
+  },
+  {
+    "name": "Couch Cup Holder Tray",
+    "problem": "No place to put drinks on the sofa.",
+    "category": "Home",
+    "best_for": "Best for sofa drink storage",
+    "affiliate_url": "",
+    "profile_fit": ["gente_casera"]
+  },
+  {
+    "name": "Collapsible Water Bottle",
+    "problem": "Empty bottles take space.",
+    "category": "Travel",
+    "best_for": "Best for compact hydration",
+    "affiliate_url": "",
+    "profile_fit": ["viajeros"]
+  },
+  {
+    "name": "Mini Washing Machine",
+    "problem": "Can't wash small loads while traveling.",
+    "category": "Travel",
+    "best_for": "Best for washing clothes on trips",
+    "affiliate_url": "",
+    "profile_fit": ["viajeros"]
+  },
+  {
+    "name": "ChomChom Pet Hair Remover",
+    "problem": "Pet hair on furniture.",
+    "category": "Pets",
+    "best_for": "Best for removing pet hair",
+    "affiliate_url": "",
+    "profile_fit": ["mascotas"]
+  },
+  {
+    "name": "Self‑Cleaning Pet Grooming Brush",
+    "problem": "Hair accumulates on brushes.",
+    "category": "Pets",
+    "best_for": "Best for easy pet grooming",
+    "affiliate_url": "",
+    "profile_fit": ["mascotas"]
+  },
+  {
+    "name": "Yodeling Pickle",
+    "problem": "",
+    "category": "Weird",
+    "best_for": "Best for funny novelty gifts",
+    "affiliate_url": "",
+    "profile_fit": ["amigo_invisible", "detalle", "solo_porque_si"]
+  },
+  {
+    "name": "Potato Parcel",
+    "problem": "",
+    "category": "Weird",
+    "best_for": "Best for personalized gag gifts",
+    "affiliate_url": "",
+    "profile_fit": ["amigo_invisible", "detalle", "solo_porque_si"]
+  },
+  {
+    "name": "Color‑Changing Mug",
+    "problem": "Normal mugs lack visual fun.",
+    "category": "Lifestyle",
+    "best_for": "Best for fun temperature‑reactive mugs",
+    "affiliate_url": "",
+    "profile_fit": ["amigo_invisible", "detalle", "solo_porque_si"]
+  }
+]

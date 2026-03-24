@@ -1,0 +1,242 @@
+{
+    "general_rules": {
+        "material_experience_ratio": "70/30",
+        "category_concentration_limit": 0.15,
+        "min_price_tiers_per_profile": 3,
+        "commission_priority_threshold": 0.04
+    },
+    "profiles": {
+        "pareja": {
+            "title": "PARA TU PAREJA",
+            "public_description": "Ideas para salir de la rutina y disfrutar juntos. Regalos que dicen 'me importas' sin tener que pasar horas buscando.",
+            "description": "Relación romántica. Regalos individuales o compartidos. Tono íntimo pero no explícito. Evitar utilitario doméstico, electrodomésticos básicos, ropa y perfumes.",
+            "keywords": ["íntimo", "especial", "sensorial", "experiencial"],
+            "exclusions": ["electrodomésticos básicos", "ropa", "perfumes", "menaje doméstico común"],
+            "examples": ["tabla quesos completa", "kit cócteles casa", "escapada rural", "joyero diseño"]
+        },
+        "mama": {
+            "title": "PARA MAMÁ",
+            "public_description": "Esta vez el regalo es solo para ella, no para la casa. Detalles para que descanse y se cuide un poco, porque se lo merece todo.",
+            "description": "Regalo para ella, no para la casa. Bienestar personal, descanso o capricho. Evitar delantales o utensilios domésticos.",
+            "keywords": ["autocuidado", "descanso", "capricho", "emocional"],
+            "exclusions": ["delantales", "utensilios cocina genéricos", "limpieza"],
+            "examples": ["cesta spa calidad", "manta sofá premium", "joyero organizador", "tratamiento facial"]
+        },
+        "papa": {
+            "title": "PARA PAPÁ",
+            "public_description": "Mejora eso que él usa cada día pero que tiene desde hace años. Calidad y utilidad para el hombre al que es difícil sorprender.",
+            "description": "Upgrade en algo que usa a diario o ligado a afición. Calidad en lo cotidiano. Evitar corbatas, colonia o herramientas mediocres.",
+            "keywords": ["calidad premium", "cotidiano", "herramientas pro", "historia/técnica"],
+            "exclusions": ["corbatas", "colonia genérica", "herramientas baratas"],
+            "examples": ["kit herramientas marca", "maquinilla afeitar clásica", "billetera cuero", "termo doble pared"]
+        },
+        "bebes": {
+            "title": "PARA BEBÉS",
+            "public_description": "Encuentra aquí regalos prácticos que los padres agradecerán. Porque el bebé, mientras esté a gusto... También regalos bonitos sin peligro de colores o tallas no deseados.",
+            "description": "El receptor es el bebé, el agradecimiento es de los padres. Necesidad práctica de los primeros meses. Evitar ropa (tallas) y juguetes plástico genéricos. Incluir también regalos no tan prácticos pero sin problemas de tallas: mantas, juguetes móviles ecológicos, almohada para la silla del coche, mordedores naturales o sacos de dormir.",
+            "keywords": ["práctico", "seguridad", "comodidad", "calidad"],
+            "exclusions": ["ropa", "juguetes plástico baratos"],
+            "examples": ["monitor bebé", "saco dormir", "humidificador ultrasónico", "manta muselina orgánica"]
+        },
+        "ninos": {
+            "title": "PARA NIÑOS (5-12 AÑOS)",
+            "public_description": "Juguetes que los mantienen entretenidos horas (y que no hacen ruido). Ideas que despiertan su creatividad y que sus padres también amarán.",
+            "description": "Género neutro. Despertar curiosidad, creatividad o habilidad. Evitar pantallas, videojuegos, ropa y personajes de moda.",
+            "keywords": ["creatividad", "curiosidad", "construcción", "aprendizaje"],
+            "exclusions": ["pantallas", "videojuegos", "ropa", "personajes Disney/Marvel/etc"],
+            "examples": ["LEGO neutral", "kit experimentos", "telescopio básico", "kit origami"]
+        },
+        "adolescentes": {
+            "title": "PARA ADOLESCENTES",
+            "public_description": "Ese regalo que hará que suelten el móvil un segundo para darte las gracias. Cosas que 'molan' de verdad para su mundo.",
+            "description": "Tecnología accesoria u objetos que mejoran su entorno (música, deporte, estudio). Evitar lo infantil y libros (salvo petición).",
+            "keywords": ["tecnología", "estilo urbano", "creatividad digital", "autonomía"],
+            "exclusions": ["infantil", "libros genéricos", "ropa de vestir"],
+            "examples": ["luz LED ambiental", "cámara instantánea", "mochila urbana", "altavoz bluetooth"]
+        },
+        "abuelos": {
+            "title": "PARA LOS ABUELOS",
+            "public_description": "Detalles que transmiten cariño y consideración. Regalos que valoran la calidad, el confort y los placeres de siempre.",
+            "description": "Personas entre 60–80 años. Valoran calidad y detalle sobre novedad. Evitar tecnología compleja o infantilizantes. Líneas: Confort físico (mantas, ergonomía) y Disfrute (lectura, jardinería, puzzles).",
+            "keywords": ["confort", "bienestar", "calidad clásica", "intuitivo", "tradicional"],
+            "exclusions": ["configuración técnica", "apps móviles", "moda urbana", "cultura pop reciente", "infantilizante"],
+            "examples": ["mantas de calidad", "puzzles de arte", "productos gastronómicos selectos", "kits de jardinería intuitivos"]
+        },
+        "companeros": {
+            "title": "PARA COMPAÑERO/A",
+            "public_description": "El detalle perfecto para quedar bien sin pasarse. Simpático y profesional.",
+            "description": "Cordial pero no íntimo. Considerado sin ser personal. Evitar tazas corporativas aburridas.",
+            "keywords": ["cordial", "detalle", "valor percibido", "profesional"],
+            "exclusions": ["merchandising barato", "perfumes", "ropa interior"],
+            "examples": ["planta escritorio cuidada", "set snacks gourmet", "agenda diseño marca"]
+        },
+        "cuidarse": {
+            "title": "PARA QUIENES SE CUIDAN",
+            "public_description": "Ese lujo cotidiano que siempre tienen en favoritos y nunca se compran. Productos de referencia para los que se toman en serio su bienestar.",
+            "description": "Atención consciente al cuerpo: piel, sueño, bienestar. Productos de referencia con barrera de precio. Evitar suplementos y aparatos ejercicio.",
+            "keywords": ["skincare", "aromaterapia", "sueño ergonómico", "bienestar"],
+            "exclusions": ["suplementos alimenticios", "mancuernas/pesas", "máquinas gimnasio"],
+            "examples": ["sérum marca", "antifaz seda", "almohada cervical ergonómica", "cepillo facial sónico"]
+        },
+        "deportistas": {
+            "title": "PARA DEPORTISTAS",
+            "public_description": "Material de calidad para mejorar su rendimiento sin líos de tallas o suplementos.",
+            "description": "Recuperación, rendimiento o comodidad. Evitar ropa deportiva y suplementos.",
+            "keywords": ["rendimiento", "recuperación", "tecnología deportiva"],
+            "exclusions": ["ropa deportiva tallaje", "suplementos nutrición"],
+            "examples": ["masajeador percusión", "botella térmica acero", "foam roller vibrador"]
+        },
+        "viajeros": {
+            "title": "PARA GENTE VIAJERA",
+            "public_description": "Accesorios que hacen que viajar sea más fácil y organizado.",
+            "description": "Organización y comodidad en tránsito. Evitar maletas grandes y guías.",
+            "keywords": ["organización", "tránsito", "universal", "compacto"],
+            "exclusions": ["maletas grandes", "guías físicas", "objetos pesados"],
+            "examples": ["cubos compresión", "almohada viaje ergonómica", "adaptador universal USB"]
+        },
+        "manitas": {
+            "title": "PARA MANITAS",
+            "public_description": "Accesorios de calidad para sus proyectos que no encontrarán en cualquier ferretería.",
+            "description": "Buscar productos para regalar a personas que disfrutan del bricolaje, la reparación o la creación manual sistemática (DIY). No es un perfil de aficionado básico que compra lo primero en la ferretería; es alguien que valora el diferencial de calidad, el diseño de la herramienta y la durabilidad. Evitar herramientas de marca blanca, sets genéricos de baja calidad o herramientas que ya suelen estar en cualquier caja básica. Priorizar marcas de referencia con reputación en el sector o gadgets innovadores de precisión que agilicen el trabajo.",
+            "keywords": ["precisión pro", "organización taller", "proyectos", "durabilidad", "diseño industrial"],
+            "exclusions": ["herramientas de oferta", "sets básicos ferretería", "marcas blancas", "desechable"],
+            "examples": ["set brocas Bosch Professional", "nivel láser líneas verdes", "linterna frontal alta potencia", "Wera Kraftform Kompakt"]
+        },
+        "mascotas": {
+            "title": "PARA AMANTES DE MASCOTAS",
+            "public_description": "Regalos para el animal que manda en casa. Si la mascota está feliz, el dueño está encantado. Así de sencillo.",
+            "description": "Mejorar la vida del animal para llegar al dueño. Perros y gatos por igual. Algo que el dueño no haya priorizado comprar.",
+            "keywords": ["bienestar animal", "diseño mascotas", "práctico", "vínculo"],
+            "exclusions": ["comida genérica", "juguetes destrucción rápida"],
+            "examples": ["cama ortopédica", "collar GPS", "árbol rascador diseño", "comedero interactivo"]
+        },
+        "mejor_amigo": {
+            "title": "PARA TU MEJOR AMIGO/A",
+            "public_description": "Ese regalo que solo tú podrías elegir. Detalles con personalidad, humor y ese punto atrevido que vuestra amistad permite.",
+            "description": "Regalo para la persona de mayor confianza. Puede ser atrevido, personal y con humor. Evitar lo genérico y seguro. Priorizar personalidad: experiencias, humor inteligente, caprichos que no se compraría sola, artículos de disfrute inmediato. Criterio: 'solo tú me regalarías esto'.",
+            "keywords": ["personalidad", "humor", "atrevido", "compartir", "confianza"],
+            "exclusions": ["genérico", "predecible", "políticamente correcto aburrido"],
+            "examples": ["juegos de mesa atrevidos", "kits de actividad compartida", "objetos con humor inteligente", "experiencias gastronómicas únicas"]
+        },
+        "cumpleanios": {
+            "title": "PARA CUMPLEAÑEROS",
+            "public_description": "La solución rápida cuando no sabes qué llevar. Regalos con buena presencia que gustan a todo el mundo y te hacen quedar genial.",
+            "description": "Buscar productos que funcionen como regalo de cumpleaños entre personas adultas con relación cercana pero no íntima. Excluir regalos genéricos (velas, tazas sin personalidad). Priorizar productos con factor sorpresa o experiencia. Relacionado con el disfrute personal, capricho, no utilidad cotidiana.",
+            "keywords": ["celebración", "sorpresa", "capricho especial", "estética"],
+            "exclusions": ["velas genéricas", "ropa", "tecnología específica", "tazas aburridas"],
+            "examples": ["kits de experiencia", "objetos de diseño con sorpresa", "productos de placer personal", "caprichos gourmet"]
+        },
+        "nuevos_papis": {
+            "title": "PARA NUEVOS PAPÁS Y MAMÁS",
+            "public_description": "Regalos pensados para darles un respiro y recordarles que lo están haciendo genial.",
+            "description": "Para los padres, no para el bebé. Alivio, descanso o autocuidado. Evitar centrado en el bebé.",
+            "keywords": ["autocuidado padres", "descanso", "facilitar vida", "confort"],
+            "exclusions": ["ropa bebé", "juguetes", "pañales", "tecnológico"],
+            "examples": ["infusiones relajantes", "bálsamos", "termos premium", "mantas sofá"]
+        },
+        "nuevo_hogar": {
+            "title": "NUEVO HOGAR",
+            "public_description": "Detalles bonitos y útiles para convertir cajas en calma.",
+            "description": "Espacio acogedor, práctico y bonito. Nada técnico que requiera instalación.",
+            "keywords": ["acogedor", "nuevo comienzo", "calma", "confort"],
+            "exclusions": ["electrodomésticos grandes", "específicos color", "montaje complejo"],
+            "examples": ["velas premium", "jarrones minimalistas", "mantas sofá"]
+        },
+        "nuevo_trabajo": {
+            "title": "NUEVO TRABAJO / ASCENSO",
+            "public_description": "Detalles que dan confianza, orden y buen humor para la nueva etapa laboral.",
+            "description": "Organización y confianza. Nada corporativo ni técnico.",
+            "keywords": ["confianza", "orden", "organización", "escritorio"],
+            "exclusions": ["corporativo maletines", "tecnología cara", "frases motivacionales cursis"],
+            "examples": ["organizadores escritorio diseño", "cuadernos premium", "bolígrafos de marca"]
+        },
+        "amigo_invisible": {
+            "title": "PARA AMIGO INVISIBLE",
+            "public_description": "El regalo perfecto para cuando conoces poco a la persona. Detalles originales, útiles o divertidos que respetan el presupuesto.",
+            "description": "Presupuesto ajustado (10–25€). Producto neutro, originalidad, humor suave o utilidad con toque especial. Evitar tallas u objetos íntimos.",
+            "keywords": ["originalidad", "neutro", "humor suave", "útil y gracioso"],
+            "exclusions": ["tallas", "íntimo", "estética marcada", "dependiente de afición"],
+            "examples": ["gadgets de escritorio curiosos", "objetos de confort universales", "detalles sensoriales básicos"]
+        },
+        "detalle": {
+            "title": "EL DETALLE",
+            "public_description": "Ese gesto de cortesía que te hace quedar estupendamente. Pequeños lujos visuales y prácticos para cualquier visita.",
+            "description": "Situaciones informales. Atractivo visual, pequeño, neutro. Gastronomía refinada, velas diseño, plantas pequeñas. Presupuesto bajo (hasta 20€).",
+            "keywords": ["cortaría", "atractivo visual", "pequeño lujo", "considerado"],
+            "exclusions": ["tallas", "personal", "barato de relleno"],
+            "examples": ["gastronomía gourmet mini", "velas de diseño", "plantas decorativas pequeñas"]
+        },
+        "cocinillas": {
+            "title": "PARA COCINILLAS",
+            "public_description": "Herramientas que cualquier chef envidiaría. Regalos para elevar sus platos al siguiente nivel sin que tú tengas que saber cocinar.",
+            "description": "Cocina por placer, le gusta experimentar. Evitar utensilios básicos (sartenes estándar, cuchillos genéricos). Priorizar: ingredientes calidad (especias raras, aceites varietales), utensilios especializados (fermentación, cocina japonesa), libros técnica autor, diseño cuidado. Criterio: ampliar repertorio.",
+            "keywords": ["gastronomía", "técnica", "especializado", "calidad ingrediente", "aficionado entusiasta"],
+            "exclusions": ["sartén teflón barata", "cuchillos genéricos", "tablas plástico", "utensilios básicos"],
+            "examples": ["kit fermentación", "especias de origen", "aceite oliva varietal", "rallador especializado Microplane"]
+        },
+        "gente_tecnologica": {
+            "title": "PARA TECNOLÓGICOS / GAMERS",
+            "public_description": "Gadgets con criterio para los que saben de qué hablan. Accesorios de calidad y periféricos que marcan la diferencia en su setup diario.",
+            "description": "Sigue la actualidad tecnológica, juega habitualmente o consume digital intenso. Evitar accesorios obvios/genéricos. Priorizar calidad técnica: accesorios gaming setup (iluminación, soportes, mandos), gadgets diseño diferencial, merchandising calidad, teclados mecánicos. Criterio: reputación en la comunidad.",
+            "keywords": ["especializado", "rendimiento", "setup", "gaming", "tecnología"],
+            "exclusions": ["fundas móvil genéricas", "cables básicos", "ratones oficina estándar", "regalo tecnológico de Google"],
+            "examples": ["teclado mecánico calidad", "iluminación LED setup", "soporte mandos diseño", "alfombrillas premium gran tamaño"]
+        },
+        "creativos": {
+            "title": "PARA CREATIVOS",
+            "public_description": "Herramientas de calidad para los que disfrutan creando. Materiales con reputación que inspiran nuevos proyectos artísticos.",
+            "description": "Inquietudes artísticas/creativas. Valoran proceso y calidad materiales. Priorizar: material ilustración/pintura marcas reputación (no básico papelería), foto analógica, kits técnicas artesanales (cerámica, serigrafía), herramientas diseño. Evitar estética 'artista estereotipada'.",
+            "keywords": ["proceso creativo", "calidad material", "artesanía", "diseño herramienta", "sensibilidad"],
+            "exclusions": ["papelería básica", "estética artista estereotipo", "herramientas juguete", "ornamental sin uso"],
+            "examples": ["cuadernos papel alto gramaje", "rotuladores técnicos fines", "kit iniciación cerámica", "accesorios foto analógica"]
+        },
+        "lectores": {
+            "title": "PARA LECTORES",
+            "public_description": "Todo lo que rodea y mejora el ritual de leer. Accesorios con diseño y detalles que convierten cada libro en una experiencia única.",
+            "description": "NO RECOMENDAR LIBROS. Mejorar la experiencia de lectura. Priorizar: accesorios diseño (marcapáginas cuero, lámparas calidad), entorno (velas aroma lectura, mantas ligeras), libretas escritura calidad, accesorios e-reader. Evitar tazas 'I love books' kitsch.",
+            "keywords": ["ritual lectura", "entorno lectura", "diseño editorial", "comodidad", "pausa"],
+            "exclusions": ["libros", "tazas kitsch", "mensajes obvios", "objetos infantilizantes"],
+            "examples": ["lámpara lectura calidez", "marcapáginas cuero artesano", "funda e-reader diseño", "vela aroma biblioteca"]
+        },
+        "ecologistas": {
+            "title": "PARA ECOLOGISTAS",
+            "public_description": "Sostenibilidad real sin renunciar al diseño. Alternativas conscientes y coherentes con el cuidado del planeta.",
+            "description": "Conciencia medioambiental real. No greenwashing. Priorizar: materiales certificados/trazables, alternativas sostenibles cotidianas con diseño (botellas calidad, bolsas tela diseño), cosmética natural ingredientes verificables, cultivo casa. Criterio: calidad + coherencia.",
+            "keywords": ["sostenibilidad", "coherencia", "material trazable", "consciente", "calidad eco"],
+            "exclusions": ["greenwashing", "plástico reciclado feo", "imagen renuncia/austeridad", "eco cosmético sin respaldo"],
+            "examples": ["botella acero diseño", "kit huerto urbano", "envoltorios cera abeja", "cosmética sólida premium"]
+        },
+        "gente_casera": {
+            "title": "PARA GENTE CASERA",
+            "public_description": "Convierte su casa en el mejor refugio del mundo. Detalles premium y rituales domésticos para los profesionales del sofá y el buen gusto.",
+            "description": "Para quien disfruta genuinamente de estar en casa. Mejorar la experiencia doméstica. Priorizar textiles de calidad (mantas, cojines), iluminación ambiental, rituales (té, lectura), gadgets con diseño. Evitar productos orientados al exterior o deporte fuera.",
+            "keywords": ["refugio", "confort premium", "rituales domésticos", "estética", "bienestar"],
+            "exclusions": ["exterior", "viajes", "deporte aire libre", "funcionalidad pura sin diseño"],
+            "examples": ["mantas de lana virgen", "kits de té de autor", "iluminación ambiental diseño", "ropa de estar por casa premium"]
+        },
+        "despedida": {
+            "title": "DESPEDIDA",
+            "public_description": "Un recuerdo especial para cerrar una etapa. Regalos simbólicos o prácticos que acompañan en el nuevo camino.",
+            "description": "Fin de etapa laboral, mudanza, jubilación. Recuerdo o apoyo nueva etapa. Simbólico/emocional o Práctico para el cambio. Evitar lo efímero.",
+            "keywords": ["recuerdo", "nueva etapa", "simbólico", "continuidad"],
+            "exclusions": ["efímero", "flores", "comida común", "doméstico pesado"],
+            "examples": ["libretas de calidad para proyectos", "objetos de escritorio con significado", "accesorios de viaje premium"]
+        },
+        "solo_porque_si": {
+            "title": "SOLO PORQUE SÍ",
+            "public_description": "Sorpresas espontáneas para alegrar el día a alguien querido. Regalos con un toque de capricho que dicen 'estaba pensando en ti'.",
+            "description": "Sin ocasión. Alto factor sorpresa o placer inmediato. Evitar lo funcional o cotidiano. Clave: espontaneidad y atención.",
+            "keywords": ["espontaneidad", "sorpresa", "afecto", "capricho"],
+            "exclusions": ["funcional", "cotidiano", "predecible"],
+            "examples": ["objetos curiosos de placer inmediato", "detalles de diseño inesperados", "caprichos sensoriales"]
+        },
+        "quien_lo_tiene_todo": {
+            "title": "PARA QUIEN LO TIENE TODO",
+            "public_description": "Cuando el reto no es el precio, sino la sorpresa. Ideas originales, artesanas o versiones premium de lo cotidiano para los que ya tienen de todo.",
+            "description": "Para alguien que ya dispone de lo necesario. El reto es la originalidad. Tres líneas: Experiencias (kits de cata, talleres), Lo que no saben que quieren (nicho, artesanal, marcas desconocidas) o Versión premium de lo cotidiano (café especialidad, velas excepcionales). Evitar regalos funcionales estándar.",
+            "keywords": ["originalidad", "sorpresa", "especificidad", "premium cotidiano", "nicho"],
+            "exclusions": ["gadgets cocina comunes", "papelería genérica", "bienestar masivo", "funcional estándar"],
+            "examples": ["café de especialidad origen único", "velas de marca artesanal premium", "experiencias de cata en casa", "objetos de diseño de nicho"]
+        }
+    }
+}

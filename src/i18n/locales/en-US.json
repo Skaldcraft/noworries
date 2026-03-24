@@ -1,0 +1,58 @@
+{
+  "site": {
+    "name": "One Click Gift",
+    "tagline": "Stop the endless search. The perfect gift for every person and every occasion."
+  },
+  "filters": {
+    "for_whom": "Who are you shopping for?",
+    "budget": "Budget",
+    "clear": "Clear filters",
+    "legal": "Links on this site go to Amazon products and are affiliate links. If you buy through them, we earn a small commission at no extra cost to you — and you skip the endless searching.",
+    "cta": "Use the filters and find the perfect gift — no hassle!",
+    "categories": {
+      "all": "All",
+      "person": "People",
+      "personality": "Interests",
+      "occasion": "Occasions"
+    },
+    "budget_ranges": {
+      "all": "All",
+      "under15_label": "Sweet Little Gift",
+      "under15_sub": "Under $15",
+      "r15_35_label": "Just Right",
+      "r15_35_sub": "$15–$35",
+      "r35_70_label": "Solid Pick",
+      "r35_70_sub": "$35–$70",
+      "r70_150_label": "The One They Remember",
+      "r70_150_sub": "$70–$150"
+    }
+  },
+  "card": {
+    "view_details": "See details",
+    "error": "Failed to load product",
+    "unavailable": "Unavailable",
+    "no_image": "No image",
+    "verifying": "Verifying on Amazon...",
+    "price_ready": "Best Price",
+    "estimated_price": "Estimated Price",
+    "view_on_amazon": "View on Amazon"
+  },
+  "home": {
+    "no_results": "No matches for that combination. Try adjusting filters or a different budget.",
+    "results_one": "{{count}} result",
+    "results_other": "{{count}} results",
+    "demo_title": "Demo mode active",
+    "demo_description": "Some products are showing placeholder data while you finalize the commercial integration."
+  },
+  "footer": {
+    "affiliate": "As an Amazon Associate we earn from qualifying purchases.",
+    "price_disclaimer": "We display approximate price ranges. Prices may vary slightly. The final price is always on Amazon — always verify before buying."
+  },
+  "banner": {
+    "dismiss": "Dismiss seasonal banner"
+  },
+  "seo": {
+    "home_title": "One Click Gift - Perfect Gift Ideas",
+    "home_description": "Find the perfect gift for everyone in your life without wasting time. Curated selection by profile and budget."
+  }
+}

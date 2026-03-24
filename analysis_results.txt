@@ -1,0 +1,23 @@
+--- SCANNING ALL PRODUCT DATA ---
+
+No missing images found in JSON files.
+
+--- SCANNING DIRECTORY ---
+UNUSED IMAGES (In folder but not referenced in JSON):
+- lampara-bebe.jpg
+- linterna.jpg
+- olla.jpg
+
+PRODUCTS WITH NO IMAGE DEFINED:
+- Pelador de ajos de silicona (for-cooks-under15-garlic-peeler)
+- Enchufe Inteligente Wi-Fi (for-techies-under15-smart-plug)
+- Teclado Bluetooth Plegable (for-techies-15-35-folding-keyboard)
+- Webcam 2K con seguimiento por IA (for-techies-35-70-ai-webcam)
+- Caja organizadora de cables (for-techies-under15-cable-box)
+- Masajeador ocular térmico (for-selfcare-15-35-eye-massager)
+- Calentador de manos recargable (for-selfcare-under15-hand-warmer)
+- Parches Hidrocoloides para Granitos (for-selfcare-under15-pimple-patches)
+- Bandeja para reposabrazos del sofá (for-homebodies-under15-couch-tray)
+- Bolsa de lavado portátil (Scrubba) (for-traveler-15-35-mini-washer)
+- Pepinillo cantarín (Yodeling Pickle) (for-invisible-friend-under15-yodeling-pickle)
+- Mensaje en una patata (small-gift-under15-potato-parcel)
