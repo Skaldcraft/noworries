@@ -27,7 +27,7 @@ function FilterBar({ onFilterChange, activeFilters }) {
   ];
 
   return (
-    <div className="bg-card/80 backdrop-blur-md border-b border-border py-4 sm:py-5 sticky top-0 z-40 transition-all duration-300">
+    <div className="bg-card border-b border-border py-4 sm:py-5 relative z-30 transition-all duration-300">
       {/* Header */}
       <div className="w-full border-y border-accent/20 bg-accent/10 px-6 py-5 sm:px-10 sm:py-8 text-center backdrop-blur-sm">
         <h1 className="text-[22px] sm:text-[32px] font-black text-accent leading-tight tracking-tight max-w-3xl mx-auto drop-shadow-sm">

@@ -61,6 +61,11 @@ export async function fetchProductData(asin, tag, marketplace) {
     return makeFallback(asin || 'unknown', tag);
   }
 
+  if (AMAZON_CONFIG.MANUAL_PRODUCT_MODE === true) {
+    telemetry.log('PAAPI', `Manual mode enabled, skipping proxy fetch for ${asin}`);
+    return generateMockData(asin, tag);
+  }
+
   if (AMAZON_CONFIG.DEBUG_MODE === true) {
     telemetry.log('PAAPI', `Using mock data for ${asin}`);
     return generateMockData(asin, tag);

@@ -13,6 +13,7 @@ const isEN = hostname.startsWith('en.') || hostname.includes('.com') || hostname
 const urlParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams();
 const forceUS = urlParams.get('lang') === 'en';
 const forceES = urlParams.get('lang') === 'es';
+const manualProductMode = import.meta.env.VITE_MANUAL_PRODUCT_MODE !== 'false';
 
 const finalLang = (forceES || isES) ? 'es' : (forceUS || isEN ? 'en' : 'es');
 const marketCode = finalLang === 'en' ? 'us' : 'es';
@@ -43,7 +44,8 @@ export const AMAZON_CONFIG = {
   MARKET: marketCode,
 
   // Configuracion de la aplicacion
-  DEBUG_MODE: false, // ACTIVADO: Se conecta al proxy para obtener datos reales de Amazon
+  MANUAL_PRODUCT_MODE: manualProductMode,
+  DEBUG_MODE: false,
   DEBUG_VERBOSE: false,
   API_ENDPOINT: import.meta.env.VITE_API_URL || '/api/products',
   

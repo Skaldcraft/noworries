@@ -14,6 +14,7 @@ import { getMarketGifts } from '@/data/market-gifts';
 import { fetchProductData } from '@/lib/paapi';
 import { getCacheStats, getCacheSize, getCacheContents, clearCache } from '@/lib/cacheDebug';
 import { getProfileIdFromGiftId } from '@/lib/profiles';
+import { AMAZON_CONFIG } from '@/config';
 
 function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -45,6 +46,7 @@ function HomePage() {
   const giftsData = useMemo(() => getMarketGifts(), []);
 
   const IS_DEV = import.meta.env.DEV;
+  const isManualProductMode = AMAZON_CONFIG.MANUAL_PRODUCT_MODE === true;
 
   const updateCacheInfo = useCallback(() => {
     try {
@@ -59,6 +61,14 @@ function HomePage() {
   }, []);
 
   const fetchAllProducts = useCallback(async (giftsToFetch) => {
+    if (isManualProductMode) {
+      setLoadingProducts([]);
+      setProductDataMap({});
+      setShowDemoBanner(false);
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     let hasApiErrors = false;
     let usingMockData = false;
@@ -152,7 +162,7 @@ function HomePage() {
 
     setProductDataMap(prev => ({ ...prev, ...dataMap }));
     setLoading(false);
-  }, [toast, updateCacheInfo]);
+  }, [isManualProductMode, toast, updateCacheInfo]);
 
   useEffect(() => {
     // Mostrar todo el catálogo del mercado activo (sin deduplicar)
@@ -175,6 +185,10 @@ function HomePage() {
   }, []);
 
   const handleRetryFailed = () => {
+    if (isManualProductMode) {
+      return;
+    }
+
     const failedGifts = gifts.filter(g => debugStats.failedProducts.includes(g.asin));
     if (failedGifts.length > 0) {
       fetchAllProducts(failedGifts);
