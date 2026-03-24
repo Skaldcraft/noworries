@@ -1,5 +1,5 @@
-import { lazy } from 'react';
-import { Routes, BrowserRouter as Router } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -12,7 +12,6 @@ function App() {
 
   return (
     <Router basename={basename}>
-      <SeoManager />
       <ScrollToTop />
       <Suspense fallback={<div className="min-h-[40vh]" />}>
         <Routes>

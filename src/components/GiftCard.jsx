@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getImageUrl } from '../utils/getImageUrl';
 
