@@ -45,6 +45,24 @@ function HomePage() {
   const [cacheInfo, setCacheInfo] = useState({ stats: null, size: 0, contents: [] });
   const giftsData = useMemo(() => getMarketGifts(), []);
 
+  const homepageGifts = useMemo(() => {
+    // Keep one card per profile+budget pair on home: newest entry stays on home,
+    // while older ones remain available in profile pages.
+    const latestIndexByKey = new Map();
+
+    giftsData.forEach((gift, index) => {
+      const profileId = getProfileIdFromGiftId(gift.id) || gift.recipient;
+      const key = `${profileId}::${gift.price_range}`;
+      latestIndexByKey.set(key, index);
+    });
+
+    return giftsData.filter((gift, index) => {
+      const profileId = getProfileIdFromGiftId(gift.id) || gift.recipient;
+      const key = `${profileId}::${gift.price_range}`;
+      return latestIndexByKey.get(key) === index;
+    });
+  }, [giftsData]);
+
   const IS_DEV = import.meta.env.DEV;
   const isManualProductMode = AMAZON_CONFIG.MANUAL_PRODUCT_MODE === true;
 
@@ -165,11 +183,9 @@ function HomePage() {
   }, [isManualProductMode, toast, updateCacheInfo]);
 
   useEffect(() => {
-    // Mostrar todo el catálogo del mercado activo (sin deduplicar)
-    // para conservar el volumen completo de fichas en la home.
-    setGifts(giftsData);
-    fetchAllProducts(giftsData);
-  }, [fetchAllProducts, giftsData]);
+    setGifts(homepageGifts);
+    fetchAllProducts(homepageGifts);
+  }, [fetchAllProducts, homepageGifts]);
 
   useLayoutEffect(() => {
     const shouldRestore = sessionStorage.getItem('homeShouldRestoreScroll') === '1';

@@ -1,14 +1,15 @@
 
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import ScrollToTop from './components/ScrollToTop';
-import HomePage from './pages/HomePage';
-import ProfilePage from './pages/ProfilePage';
-import ProductDetailPage from './pages/ProductDetailPage';
-import PromotionPage from './pages/PromotionPage';
 import { AMAZON_CONFIG } from '@/config';
 import { useSeo } from './hooks/use-seo';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage'));
+const PromotionPage = lazy(() => import('./pages/PromotionPage'));
 
 const isUS = AMAZON_CONFIG.LANGUAGE === 'en';
 
@@ -35,12 +36,14 @@ function App() {
     <Router basename={basename}>
       <SeoManager />
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/perfil/:profileId" element={<ProfilePage />} />
-        <Route path="/producto/:asin" element={<ProductDetailPage />} />
-        <Route path="/regalos_sin_estres" element={<PromotionPage />} />
-      </Routes>
+      <Suspense fallback={<div className="min-h-[40vh]" />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/perfil/:profileId" element={<ProfilePage />} />
+          <Route path="/producto/:asin" element={<ProductDetailPage />} />
+          <Route path="/regalos_sin_estres" element={<PromotionPage />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }
