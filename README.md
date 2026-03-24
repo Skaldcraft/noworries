@@ -1,8 +1,8 @@
-# OneClickFix
+# noworries
 
 Estado: entorno de pruebas (pre-publicacion).
 
-Este proyecto esta preparado para trabajar con la API de Amazon, pero durante la fase provisional puede operar con datos de respaldo y degradar de forma segura cuando la API no responde.
+Este proyecto puede operar con la API de Amazon cuando este disponible y, mientras tanto, degradar de forma segura con datos de respaldo.
 
 ## Requisitos
 
@@ -12,19 +12,19 @@ Este proyecto esta preparado para trabajar con la API de Amazon, pero durante la
 ## Scripts principales
 
 - `npm run dev`: arranque local con Vite en puerto 3000
-- `npm run start`: arranque con Netlify Dev
+- `npm run build`: build de produccion
+- `npm run start`: arranque del servidor Node/Express para servir `dist`
+- `npm run preview`: vista previa del build con Vite
 - `npm run lint`: lint estricto (errores)
 - `npm run lint:warn`: lint completo (errores + warnings)
-- `npm run build`: build de produccion
-- `npm run preview`: vista previa del build
 
-## Configuracion de Despliegue
+## Configuracion de despliegue
 
 El archivo `app-config.js` en la raiz es el punto unico de configuracion para:
-- **BASE_PATH**: La subcarpeta donde se aloja la app (ej: `/preview-noworries-2026`).
-- **PORT**: Puerto para el servidor de produccion local.
+- **BASE_PATH**: subcarpeta donde se aloja la app (ejemplo: `/preview-noworries-2026`).
+- **PORT**: puerto para el servidor de produccion local.
 
-Si cambias el `BASE_PATH`, simplemente ejecuta `npm run build` para que todos los servidores y la propia app se actualicen automaticamente.
+Si cambias `BASE_PATH`, ejecuta `npm run build` para regenerar el output con la ruta correcta.
 
 ## Flujo recomendado antes de publicar
 
@@ -36,7 +36,7 @@ Si cambias el `BASE_PATH`, simplemente ejecuta `npm run build` para que todos lo
 ## Checklist de pre-lanzamiento
 
 - [ ] Build y lint en verde
-- [ ] Rutas criticas comprobadas: home, perfil, detalle
+- [ ] Rutas criticas comprobadas: home, perfil y detalle
 - [ ] Enlaces externos con `rel="noopener noreferrer"` cuando usan `target="_blank"`
 - [ ] Variables de entorno revisadas para el entorno de despliegue
 - [ ] Fallos de API verificados (mensaje al usuario y fallback funcional)
@@ -50,5 +50,5 @@ Si cambias el `BASE_PATH`, simplemente ejecuta `npm run build` para que todos lo
 
 ## Nota sobre Amazon API
 
-No se han aplicado cambios de arquitectura ni de configuracion en la integracion con Amazon API dentro de esta mejora.
-Los ajustes realizados son de calidad, estabilidad y seguridad general del proyecto.
+El frontend esta preparado para usar el endpoint configurado en `VITE_API_URL` o `/api/products`.
+Si la API no responde o no esta activa, la aplicacion usa fallback para mantener la experiencia funcional.
