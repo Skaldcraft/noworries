@@ -26,9 +26,7 @@ const CANONICAL_ES = DEPLOYMENT_CONFIG.ALTERNATE_DOMAINS?.es || DEPLOYMENT_CONFI
 app.set('trust proxy', 1);
 app.use(express.json({ limit: '16kb' }));
 
-// Canonical redirects:
-// - noworries.gift / www.noworries.gift -> https://es.noworries.gift
-// - any other host: force https and drop leading www.
+// HTTPS and www normalization (without apex domain redirect)
 app.use((req, res, next) => {
   const rawHost = (req.headers.host || '').split(':')[0].toLowerCase();
   const forwardedProto = String(req.headers['x-forwarded-proto'] || '').split(',')[0].trim().toLowerCase();
@@ -36,11 +34,6 @@ app.use((req, res, next) => {
   const isLocal = rawHost === 'localhost' || rawHost === '127.0.0.1';
   const hostNoWww = rawHost.startsWith('www.') ? rawHost.slice(4) : rawHost;
   const originalUrl = req.originalUrl || '/';
-
-  if (rawHost === 'noworries.gift' || rawHost === 'www.noworries.gift') {
-    const target = `${CANONICAL_ES}${originalUrl}`;
-    return res.redirect(301, target);
-  }
 
   if (!isLocal && (!isHttps || hostNoWww !== rawHost)) {
     return res.redirect(301, `https://${hostNoWww}${originalUrl}`);
@@ -56,22 +49,12 @@ app.get('/ping', (req, res) => res.send('pong'));
 //    están en las variables de entorno; devuelve 503 si no están configuradas.
 app.post('/api/products', amazonRateLimit, handleProductsRequest);
 
-// 1. Redirect root to canonical ES domain
-app.get('/', (_req, res) => {
-  res.redirect(301, `${CANONICAL_ES}/`);
-});
-
-// 2. Serve static assets for the app under the specific subpath
+// 2. Serve static assets for the app
 app.use(SUBPATH, express.static(DIST, { index: false }));
 
-// 3. SPA Fallback for the real app
-app.get(`${SUBPATH}*`, (req, res) => {
-  res.sendFile(join(DIST, 'index.html'));
-});
-
-// 4. Global fallback for any other path: redirect to root
+// 3. SPA Fallback for the app (root and all routes)
 app.get('*', (req, res) => {
-  res.redirect('/');
+  res.sendFile(join(DIST, 'index.html'));
 });
 
 app.listen(PORT, () => {
