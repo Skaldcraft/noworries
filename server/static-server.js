@@ -21,7 +21,7 @@ const app = express();
 const PORT = process.env.PORT || DEPLOYMENT_CONFIG.PORT || 3000;
 const DIST = join(__dirname, '..', 'dist');
 const SUBPATH = DEPLOYMENT_CONFIG.BASE_PATH;
-const CANONICAL_ES = DEPLOYMENT_CONFIG.ALTERNATE_DOMAINS?.es || DEPLOYMENT_CONFIG.CANONICAL_DOMAIN;
+const STATIC_FILE_RE = /\.(?:js|mjs|css|map|png|jpg|jpeg|gif|webp|svg|ico|json|txt|xml|woff2?|ttf|eot)$/i;
 
 app.set('trust proxy', 1);
 app.use(express.json({ limit: '16kb' }));
@@ -54,6 +54,16 @@ app.use(SUBPATH, express.static(DIST, { index: false }));
 
 // 3. SPA Fallback for the app (root and all routes)
 app.get('*', (req, res) => {
+  const pathName = req.path || '/';
+
+  // Important: never serve index.html for missing assets/API endpoints.
+  // Returning HTML for a stale JS bundle breaks the app on clients with cached index files.
+  if (pathName.startsWith('/api/') || STATIC_FILE_RE.test(pathName)) {
+    return res.status(404).send('Not Found');
+  }
+
+  // Avoid stale HTML shell pointing to outdated hashed bundles.
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
   res.sendFile(join(DIST, 'index.html'));
 });
 
