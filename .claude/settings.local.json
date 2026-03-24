@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"C:/Users/tradu/AppData/Local/Programs/Antigravity/bin/antigravity\" --help)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

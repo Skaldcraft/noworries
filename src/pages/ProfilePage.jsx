@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Clock, ShoppingCart, Share2, Check, Tag, ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Clock, Share2, Check, Tag, ExternalLink } from 'lucide-react';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -11,12 +11,6 @@ import styleGuide from '@/config/style-guide.json';
 import { getImageUrl } from '../utils/getImageUrl';
 import { useTranslation } from 'react-i18next';
 import { AMAZON_CONFIG } from '@/config';
-
-const AmazonIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M15.012 19.405c-1.114.721-2.674 1.144-4.321 1.144-2.887 0-5.385-.944-7.076-2.404-.325-.281-.132-.733.266-.643 2.126.471 4.417.721 6.772.721 2.217 0 4.398-.225 6.37-.655.45-.1.68.423.23.702.408-.073.344.028.188.135zm7.394-1.258c-.521.682-1.442 1.391-2.164 1.391-.722 0-1.402-.244-1.964-.606-.088-.057-.101-.179-.028-.276 1.096-1.447 2.564-2.28 4.167-2.207.088.004.156.082.152.171-.035.789-.163 1.527-.163 1.527zm-1.122-4.031c-1.84.053-3.513.911-4.57 2.378-.051.071-.144.088-.22.053-.51-.233-.974-.537-1.373-.895-.067-.06-.073-.158-.016-.225.86-1.02 2.113-1.761 3.513-2.072 1.4-.311 2.871-.24 4.126.24.1.037.147.161.09.25-.42.66-.889 1.257-1.55 2.271z" />
-    </svg>
-);
 
 // Mapeo corregido para coincidir con los nuevos IDs de gifts.json
 const profileToGiftId = {
@@ -171,8 +165,8 @@ function ProfilePage() {
                     </div>
                 </div>
 
-                <main className="flex-grow py-16 px-6">
-                    <div className="max-w-[860px] mx-auto space-y-20">
+                <main className="flex-grow py-10 sm:py-12 px-4 sm:px-6">
+                    <div className="max-w-[860px] mx-auto space-y-12 sm:space-y-14">
 
                         {/* RECOMENDACIÓN PRINCIPAL */}
                         {currentGift && (
@@ -182,21 +176,21 @@ function ProfilePage() {
                                 transition={{ type: "spring", stiffness: 100, damping: 20 }}
                                 className="stagger-1"
                             >
-                                <p className="text-[12px] font-black text-muted-foreground/60 uppercase tracking-[0.3em] mb-8 flex items-center justify-center sm:justify-start gap-2">
+                                <p className="text-[11px] font-black text-muted-foreground/70 uppercase tracking-[0.26em] mb-4 flex items-center justify-center sm:justify-start gap-2">
                                     <Tag size={12} /> Recomendación actual
                                 </p>
                                 <motion.div 
                                     layout
                                     whileHover={{ y: -4 }}
-                                    className="bg-card rounded-3xl border border-border shadow-soft overflow-hidden p-8 md:p-12 transition-all hover:shadow-xl group/card relative"
+                                    className="bg-card rounded-2xl border border-border shadow-soft overflow-hidden p-5 sm:p-6 md:p-7 transition-all hover:shadow-xl group/card relative"
                                 >
                                     {currentGift.image && (
-                                        <div className="mb-10 flex justify-center bg-muted/5 rounded-2xl p-6 border border-border/50 shadow-inner group-hover/card:bg-muted/10 transition-colors duration-500 overflow-hidden">
+                                        <div className="mb-6 flex justify-center bg-muted/5 rounded-xl p-4 border border-border/50 shadow-inner group-hover/card:bg-muted/10 transition-colors duration-500 overflow-hidden">
                                             <motion.img
                                                 layoutId={`gift-image-${currentGift.id}`}
                                                 src={getImageUrl(currentGift.image)}
                                                 alt={currentGift.product_name}
-                                                className="max-h-[300px] w-full object-contain"
+                                                className="max-h-[220px] sm:max-h-[240px] w-full object-contain"
                                                 whileHover={{ scale: 1.05 }}
                                                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                                                 onError={(e) => {
@@ -207,29 +201,29 @@ function ProfilePage() {
                                             />
                                         </div>
                                     )}
-                                    <h2 className="text-[28px] sm:text-[34px] font-black text-foreground mb-3 leading-tight text-center sm:text-left">{currentGift.product_name}</h2>
-                                    <p className="text-[14px] font-bold text-primary uppercase tracking-[0.15em] mb-10 text-center sm:text-left bg-primary/10 inline-block px-4 py-1 rounded-full">Presupuesto: {getPriceLabel(currentGift.price_range)}</p>
-                                    <blockquote className="border-l-4 border-primary pl-6 mb-10 py-2 bg-primary/5 rounded-r-xl">
-                                        <p className="text-[18px] sm:text-[20px] italic text-foreground font-medium leading-relaxed">"{currentGift.justification}"</p>
+                                    <h2 className="text-[22px] sm:text-[28px] font-black text-foreground mb-2 leading-tight text-center sm:text-left">{currentGift.product_name}</h2>
+                                    <p className="text-[12px] font-bold text-primary uppercase tracking-[0.14em] mb-5 text-center sm:text-left bg-primary/10 inline-block px-3 py-1 rounded-full">Presupuesto: {getPriceLabel(currentGift.price_range)}</p>
+                                    <blockquote className="border-l-4 border-primary pl-4 mb-6 py-2 bg-primary/5 rounded-r-xl">
+                                        <p className="text-[15px] sm:text-[17px] italic text-foreground font-medium leading-relaxed">&ldquo;{currentGift.justification}&rdquo;</p>
                                     </blockquote>
-                                    <div className="bg-muted/5 rounded-2xl p-6 sm:p-8 mb-12 border border-border/50">
-                                        <p className="text-[12px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-4">Por qué funciona</p>
-                                        <p className="text-[16px] sm:text-[17px] text-muted-foreground leading-relaxed font-medium">{currentGift.why_it_works}</p>
+                                    <div className="bg-muted/5 rounded-xl p-4 sm:p-5 mb-6 border border-border/50">
+                                        <p className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-2">Por qué funciona</p>
+                                        <p className="text-[14px] sm:text-[15px] text-muted-foreground leading-relaxed font-medium">{currentGift.why_it_works}</p>
                                     </div>
-                                    <div className="flex flex-col sm:flex-row gap-4">
+                                    <div className="flex flex-col sm:flex-row gap-3">
                                         <motion.a 
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
-                                            href={currentGift.affiliate_url_format} target="_blank" rel="noopener noreferrer sponsored" className="flex-[2] flex items-center justify-center gap-3 bg-[#FF9900] hover:bg-[#FF8C00] text-white font-black py-5 rounded-2xl transition-all shadow-lg shadow-orange-500/10"
+                                            href={currentGift.affiliate_url_format} target="_blank" rel="noopener noreferrer sponsored" className="flex-[2] flex items-center justify-center gap-2 bg-[#FF9900] hover:bg-[#FF8C00] text-white font-black py-3.5 rounded-xl transition-all shadow-md shadow-orange-500/10 text-[14px]"
                                         >
-                                            <AmazonIcon /> {t ? t('card.go_to_amazon', 'Ver en Amazon') : 'Ver en Amazon'} <ExternalLink size={16} />
+                                            <AmazonIcon /> {t ? t('card.go_to_amazon', 'Ver en Amazon') : 'Ver en Amazon'} <ExternalLink size={14} />
                                         </motion.a>
                                         <motion.button 
                                             whileHover={{ scale: 1.02, backgroundColor: "var(--background)" }}
                                             whileTap={{ scale: 0.98 }}
-                                            onClick={handleShare} className={`flex-1 flex items-center justify-center gap-3 font-bold py-5 rounded-2xl border-2 transition-all ${copied ? 'bg-green-50 border-green-300 text-green-700' : 'bg-card text-muted-foreground border-border hover:border-muted'}`}
+                                            onClick={handleShare} className={`flex-1 flex items-center justify-center gap-2 font-bold py-3.5 rounded-xl border transition-all text-[14px] ${copied ? 'bg-green-50 border-green-300 text-green-700' : 'bg-card text-muted-foreground border-border hover:border-muted'}`}
                                         >
-                                            {copied ? <><Check size={20} /> ¡Copiado!</> : <><Share2 size={20} /> Compartir</>}
+                                            {copied ? <><Check size={17} /> ¡Copiado!</> : <><Share2 size={17} /> Compartir</>}
                                         </motion.button>
                                     </div>
                                 </motion.div>
@@ -264,7 +258,7 @@ function ProfilePage() {
                                                 <span className={`text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider ${item.tier === 'alto' ? 'bg-purple-100 text-purple-700' : item.tier === 'medio' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-800'}`}>Rango {item.tier}</span>
                                             </div>
                                             <h3 className="text-[18px] font-black text-foreground mb-3 line-clamp-2 leading-tight">{item.title}</h3>
-                                            <p className="text-[14px] text-muted-foreground italic mb-6 line-clamp-3 font-medium opacity-80 leading-relaxed">"{item.ai_description}"</p>
+                                            <p className="text-[14px] text-muted-foreground italic mb-6 line-clamp-3 font-medium opacity-80 leading-relaxed">&ldquo;{item.ai_description}&rdquo;</p>
                                             <div className="flex items-center justify-between mt-auto pt-6 border-t border-border/50">
                                                 <span className="text-[16px] font-black text-primary uppercase tracking-tight">{item.price}</span>
                                                 <Link

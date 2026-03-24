@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { ArrowLeft, ExternalLink, Calendar, ShieldCheck, Truck, Quote } from 'lucide-react';

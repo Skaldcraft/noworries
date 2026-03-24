@@ -1,9 +1,6 @@
-
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { ShoppingCart, Zap, Star, Layout, Tag, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
+import { ExternalLink } from 'lucide-react';
 
 const AmazonIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '12px', transform: 'translateY(-1px)' }}>
@@ -11,31 +8,29 @@ const AmazonIcon = () => (
     </svg>
 );
 
-const PromotionPage = () => {
-    const { t } = useTranslation();
+const pills = [
+    { emoji: '👨', text: 'Para Papá' },
+    { emoji: '👩', text: 'Para Mamá' },
+    { emoji: '💕', text: 'Pareja' },
+    { emoji: '🎧', text: 'Adolescentes' },
+    { emoji: '✈️', text: 'Viajeros' },
+    { emoji: '🍳', text: 'Cocinillas' },
+    { emoji: '🛠️', text: 'Manitas' },
+    { emoji: '🐾', text: 'Mascotas' },
+    { emoji: '🕹️', text: 'Gamers / Tecnológicos' },
+    { emoji: '📚', text: 'Lectores' }
+];
 
-    const pills = [
-        { emoji: '👨', text: 'Para Papá' },
-        { emoji: '👩', text: 'Para Mamá' },
-        { emoji: '💕', text: 'Pareja' },
-        { emoji: '🎧', text: 'Adolescentes' },
-        { emoji: '✈️', text: 'Viajeros' },
-        { emoji: '🍳', text: 'Cocinillas' },
-        { emoji: '🛠️', text: 'Manitas' },
-        { emoji: '🐾', text: 'Mascotas' },
-        { emoji: '🕹️', text: 'Gamers / Tecnológicos' },
-        { emoji: '📚', text: 'Lectores' }
-    ];
-
+function PromotionPage() {
     return (
         <div className="bg-white min-h-screen text-[#1C1917] font-['Inter'] selection:bg-primary selection:text-white overflow-x-hidden">
             <Helmet>
-                <title></title>
+                <title>Regalos Sin Estrés | OneClickFix</title>
                 <meta name="description" content="Déjate de búsquedas agobiantes. Selección curada de regalos perfectos por perfiles y presupuestos." />
             </Helmet>
 
             <header className="container mx-auto px-6 py-12 flex justify-center">
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="font-['Outfit'] font-black text-3xl tracking-tighter"
@@ -46,7 +41,7 @@ const PromotionPage = () => {
 
             <main>
                 <section className="container mx-auto px-6 py-24 text-center">
-                    <motion.h1 
+                    <motion.h1
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "circOut" }}
@@ -83,7 +78,7 @@ const PromotionPage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.5 }}
                     >
-                        <a 
+                        <a
                             href="/"
                             className="inline-flex items-center bg-[#1C1917] text-white px-12 py-6 rounded-2xl font-black text-xl shadow-2xl hover:bg-primary hover:-translate-y-2 hover:shadow-orange-500/30 transition-all duration-500 group"
                         >
@@ -102,7 +97,7 @@ const PromotionPage = () => {
 
                 <section className="bg-zinc-50 rounded-[5rem_5rem_0_0] py-40 border-t border-black/5">
                     <div className="container mx-auto px-6">
-                        <motion.span 
+                        <motion.span
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             className="block text-center text-green-600 font-black tracking-[0.4em] text-sm mb-6 uppercase"
@@ -133,7 +128,7 @@ const PromotionPage = () => {
                         </div>
 
                         <div className="mt-32 text-center">
-                            <motion.a 
+                            <motion.a
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 href="/"
@@ -156,6 +151,6 @@ const PromotionPage = () => {
             </footer>
         </div>
     );
-};
+}
 
 export default PromotionPage;
