@@ -46,13 +46,6 @@ function HomePage() {
 
   const IS_DEV = import.meta.env.DEV;
 
-  // Índice directo de cada gift en el dataset del mercado activo.
-  const giftIndexMap = useMemo(() => {
-    const map = {};
-    giftsData.forEach((g, i) => { map[g.id] = i; });
-    return map;
-  }, [giftsData]);
-
   const updateCacheInfo = useCallback(() => {
     try {
       setCacheInfo({
@@ -162,24 +155,11 @@ function HomePage() {
   }, [toast, updateCacheInfo]);
 
   useEffect(() => {
-    // 1. Solo usamos el dataset del mercado activo
-    // 2. Una tarjeta por perfil+rango: la ultima entrada gana
-    const uniqueGiftsMap = new Map();
-    giftsData.forEach((gift) => {
-      const pId = getProfileIdFromGiftId(gift.id);
-      if (!pId) return;
-      const categoryKey = `${pId}-${gift.price_range}`;
-      uniqueGiftsMap.set(categoryKey, gift);
-    });
-
-    // 3. Ordenar por el indice real del gift ganador en el dataset actual
-    const finalGifts = Array.from(uniqueGiftsMap.values()).sort(
-      (a, b) => (giftIndexMap[a.id] ?? 9999) - (giftIndexMap[b.id] ?? 9999)
-    );
-
-    setGifts(finalGifts);
-    fetchAllProducts(finalGifts);
-  }, [fetchAllProducts, giftIndexMap]);
+    // Mostrar todo el catálogo del mercado activo (sin deduplicar)
+    // para conservar el volumen completo de fichas en la home.
+    setGifts(giftsData);
+    fetchAllProducts(giftsData);
+  }, [fetchAllProducts, giftsData]);
 
   useLayoutEffect(() => {
     const shouldRestore = sessionStorage.getItem('homeShouldRestoreScroll') === '1';
