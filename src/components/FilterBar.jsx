@@ -1,14 +1,15 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import giftsData from '@/data/gifts.json';
+import { getMarketGifts } from '@/data/market-gifts';
 import { getOrderedProfileOptionsFromGifts } from '@/lib/profiles';
 
 function FilterBar({ onFilterChange, activeFilters }) {
   const { t } = useTranslation();
+  const giftsData = useMemo(() => getMarketGifts(), []);
 
   const orderedProfiles = useMemo(() => {
     return getOrderedProfileOptionsFromGifts(giftsData);
-  }, []);
+  }, [giftsData]);
 
   const categories = [
     { id: 'all', label: t('filters.categories.all') },

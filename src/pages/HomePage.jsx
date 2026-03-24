@@ -10,7 +10,7 @@ import FilterBar from '@/components/FilterBar';
 import GiftCard from '@/components/GiftCard';
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
-import giftsData from '@/data/gifts.json';
+import { getMarketGifts } from '@/data/market-gifts';
 import { fetchProductData } from '@/lib/paapi';
 import { getCacheStats, getCacheSize, getCacheContents, clearCache } from '@/lib/cacheDebug';
 import { getProfileIdFromGiftId } from '@/lib/profiles';
@@ -42,15 +42,16 @@ function HomePage() {
   });
   const [isDebugOpen, setIsDebugOpen] = useState(false);
   const [cacheInfo, setCacheInfo] = useState({ stats: null, size: 0, contents: [] });
+  const giftsData = useMemo(() => getMarketGifts(), []);
 
   const IS_DEV = import.meta.env.DEV;
 
-  // Índice directo de cada gift en giftsData para ordenar exactamente como gifts.json
+  // Índice directo de cada gift en el dataset del mercado activo.
   const giftIndexMap = useMemo(() => {
     const map = {};
     giftsData.forEach((g, i) => { map[g.id] = i; });
     return map;
-  }, []);
+  }, [giftsData]);
 
   const updateCacheInfo = useCallback(() => {
     try {
@@ -161,8 +162,8 @@ function HomePage() {
   }, [toast, updateCacheInfo]);
 
   useEffect(() => {
-    // 1. Solo usamos gifts.json
-    // 2. Una tarjeta por perfil+rango: la ultima entrada en gifts.json gana
+    // 1. Solo usamos el dataset del mercado activo
+    // 2. Una tarjeta por perfil+rango: la ultima entrada gana
     const uniqueGiftsMap = new Map();
     giftsData.forEach((gift) => {
       const pId = getProfileIdFromGiftId(gift.id);
@@ -171,7 +172,7 @@ function HomePage() {
       uniqueGiftsMap.set(categoryKey, gift);
     });
 
-    // 3. Ordenar por el indice real del gift ganador en gifts.json (orden exacto del archivo)
+    // 3. Ordenar por el indice real del gift ganador en el dataset actual
     const finalGifts = Array.from(uniqueGiftsMap.values()).sort(
       (a, b) => (giftIndexMap[a.id] ?? 9999) - (giftIndexMap[b.id] ?? 9999)
     );

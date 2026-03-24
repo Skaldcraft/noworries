@@ -9,20 +9,38 @@ const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 const isES = hostname.startsWith('es.') || hostname.includes('.es');
 const isEN = hostname.startsWith('en.') || hostname.includes('.com') || hostname === 'localhost' && !hostname.startsWith('es.'); 
 
-const isUSMarket = isEN && !isES;
-
 // Para desarrollo local o si no detecta subdominio, podemos forzarlo por parámetro ?lang=en o ?lang=es
 const urlParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : new URLSearchParams();
 const forceUS = urlParams.get('lang') === 'en';
 const forceES = urlParams.get('lang') === 'es';
 
 const finalLang = (forceES || isES) ? 'es' : (forceUS || isEN ? 'en' : 'es');
+const marketCode = finalLang === 'en' ? 'us' : 'es';
+
+const MARKET_CONFIG = {
+  es: {
+    partnerTag: 'skaldcraft-21',
+    marketplace: 'www.amazon.es',
+    region: 'eu-west-1',
+    currency: 'EUR',
+  },
+  us: {
+    partnerTag: 'noworriesgift-20',
+    marketplace: 'www.amazon.com',
+    region: 'us-east-1',
+    currency: 'USD',
+  },
+};
+
+const market = MARKET_CONFIG[marketCode];
 
 export const AMAZON_CONFIG = {
   // Tags según el mercado
-  PARTNER_TAG: (finalLang === 'en') ? 'noworriesgift-20' : 'skaldcraft-21',
-  MARKETPLACE: (finalLang === 'en') ? 'www.amazon.com' : 'www.amazon.es',
-  REGION:      (finalLang === 'en') ? 'us-east-1' : 'eu-west-1',
+  PARTNER_TAG: market.partnerTag,
+  MARKETPLACE: market.marketplace,
+  REGION: market.region,
+  CURRENCY: market.currency,
+  MARKET: marketCode,
 
   // Configuracion de la aplicacion
   DEBUG_MODE: false, // ACTIVADO: Se conecta al proxy para obtener datos reales de Amazon

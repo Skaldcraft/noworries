@@ -6,10 +6,11 @@ import { ArrowLeft, Clock, ShoppingCart, Share2, Check, Tag, ExternalLink } from
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import giftsData from '@/data/gifts.json';
+import { getMarketGifts } from '@/data/market-gifts';
 import styleGuide from '@/config/style-guide.json';
 import { getImageUrl } from '../utils/getImageUrl';
 import { useTranslation } from 'react-i18next';
+import { AMAZON_CONFIG } from '@/config';
 
 const AmazonIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -36,9 +37,12 @@ const profileToGiftId = {
 };
 
 const getPriceLabel = (range) => {
+    const isUS = AMAZON_CONFIG.MARKET === 'us';
     const labels = {
-        'under15': 'Hasta 15€', '15-35': '15€–35€',
-        '35-70': '35€–70€', '70-150': '70€–150€'
+        'under15': isUS ? 'Up to $15' : 'Hasta 15€',
+        '15-35': isUS ? '$15-$35' : '15€-35€',
+        '35-70': isUS ? '$35-$70' : '35€-70€',
+        '70-150': isUS ? '$70-$150' : '70€-150€'
     };
     return labels[range] || range;
 };
@@ -72,6 +76,7 @@ function ProfilePage() {
     const selectedId = searchParams.get('id');
     const [copied, setCopied] = useState(false);
     const { t } = useTranslation();
+    const giftsData = useMemo(() => getMarketGifts(), []);
 
 
 
@@ -286,4 +291,4 @@ function ProfilePage() {
 }
 
 export default ProfilePage;
-
+

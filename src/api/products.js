@@ -26,7 +26,7 @@ const fallback = (asin, tag) => ({
   price:         null,
   available:     false,
   image:         null,
-  affiliate_url: `https://www.amazon.es/dp/${asin}/?tag=${tag || AMAZON_CONFIG.PARTNER_TAG}`
+  affiliate_url: `https://${AMAZON_CONFIG.MARKETPLACE}/dp/${asin}/?tag=${tag || AMAZON_CONFIG.PARTNER_TAG}`
 });
 
 export async function fetchProductData(asin, tag) {
