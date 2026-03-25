@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { ExternalLink } from 'lucide-react';
 
 const AmazonIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '8px' }}>
         <path d="M6.5 8c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zm10 0c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zM12 3C6.48 3 2 7.48 2 13s4.48 10 10 10 10-4.48 10-10S17.52 3 12 3zm3.5 13c0 1.93-1.57 3.5-3.5 3.5S8.5 17.93 8.5 16 10.07 12.5 12 12.5s3.5 1.57 3.5 3.5z" fill="currentColor"/>
     </svg>
 );
@@ -24,14 +24,17 @@ const pills = [
 ];
 
 function PromotionPage() {
-    return (
-        <div className="bg-white min-h-screen text-[#444] font-['Lato'] selection:bg-primary selection:text-white overflow-x-hidden">
-            <Helmet>
-                <title>Regalos Sin Estrés | OneClickFix</title>
-                <meta name="description" content="Déjate de búsquedas agobiantes. Selección curada de regalos perfectos por perfiles y presupuestos." />
-            </Helmet>
+    const shouldReduceMotion = useReducedMotion();
 
-            <header className="container mx-auto px-6 pt-20 pb-8 flex justify-center">
+    return (
+        <div className="min-h-screen bg-[#f9f9f9] px-0 py-0 text-[#444] font-['Lato'] selection:bg-primary selection:text-white overflow-x-hidden md:px-3 md:py-3 lg:px-6 lg:py-6 xl:px-8 xl:py-8">
+            <div className="min-h-screen bg-white md:rounded-[1.5rem] md:shadow-[0_18px_42px_-34px_rgba(28,25,23,0.1)] lg:rounded-[2.5rem] lg:shadow-[0_24px_64px_-40px_rgba(28,25,23,0.14)]">
+                <Helmet>
+                    <title>Regalos Sin Estrés | OneClickFix</title>
+                    <meta name="description" content="Déjate de búsquedas agobiantes. Selección curada de regalos perfectos por perfiles y presupuestos." />
+                </Helmet>
+
+                <header className="container mx-auto px-6 pt-20 pb-10 md:pt-24 md:pb-12 flex justify-center">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -39,24 +42,47 @@ function PromotionPage() {
                 >
                     noworries.gift 🎁
                 </motion.div>
-            </header>
+                </header>
 
-            <main>
-                <section className="container mx-auto px-6 pt-14 pb-22 text-center">
+                <main>
+                    <section className="container mx-auto px-6 pt-16 pb-28 text-center md:pt-20 md:pb-28 lg:pt-24 lg:pb-32">
                     <motion.h1
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "circOut" }}
                         className="font-['Playfair Display'] font-bold text-[clamp(2rem,6vw,4.25rem)] leading-[1] mb-6 tracking-tight whitespace-normal sm:whitespace-nowrap text-[#1C1917]"
                     >
-                        El <span className="bg-gradient-to-br from-amber-400 to-orange-600 bg-clip-text text-transparent">Regalo</span> Ideal en dos <span className="bg-gradient-to-br from-emerald-400 to-green-700 bg-clip-text text-transparent">Clics</span>
+                        El{' '}
+                        <motion.span
+                            className="bg-clip-text text-transparent inline-block"
+                            style={{
+                                backgroundImage: 'linear-gradient(135deg, #FBBF24, #D97706, #FBBF24)',
+                                backgroundSize: '180% 180%'
+                            }}
+                            animate={shouldReduceMotion ? undefined : { backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+                            transition={shouldReduceMotion ? undefined : { duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+                        >
+                            Regalo
+                        </motion.span>{' '}
+                        Ideal en dos{' '}
+                        <motion.span
+                            className="bg-clip-text text-transparent inline-block"
+                            style={{
+                                backgroundImage: 'linear-gradient(135deg, #4ADE80, #15803D, #4ADE80)',
+                                backgroundSize: '180% 180%'
+                            }}
+                            animate={shouldReduceMotion ? undefined : { backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+                            transition={shouldReduceMotion ? undefined : { duration: 9, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+                        >
+                            Clics
+                        </motion.span>
                     </motion.h1>
 
                     <motion.h2
                         initial={{ opacity: 0, y: 28 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
-                        className="font-['Playfair Display'] text-[clamp(1.35rem,3.3vw,2.2rem)] font-bold tracking-tight mb-8 text-[#1C1917]"
+                        className="font-['Playfair Display'] text-[clamp(1.28rem,3.05vw,2.05rem)] font-bold tracking-tight mb-7 text-[#1C1917]"
                     >
                         Deja de buscar. Empieza a encontrar.
                     </motion.h2>
@@ -65,12 +91,12 @@ function PromotionPage() {
                         initial={{ opacity: 0, y: 28 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.35, ease: "circOut" }}
-                        className="mx-auto max-w-3xl text-[#666] text-[clamp(1rem,2.1vw,1.3rem)] font-normal leading-relaxed mb-10"
+                        className="mx-auto max-w-[44rem] text-[#666] text-[clamp(1rem,2.1vw,1.3rem)] font-normal leading-[1.65] mb-12"
                     >
                         Navegamos por el caos de Amazon por ti. Una selección corta, inteligente y directa para que elijas el regalo perfecto en menos de 2 minutos.
                     </motion.p>
 
-                    <div className="max-w-5xl mx-auto mb-16 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 text-center">
+                    <div className="max-w-5xl mx-auto mb-20 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 text-center">
                         {pills.map((pill, i) => (
                             <motion.div
                                 key={i}
@@ -118,20 +144,20 @@ function PromotionPage() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.9 }}
-                        className="mt-24 pt-24 border-t border-zinc-200 max-w-3xl mx-auto text-center"
+                        className="mt-28 pt-28 border-t border-zinc-200 max-w-[42rem] mx-auto text-center"
                     >
-                        <h2 className="font-['Playfair Display'] font-bold text-[clamp(1.4rem,3.3vw,2.3rem)] text-center tracking-tight mb-6 text-[#1C1917]">
+                        <h2 className="font-['Playfair Display'] font-bold text-[clamp(1.32rem,3.1vw,2.1rem)] text-center tracking-tight mb-5 text-[#1C1917]">
                             El atajo inteligente entre tú y el regalo ideal
                         </h2>
-                        <p className="text-[#666] text-[clamp(1rem,2.05vw,1.2rem)] font-normal leading-relaxed text-center">
+                        <p className="mx-auto max-w-[40rem] text-[#666] text-[clamp(0.98rem,1.95vw,1.14rem)] font-normal leading-[1.68] text-center">
                             Ni miles de pestañas abiertas ni horas perdidas. Solo los mejores perfiles y presupuestos organizados para que regalar sea, por fin, superfácil.
                         </p>
                     </motion.div>
 
                 </section>
 
-                <section className="bg-zinc-50 rounded-[5rem_5rem_0_0] py-40 border-t border-black/5">
-                    <div className="container mx-auto px-6">
+                    <section className="bg-zinc-50 rounded-[5rem_5rem_0_0] py-36 border-t border-black/5 md:rounded-[3.25rem_3.25rem_1.5rem_1.5rem] lg:rounded-[4.5rem_4.5rem_2.5rem_2.5rem] xl:py-40">
+                        <div className="container mx-auto px-6">
                         <motion.span
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
@@ -139,8 +165,8 @@ function PromotionPage() {
                         >
                             NO MÁS ESTRÉS
                         </motion.span>
-                        <h2 className="font-['Playfair Display'] font-bold text-5xl sm:text-7xl text-center mb-10 tracking-tighter text-[#1C1917]">Tan simple como práctico</h2>
-                        <h3 className="font-['Playfair Display'] font-bold text-[clamp(1.4rem,3.3vw,2.3rem)] text-center tracking-tight mb-6 text-[#1C1917]">
+                        <h2 className="font-['Playfair Display'] font-bold text-4xl sm:text-6xl text-center mb-10 tracking-tighter text-[#1C1917]">Tan simple como práctico</h2>
+                        <h3 className="font-['Playfair Display'] font-bold text-[clamp(1.15rem,2.7vw,1.9rem)] text-center tracking-tight mb-6 text-[#1C1917]">
                             Acierta siempre, incluso con los que «tienen de todo».
                         </h3>
                         <p className="mx-auto max-w-4xl text-center text-[#666] text-[clamp(1rem,2.05vw,1.2rem)] font-normal leading-relaxed mb-16">
@@ -157,6 +183,9 @@ function PromotionPage() {
                                 autoPlay 
                                 loop 
                                 muted 
+                                playsInline
+                                poster="/images/cabecera.jpg"
+                                preload="metadata"
                                 className="w-full max-w-2xl mx-auto rounded-3xl shadow-xl"
                             >
                                 <source src="/images/no-mas-estres.mp4" type="video/mp4" />
@@ -205,10 +234,10 @@ function PromotionPage() {
                             <span className="block text-center text-[#228B22] font-black tracking-[0.4em] text-sm mb-8 uppercase">
                                 GARANTÍA NO WORRIES
                             </span>
-                            <h2 className="font-['Playfair Display'] font-bold text-5xl sm:text-7xl text-center mb-6 tracking-tighter text-[#1C1917]">
+                            <h2 className="font-['Playfair Display'] font-bold text-4xl sm:text-6xl text-center mb-6 tracking-tighter text-[#1C1917]">
                                 Selección manual libre de estrés
                             </h2>
-                            <h3 className="font-['Playfair Display'] font-bold text-[clamp(1.4rem,3.3vw,2.3rem)] text-center tracking-tight mb-2 text-[#1C1917]">
+                            <h3 className="font-['Playfair Display'] font-bold text-[clamp(1.15rem,2.7vw,1.9rem)] text-center tracking-tight mb-2 text-[#1C1917]">
                                 Con las mejores opciones de Amazon.
                             </h3>
                         </div>
@@ -227,17 +256,18 @@ function PromotionPage() {
                                 Desde «Mi suegra es difícil» hasta «Mi pareja tiene de todo». Tenemos el perfil exacto.
                             </p>
                         </div>
-                    </div>
-                </section>
-            </main>
+                        </div>
+                    </section>
+                </main>
 
-            <footer className="bg-[#1C1917] py-20 text-center text-white/40">
-                <div className="container mx-auto px-6">
-                    <div className="font-['Playfair Display'] font-bold text-3xl text-white mb-4 tracking-tighter">noworries.gift</div>
-                    <p className="text-white/60 font-bold mb-12">Haz que cada detalle cuente.</p>
-                    <p className="text-xs font-medium">© 2026 noworries.gift / Skaldcraft. Todos los derechos reservados.</p>
-                </div>
-            </footer>
+                <footer className="bg-[#1C1917] py-20 text-center text-white/40 md:rounded-b-[1.5rem] lg:rounded-b-[2.5rem]">
+                    <div className="container mx-auto px-6">
+                        <div className="font-['Playfair Display'] font-bold text-3xl text-white mb-4 tracking-tighter">noworries.gift</div>
+                        <p className="text-white/60 font-bold mb-12">Haz que cada detalle cuente.</p>
+                        <p className="text-xs font-medium">© 2026 noworries.gift / Skaldcraft. Todos los derechos reservados.</p>
+                    </div>
+                </footer>
+            </div>
         </div>
     );
 }

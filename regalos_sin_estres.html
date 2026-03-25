@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Regalos Sin Estrés | noworries.gift</title>
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Déjate de búsquedas agobiantes. Selección curada de regalos perfectos por perfiles y presupuestos.">
@@ -41,11 +41,39 @@
 
         body {
             font-family: 'Lato', system-ui, -apple-system, sans-serif;
-            background-color: var(--background);
+            background-color: #f9f9f9;
             color: #444;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+        }
+
+        .page-shell {
+            background: var(--background);
+            min-height: 100vh;
+        }
+
+        @media (min-width: 768px) {
+            .page-shell {
+                margin: 0.75rem;
+                border-radius: 1.5rem;
+                overflow: hidden;
+                box-shadow: 0 18px 42px -34px rgba(28, 25, 23, 0.1);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .page-shell {
+                margin: 1.5rem;
+                border-radius: 2.5rem;
+                box-shadow: 0 24px 64px -40px rgba(28, 25, 23, 0.14);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .page-shell {
+                margin: 2rem;
+            }
         }
 
         h1, h2, h3 {
@@ -73,14 +101,28 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes reveal {
-            from { clip-path: inset(0 100% 0 0); }
-            to { clip-path: inset(0 0 0 0); }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .has-scroll-reveal .reveal-on-scroll {
+                opacity: 1 !important;
+                transform: none !important;
+            }
         }
 
         /* --- Header --- */
         header {
-            padding: 5.75rem 0 2.25rem;
+            padding: 5.75rem 0 2.75rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -97,7 +139,7 @@
 
         /* --- Hero Section --- */
         .hero {
-            padding: 4.5rem 0 8rem;
+            padding: 5rem 0 8.75rem;
             text-align: center;
             position: relative;
             color: #444;
@@ -114,40 +156,42 @@
         }
 
         .hero-title .title-regalo {
-            background: linear-gradient(135deg, #FBBF24, #D97706);
+            background: linear-gradient(135deg, #FBBF24, #D97706, #FBBF24);
+            background-size: 180% 180%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-
+            animation: gradientShift 9s ease-in-out infinite;
         }
 
         .hero-title .title-clics {
-            background: linear-gradient(135deg, #4ADE80, #15803D);
+            background: linear-gradient(135deg, #4ADE80, #15803D, #4ADE80);
+            background-size: 180% 180%;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-
+            animation: gradientShift 9s ease-in-out infinite 0.4s;
         }
 
         .hero-kicker {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.35rem, 3.3vw, 2.2rem);
+            font-size: clamp(1.28rem, 3.05vw, 2.05rem);
             font-weight: 700;
             color: #1C1917;
             line-height: 1.2;
             letter-spacing: -0.02em;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1.35rem;
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
         }
 
         .hero-subtitle {
             font-size: clamp(1rem, 2.1vw, 1.3rem);
             color: #666;
-            max-width: 760px;
-            margin: 0 auto 2.5rem;
+            max-width: 44rem;
+            margin: 0 auto 3rem;
             font-weight: 400;
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards;
-            line-height: 1.5;
+            line-height: 1.65;
             font-family: 'Lato', sans-serif;
         }
 
@@ -185,7 +229,7 @@
             grid-template-columns: repeat(4, minmax(0, 1fr));
             gap: 0.7rem 1.25rem;
             max-width: 980px;
-            margin: 2rem auto 0;
+            margin: 2.25rem auto 0;
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s backwards;
         }
 
@@ -210,16 +254,34 @@
 
         /* --- Feature Grid --- */
         .features {
-            padding: 10rem 0;
+            padding: 9rem 0;
             background-color: #FAFAFA;
             border-radius: 6rem 6rem 0 0;
             position: relative;
         }
 
+        @media (min-width: 768px) {
+            .features {
+                border-radius: 3.25rem 3.25rem 1.5rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features {
+                border-radius: 4.5rem 4.5rem 2.5rem 2.5rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .features {
+                padding: 10rem 0;
+            }
+        }
+
         .section-tag {
             text-align: center;
             color: #228B22;
-            font-weight: 700;
+            font-weight: 900;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.4em;
@@ -232,7 +294,7 @@
             text-align: center;
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 2.5rem;
             max-width: 800px;
             margin-left: auto;
@@ -244,7 +306,7 @@
             text-align: center;
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: clamp(1.4rem, 3.3vw, 2.3rem);
+            font-size: clamp(1.15rem, 2.7vw, 1.9rem);
             color: #1C1917;
             line-height: 1.15;
             letter-spacing: -0.03em;
@@ -274,7 +336,7 @@
 
         .feature-card {
             background: var(--white);
-            padding: 2rem 1.75rem;
+            padding: 2rem;
             border-radius: 2.25rem;
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
@@ -283,8 +345,8 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.02);
-            box-shadow: 0 4px 20px -10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 32px -16px rgba(0,0,0,0.08);
             min-height: 21.5rem;
             height: 100%;
         }
@@ -292,6 +354,19 @@
         .feature-card:hover {
             transform: translateY(-15px);
             box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.1);
+        }
+
+        .has-scroll-reveal .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            transition-delay: var(--reveal-delay, 0s);
+            will-change: opacity, transform;
+        }
+
+        .has-scroll-reveal .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
 
@@ -332,39 +407,55 @@
 
         /* --- Footer --- */
         footer {
-            padding: 4rem 0;
+            padding: 5rem 0;
             background-color: var(--foreground);
             color: var(--white);
             text-align: center;
         }
 
+        @media (min-width: 768px) {
+            footer {
+                border-radius: 0 0 1.5rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            footer {
+                border-radius: 0 0 2.5rem 2.5rem;
+            }
+        }
+
         .footer-logo {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 900;
-            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.875rem;
             margin-bottom: 1rem;
+            letter-spacing: -0.04em;
         }
 
         .footer-tag {
-            color: var(--muted);
-            font-weight: 500;
-            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.6);
+            font-weight: 600;
+            margin-bottom: 3rem;
         }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
+            header { padding: 4.75rem 0 2.25rem; }
+            .hero { padding: 4.25rem 0 7rem; }
             .hero-title { font-size: clamp(1.65rem, 8vw, 2.5rem); }
             .category-scroll { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .grid { grid-template-columns: 1fr; }
             .feature-card { padding: 2rem; }
-            .section-title { font-size: clamp(2rem, 10vw, 2.6rem); margin-bottom: 1.5rem; }
-            .section-lead-title { font-size: clamp(1.2rem, 6vw, 1.7rem); margin-bottom: 1rem; }
+            .section-title { font-size: clamp(1.75rem, 8.6vw, 2.25rem); margin-bottom: 1.5rem; }
+            .section-lead-title { font-size: clamp(1rem, 5vw, 1.4rem); margin-bottom: 1rem; }
             .section-tag { letter-spacing: 0.22em; }
             .cta-button { min-width: 0; width: min(100%, 20rem); padding: 0.95rem 1.3rem; }
         }
     </style>
 </head>
 <body>
+    <div class="page-shell">
 
     <header class="container">
         <div class="logo">noworries.gift 🎁</div>
@@ -396,12 +487,12 @@
                 </svg>
                 Regalo rápido
             </a>
-            <p style="margin-top: 0.75rem; color: #78716C; font-style: italic; font-size: clamp(0.9rem, 2vw, 1rem);">Pruébalo, es más rápido que preguntarle a tu grupo de WhatsApp.</p>
+            <p style="margin-top: 0.75rem; color: #999; font-style: italic; font-size: clamp(0.9rem, 2vw, 1rem);">Pruébalo, es más rápido que preguntarle a tu grupo de WhatsApp.</p>
         </div>
 
-        <div style="margin-top: 5rem; padding-top: 5rem; border-top: 1px solid #e5e7eb; max-width: 900px; margin-left: auto; margin-right: auto; animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.65s backwards;">
-            <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 3.3vw, 2.3rem); font-weight: 900; text-align: center; margin-bottom: 1.5rem; letter-spacing: -0.03em;">El atajo inteligente entre tú y el regalo ideal</h2>
-            <p style="color: #78716C; font-size: clamp(1rem, 2.05vw, 1.2rem); line-height: 1.6; text-align: center; font-weight: 500;">Ni miles de pestañas abiertas ni horas perdidas. Solo los mejores perfiles y presupuestos organizados para que regalar sea, por fin, superfácil.</p>
+        <div class="reveal-on-scroll" style="--reveal-delay: 0.08s; margin-top: 7rem; padding-top: 7rem; border-top: 1px solid #e5e7eb; max-width: 42rem; margin-left: auto; margin-right: auto; animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.65s backwards;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.32rem, 3.1vw, 2.1rem); font-weight: 700; color: #1C1917; text-align: center; margin-bottom: 1.25rem; letter-spacing: -0.03em;">El atajo inteligente entre tú y el regalo ideal</h2>
+            <p style="color: #666; font-size: clamp(0.98rem, 1.95vw, 1.14rem); line-height: 1.68; text-align: center; font-weight: 400; max-width: 40rem; margin: 0 auto;">Ni miles de pestañas abiertas ni horas perdidas. Solo los mejores perfiles y presupuestos organizados para que regalar sea, por fin, superfácil.</p>
         </div>
 
     </section>
@@ -414,8 +505,8 @@
             <h3 class="section-lead-title">Acierta siempre, incluso con los que «tienen de todo».</h3>
             <p class="section-lead-subtitle">Filtramos las opciones más originales según su personalidad y tu presupuesto. Menos opciones mediocres, más aciertos memorables. Desde el gran regalo de amor hasta el pequeño detalle de compromiso.</p>
             
-            <div style="margin: 3rem auto 6rem; max-width: 800px; border-radius: 1.75rem; overflow: hidden; box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);">
-                <video autoplay loop muted style="width: 100%; display: block;">
+            <div class="reveal-on-scroll" style="--reveal-delay: 0.04s; margin: 3rem auto 6rem; max-width: 800px; border-radius: 1.75rem; overflow: hidden; box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);">
+                <video autoplay loop muted playsinline poster="/images/cabecera.jpg" preload="metadata" style="width: 100%; display: block;">
                     <source src="/images/no-mas-estres.mp4" type="video/mp4" />
                     Tu navegador no soporta video HTML5
                 </video>
@@ -423,21 +514,21 @@
             
             <div class="grid" style="gap: 1.75rem;">
                 <!-- Feature 1 -->
-                <div class="feature-card">
+                <div class="feature-card reveal-on-scroll" style="--reveal-delay: 0s;">
                     <div class="feature-icon">🎯</div>
                     <h3>Define</h3>
                     <p class="lead">Define el perfil y tu presupuesto</p>
                     <p>Dinos para quién buscas y cuánto quieres gastar. Sin cuestionarios eternos, solo lo que importa para empezar.</p>
                 </div>
                 <!-- Feature 2 -->
-                <div class="feature-card" style="animation-delay: 0.2s;">
+                <div class="feature-card reveal-on-scroll" style="animation-delay: 0.2s; --reveal-delay: 0.12s;">
                     <div class="feature-icon">✨</div>
                     <h3>Filtra</h3>
                     <p class="lead">Mira nuestra selección (al grano)</p>
                     <p>Olvida las 50 pestañas abiertas. Filtramos el caos de Amazon por ti para mostrarte solo 4 o 5 opciones que realmente encajan.</p>
                 </div>
                 <!-- Feature 3 -->
-                <div class="feature-card" style="animation-delay: 0.4s;">
+                <div class="feature-card reveal-on-scroll" style="animation-delay: 0.4s; --reveal-delay: 0.24s;">
                     <div class="feature-icon">🎁</div>
                     <h3>Acierta</h3>
                     <p class="lead">Acierta y olvídate</p>
@@ -445,20 +536,20 @@
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 5rem;">
+            <div class="reveal-on-scroll" style="--reveal-delay: 0.08s; text-align: center; margin-top: 5rem;">
                 <span class="section-tag" style="margin-bottom: 2rem;">GARANTÍA NO WORRIES</span>
                 <h2 class="section-title" style="margin-bottom: 1.5rem;">Selección manual libre de estrés</h2>
                 <h3 class="section-lead-title" style="margin-bottom: 0.5rem;">Con las mejores opciones de Amazon.</h3>
             </div>
 
-            <div style="text-align: center; margin-top: 6rem;">
+            <div class="reveal-on-scroll" style="--reveal-delay: 0.14s; text-align: center; margin-top: 6rem;">
                 <a href="https://noworries.gift/" class="cta-button" style="background-color: #228B22; box-shadow: 0 12px 26px -12px rgba(34, 139, 34, 0.7);">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
                         <path d="M6.5 8c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zm10 0c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zM12 3C6.48 3 2 7.48 2 13s4.48 10 10 10 10-4.48 10-10S17.52 3 12 3zm3.5 13c0 1.93-1.57 3.5-3.5 3.5S8.5 17.93 8.5 16 10.07 12.5 12 12.5s3.5 1.57 3.5 3.5z" fill="currentColor"/>
                     </svg>
                     ¡Busco un regalo!
                 </a>
-                <p style="margin-top: 1rem; color: #78716C; font-style: italic; font-size: clamp(0.9rem, 2vw, 1rem); text-align: center; max-width: 760px; margin-left: auto; margin-right: auto;">Desde «Mi suegra es difícil» hasta «Mi pareja tiene de todo». Tenemos el perfil exacto.</p>
+                <p style="margin-top: 1rem; color: #999; font-style: italic; font-size: clamp(0.9rem, 2vw, 1rem); text-align: center; max-width: 760px; margin-left: auto; margin-right: auto;">Desde «Mi suegra es difícil» hasta «Mi pareja tiene de todo». Tenemos el perfil exacto.</p>
             </div>
 
         </div>
@@ -471,6 +562,34 @@
             <p style="font-size: 0.75rem; opacity: 0.5;">© 2026 noworries.gift / Skaldcraft. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        (() => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+                return;
+            }
+
+            document.documentElement.classList.add('has-scroll-reveal');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.18,
+                rootMargin: '0px 0px -8% 0px'
+            });
+
+            document.querySelectorAll('.reveal-on-scroll').forEach((element) => {
+                observer.observe(element);
+            });
+        })();
+    </script>
+
+    </div>
 
 </body>
 </html>

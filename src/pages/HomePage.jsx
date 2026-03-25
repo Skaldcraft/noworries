@@ -272,7 +272,7 @@ function HomePage() {
         <meta name="description" content={t('seo.home_description')} />
       </Helmet>
 
-      <div className="min-h-screen bg-background flex flex-col relative pb-16">
+      <div className="min-h-screen bg-[#f9f9f9] flex flex-col relative pb-16">
         <SeasonalBanner />
         <FilterBar onFilterChange={handleFilterChange} activeFilters={activeFilters} />
 
