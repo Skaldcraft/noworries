@@ -11,6 +11,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Traffic analytics tracker -->
+    <script>
+      window.gainSightConfig = {
+        siteKey: '73faa6bcd07749bd',
+        apiUrl: 'http://localhost:3002'
+      };
+    </script>
+    <script src="http://localhost:3002/api/sites/cb465c83-a186-4e55-909d-83a917280410/tracker.js" async></script>
     <style>
         /* Modern CSS Design System - Premium Overlap */
         :root {
@@ -71,7 +79,7 @@
 
         /* --- Header --- */
         header {
-            padding: 3rem 0;
+            padding: 7rem 0 3rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -94,33 +102,61 @@
         }
 
         .hero-title {
-            font-size: clamp(3rem, 10vw, 5.5rem);
-            margin-bottom: 2rem;
+            font-size: clamp(2rem, 6vw, 4.25rem);
+            margin-bottom: 1.25rem;
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+            white-space: nowrap;
         }
 
-        .hero-title span {
-            background: linear-gradient(135deg, var(--primary), #D97706);
+        .hero-title .title-regalo {
+            background: linear-gradient(135deg, #FBBF24, #D97706);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
 
         }
 
+        .hero-title .title-clics {
+            background: linear-gradient(135deg, #4ADE80, #15803D);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .hero-kicker {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.35rem, 3.3vw, 2.2rem);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin: 0 auto 1rem;
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+        }
+
         .hero-subtitle {
-            font-size: 1.35rem;
+            font-size: clamp(1rem, 2.1vw, 1.3rem);
             color: var(--muted);
-            max-width: 650px;
-            margin: 0 auto 4rem;
+            max-width: 760px;
+            margin: 0 auto 3rem;
             font-weight: 500;
-            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards;
             line-height: 1.5;
+        }
+
+        .preview-body {
+            max-width: 760px;
+            margin: 0 auto 1.25rem;
+            color: #3f3f46;
+            font-size: clamp(0.95rem, 1.9vw, 1.08rem);
+            font-weight: 500;
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
         }
 
         .cta-button {
             display: inline-flex;
             align-items: center;
-            background-color: var(--foreground);
+            background-color: #00bb2d;
             color: var(--white);
             text-decoration: none;
             padding: 1.5rem 3.5rem;
@@ -128,14 +164,14 @@
             font-weight: 800;
             font-size: 1.2rem;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px -5px rgba(0, 187, 45, 0.35);
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
         }
 
         .cta-button:hover {
             transform: translateY(-6px) scale(1.03);
-            background-color: var(--primary);
-            box-shadow: 0 30px 60px -15px rgba(245, 158, 11, 0.4);
+            background-color: #ff8c00;
+            box-shadow: 0 20px 40px -10px rgba(255, 140, 0, 0.4);
         }
 
         /* --- Category Pills --- */
@@ -144,32 +180,20 @@
             gap: 1.25rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 6rem;
+            margin-top: 3rem;
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s backwards;
         }
 
         .pill {
-            background: var(--white);
-            padding: 1rem 1.75rem;
-            border-radius: 100px;
-            font-weight: 800;
+            padding: 0;
+            font-weight: 600;
             font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            box-shadow: var(--card-shadow);
+            text-transform: none;
+            letter-spacing: 0;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .pill:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px -10px rgba(245, 158, 11, 0.3);
-            border-color: var(--primary);
+            gap: 0.5rem;
+            color: #3f3f46;
         }
 
         /* --- Feature Grid --- */
@@ -194,16 +218,38 @@
         .section-title {
             text-align: center;
             font-size: 3.5rem;
-            margin-bottom: 6rem;
+            margin-bottom: 1.25rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
+        .section-lead-title {
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.4rem, 3.3vw, 2.3rem);
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin: 0 auto 1rem;
+            max-width: 980px;
+        }
+
+        .section-lead-subtitle {
+            text-align: center;
+            color: var(--muted);
+            font-size: clamp(1rem, 2.05vw, 1.2rem);
+            line-height: 1.6;
+            margin: 0 auto 4rem;
+            max-width: 980px;
+            font-weight: 500;
+        }
+
         .grid {
             display: grid;
-            grid-template-cols: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 3rem;
+            align-items: stretch;
         }
 
         .feature-card {
@@ -219,6 +265,8 @@
             text-align: center;
             border: 1px solid rgba(0,0,0,0.02);
             box-shadow: 0 4px 20px -10px rgba(0,0,0,0.05);
+            min-height: 24rem;
+            height: 100%;
         }
 
         .feature-card:hover {
@@ -243,6 +291,8 @@
             color: var(--muted);
             font-size: 1rem;
             line-height: 1.7;
+            max-width: 28ch;
+            margin: 0 auto;
         }
 
         /* --- Footer --- */
@@ -268,8 +318,8 @@
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .grid { grid-template-cols: 1fr; }
+            .hero-title { font-size: clamp(1.65rem, 8vw, 2.5rem); }
+            .grid { grid-template-columns: 1fr; }
             .feature-card { padding: 2rem; }
         }
     </style>
@@ -281,7 +331,10 @@
     </header>
 
     <section class="hero container">
-        <h1 class="hero-title">El Regalo <span>Ideal</span> <br>en un Clic</h1>
+        <h1 class="hero-title">El <span class="title-regalo">Regalo</span> Ideal en dos <span class="title-clics">Clics</span></h1>
+        <h2 class="hero-kicker">Deja de buscar. Empieza a encontrar.</h2>
+        <p class="hero-subtitle">Navegamos por el caos de Amazon por ti. Una selección corta, inteligente y directa para que elijas el regalo perfecto en menos de 2 minutos.</p>
+        <p class="preview-body">Elige tu configuración y genera tu lista personalizada en la app.</p>
         <div class="category-scroll">
             <div class="pill"><span>👨</span> Para Papá</div>
             <div class="pill"><span>👩</span> Para Mamá</div>
@@ -296,13 +349,19 @@
             <div class="pill" style="border: 1px solid var(--primary); color: var(--primary); background: rgba(245, 158, 11, 0.05);">¡Y MUCHOS MÁS!</div>
         </div>
 
-        <div style="margin-top: 4rem;">
-            <a href="https://es.noworries.gift/" class="cta-button">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 12px; transform: translateY(-1px);">
-                    <path d="M15.012 19.405c-1.114.721-2.674 1.144-4.321 1.144-2.887 0-5.385-.944-7.076-2.404-.325-.281-.132-.733.266-.643 2.126.471 4.417.721 6.772.721 2.217 0 4.398-.225 6.37-.655.45-.1.68.423.23.702.408-.073.344.028.188.135zm7.394-1.258c-.521.682-1.442 1.391-2.164 1.391-.722 0-1.402-.244-1.964-.606-.088-.057-.101-.179-.028-.276 1.096-1.447 2.564-2.28 4.167-2.207.088.004.156.082.152.171-.035.789-.163 1.527-.163 1.527zm-1.122-4.031c-1.84.053-3.513.911-4.57 2.378-.051.071-.144.088-.22.053-.51-.233-.974-.537-1.373-.895-.067-.06-.073-.158-.016-.225.86-1.02 2.113-1.761 3.513-2.072 1.4-.311 2.871-.24 4.126.24.1.037.147.161.09.25-.42.66-.889 1.257-1.55 2.271z" />
+        <div style="margin-top: 3rem; text-align: center;">
+            <a href="https://noworries.gift/" class="cta-button" style="background-color: #00bb2d; box-shadow: 0 10px 25px -5px rgba(0, 187, 45, 0.35);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 10px;">
+                    <path d="M6.5 8c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zm10 0c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zM12 3C6.48 3 2 7.48 2 13s4.48 10 10 10 10-4.48 10-10S17.52 3 12 3zm3.5 13c0 1.93-1.57 3.5-3.5 3.5S8.5 17.93 8.5 16 10.07 12.5 12 12.5s3.5 1.57 3.5 3.5z" fill="currentColor"/>
                 </svg>
-                Empezar a buscar
+                Regalo rápido
             </a>
+            <p style="margin-top: 0.75rem; color: #78716C; font-style: italic; font-size: clamp(0.9rem, 2vw, 1rem);">Pruébalo, es más rápido que preguntarle a tu grupo de WhatsApp.</p>
+        </div>
+
+        <div style="margin-top: 5rem; padding-top: 5rem; border-top: 1px solid #e5e7eb; max-width: 900px; margin-left: auto; margin-right: auto; animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.65s backwards;">
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(1.4rem, 3.3vw, 2.3rem); font-weight: 900; text-align: center; margin-bottom: 1.5rem; letter-spacing: -0.03em;">El atajo inteligente entre tú y el regalo ideal</h2>
+            <p style="color: #78716C; font-size: clamp(1rem, 2.05vw, 1.2rem); line-height: 1.6; text-align: center; font-weight: 500;">Ni miles de pestañas abiertas ni horas perdidas. Solo los mejores perfiles y presupuestos organizados para que regalar sea, por fin, superfácil.</p>
         </div>
 
     </section>
@@ -312,35 +371,38 @@
             <span class="section-tag" style="color: #15803D;">NO MÁS ESTRÉS</span>
 
             <h2 class="section-title">Tan simple como práctico</h2>
+            <h3 class="section-lead-title">Acierta siempre, incluso con los que «tienen de todo».</h3>
+            <p class="section-lead-subtitle">Filtramos las opciones más originales según su personalidad y tu presupuesto. Menos opciones mediocres, más aciertos memorables. Desde el gran regalo de amor hasta el pequeño detalle de compromiso.</p>
             
             <div class="grid">
                 <!-- Feature 1 -->
                 <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>Selección Estratégica</h3>
-                    <p>No listamos de todo. Solo aquello que realmente genera emoción basándonos en perfiles psicológicos y de hobby.</p>
+                    <div class="feature-icon">🎯</div>
+                    <h3>Define</h3>
+                    <p>Perfil + presupuesto = regalo en dos clics</p>
                 </div>
                 <!-- Feature 2 -->
                 <div class="feature-card" style="animation-delay: 0.2s;">
-                    <div class="feature-icon">💰</div>
-                    <h3>Cruza tu Presupuesto</h3>
-                    <p>Filtra por lo que quieres gastar. Desde detalles sencillos hasta regalos que recordarán toda la vida.</p>
+                    <div class="feature-icon">✨</div>
+                    <h3>Filtramos</h3>
+                    <p>Seleccionamos lo más adecuado, acortamos el camino.</p>
                 </div>
                 <!-- Feature 3 -->
                 <div class="feature-card" style="animation-delay: 0.4s;">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Sin Vueltas Inútiles</h3>
-                    <p>Encuentra, revisa por qué funciona el regalo, y ve directo a Amazon para terminar tu compra con garantías.</p>
+                    <div class="feature-icon">🎁</div>
+                    <h3>Acierta</h3>
+                    <p>Regalo perfecto, estrés cero.</p>
                 </div>
             </div>
 
             <div style="text-align: center; margin-top: 6rem;">
-                <a href="https://es.noworries.gift/" class="cta-button" style="background-color: var(--primary); box-shadow: 0 15px 30px -10px rgba(245, 158, 11, 0.4);">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 12px; transform: translateY(-1px);">
-                        <path d="M15.012 19.405c-1.114.721-2.674 1.144-4.321 1.144-2.887 0-5.385-.944-7.076-2.404-.325-.281-.132-.733.266-.643 2.126.471 4.417.721 6.772.721 2.217 0 4.398-.225 6.37-.655.45-.1.68.423.23.702.408-.073.344.028.188.135zm7.394-1.258c-.521.682-1.442 1.391-2.164 1.391-.722 0-1.402-.244-1.964-.606-.088-.057-.101-.179-.028-.276 1.096-1.447 2.564-2.28 4.167-2.207.088.004.156.082.152.171-.035.789-.163 1.527-.163 1.527zm-1.122-4.031c-1.84.053-3.513.911-4.57 2.378-.051.071-.144.088-.22.053-.51-.233-.974-.537-1.373-.895-.067-.06-.073-.158-.016-.225.86-1.02 2.113-1.761 3.513-2.072 1.4-.311 2.871-.24 4.126.24.1.037.147.161.09.25-.42.66-.889 1.257-1.55 2.271z" />
+                <a href="https://noworries.gift/" class="cta-button" style="background-color: #00bb2d; box-shadow: 0 10px 25px -5px rgba(0, 187, 45, 0.35);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 10px;">
+                        <path d="M6.5 8c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zm10 0c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zM12 3C6.48 3 2 7.48 2 13s4.48 10 10 10 10-4.48 10-10S17.52 3 12 3zm3.5 13c0 1.93-1.57 3.5-3.5 3.5S8.5 17.93 8.5 16 10.07 12.5 12 12.5s3.5 1.57 3.5 3.5z" fill="currentColor"/>
                     </svg>
                     ¡Busco un regalo!
                 </a>
+                <p style="margin-top: 1rem; color: #78716C; font-style: italic; font-size: clamp(0.9rem, 2vw, 1rem); text-align: center; max-width: 760px; margin-left: auto; margin-right: auto;">Desde «Mi suegra es difícil» hasta «Mi pareja tiene de todo». Tenemos el perfil exacto.</p>
             </div>
 
         </div>
