@@ -218,9 +218,11 @@ function ProfilePage() {
                                         <motion.a 
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
-                                            href={currentGift.affiliate_url_format} target="_blank" rel="noopener noreferrer sponsored" className="flex-[2] flex items-center justify-center gap-2 bg-[#FF9900] hover:bg-[#FF8C00] text-white font-black py-3.5 rounded-xl transition-all shadow-md shadow-orange-500/10 text-[14px]"
+                                            href={currentGift.affiliate_url_format} target="_blank" rel="noopener noreferrer sponsored" className="flex-1 flex items-center justify-center gap-2 bg-[#FF9900] hover:bg-[#FF8C00] text-white font-black py-3.5 rounded-xl transition-all shadow-md shadow-orange-500/10 text-[14px]"
                                         >
-                                            <AmazonIcon /> {t ? t('card.go_to_amazon', 'Ver en Amazon') : 'Ver en Amazon'} <ExternalLink size={14} />
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                                <path d="M13.058 18.5c-1.505.967-3.58 1.53-5.8 1.53-3.88 0-7.24-1.27-9.51-3.23-.44-.38-.18-.99.36-.87 2.86.63 5.94.97 9.1.97 2.98 0 5.91-.3 8.56-.88.6-.13.91.57.31.94.55-.1.46.04.25.18zm9.94-1.69c-.7.92-1.94 1.87-2.91 1.87-.97 0-1.89-.33-2.64-.81-.12-.08-.14-.24-.04-.37 1.47-1.95 3.45-3.07 5.6-2.97.12.01.21.11.2.23-.04 1.06-.22 2.05-.21 2.05zm-1.51-5.42c-2.47.07-4.72 1.22-6.14 3.2-.07.1-.19.12-.3.07-.68-.31-1.31-.72-1.85-1.2-.09-.08-.1-.21-.02-.3 1.15-1.37 2.84-2.37 4.72-2.78 1.88-.42 3.86-.32 5.54.32.14.05.2.22.12.34-.56.89-1.2 1.69-2.07 3.06z"/>
+                                            </svg> {t ? t('card.go_to_amazon', 'Ir a Amazon') : 'Ir a Amazon'} <ExternalLink size={14} />
                                         </motion.a>
                                         <motion.button 
                                             whileHover={{ scale: 1.02, backgroundColor: "var(--background)" }}
@@ -264,11 +266,12 @@ function ProfilePage() {
                                             <h3 className="text-[18px] font-black text-foreground mb-3 line-clamp-2 leading-tight">{item.title}</h3>
                                             <p className="text-[14px] text-muted-foreground italic mb-6 line-clamp-3 font-medium opacity-80 leading-relaxed">&ldquo;{item.ai_description}&rdquo;</p>
                                             <div className="flex items-center justify-between mt-auto pt-6 border-t border-border/50">
-                                                <span className="text-[16px] font-black text-primary uppercase tracking-tight">{item.price}</span>
+                                                <span className="text-[16px] font-black text-[#1C1917] uppercase tracking-tight">{item.price}</span>
                                                 <Link
                                                     to={`/perfil/${profileId}?id=${item.id}`}
                                                     onClick={() => window.scrollTo(0, 0)}
-                                                    className="text-[14px] font-bold text-primary flex items-center gap-1 hover:gap-2 transition-all"
+                                                    className="text-[14px] font-bold flex items-center gap-1 hover:gap-2 transition-all"
+                                                    style={{ color: '#1B4332' }}
                                                 >
                                                     Ver más <ExternalLink size={14} />
                                                 </Link>
