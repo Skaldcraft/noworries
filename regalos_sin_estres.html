@@ -7,10 +7,10 @@
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Déjate de búsquedas agobiantes. Selección curada de regalos perfectos por perfiles y presupuestos.">
-    <!-- Google Fonts: Outfit and Inter -->
+    <!-- Google Fonts: Playfair Display, Lato, Outfit, Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&family=Lato:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Traffic analytics tracker -->
     <script>
       window.gainSightConfig = {
@@ -40,17 +40,18 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Lato', system-ui, -apple-system, sans-serif;
             background-color: var(--background);
-            color: var(--foreground);
+            color: #444;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
         h1, h2, h3 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #1C1917;
             line-height: 1.05;
             letter-spacing: -0.04em;
         }
@@ -87,8 +88,8 @@
         }
 
         .logo {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
             font-size: 1.75rem;
             color: var(--foreground);
             letter-spacing: -0.05em;
@@ -99,13 +100,17 @@
             padding: 4.5rem 0 8rem;
             text-align: center;
             position: relative;
+            color: #444;
         }
 
         .hero-title {
             font-size: clamp(2rem, 6vw, 4.25rem);
             margin-bottom: 1.25rem;
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
-            white-space: nowrap;
+            white-space: normal;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #1C1917;
         }
 
         .hero-title .title-regalo {
@@ -125,53 +130,53 @@
         }
 
         .hero-kicker {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(1.35rem, 3.3vw, 2.2rem);
-            font-weight: 900;
+            font-weight: 700;
+            color: #1C1917;
             line-height: 1.2;
             letter-spacing: -0.02em;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
         }
 
         .hero-subtitle {
             font-size: clamp(1rem, 2.1vw, 1.3rem);
-            color: var(--muted);
+            color: #666;
             max-width: 760px;
-            margin: 0 auto 3rem;
-            font-weight: 500;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards;
             line-height: 1.5;
+            font-family: 'Lato', sans-serif;
         }
 
         .preview-body {
-            max-width: 760px;
-            margin: 0 auto 1.25rem;
-            color: #3f3f46;
-            font-size: clamp(0.95rem, 1.9vw, 1.08rem);
-            font-weight: 500;
-            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
+            display: none;
         }
 
         .cta-button {
             display: inline-flex;
             align-items: center;
-            background-color: #00bb2d;
+            justify-content: center;
+            min-width: 17rem;
+            background-color: #228B22;
             color: var(--white);
             text-decoration: none;
-            padding: 1.5rem 3.5rem;
-            border-radius: 1.25rem;
-            font-weight: 800;
-            font-size: 1.2rem;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 25px -5px rgba(0, 187, 45, 0.35);
+            padding: 1rem 2.25rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 12px 26px -12px rgba(34, 139, 34, 0.7);
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
         }
 
         .cta-button:hover {
-            transform: translateY(-6px) scale(1.03);
-            background-color: #ff8c00;
-            box-shadow: 0 20px 40px -10px rgba(255, 140, 0, 0.4);
+            transform: translateY(-4px) scale(1.02);
+            background-color: #1f7a1f;
+            box-shadow: 0 16px 30px -12px rgba(34, 139, 34, 0.7);
         }
 
         /* --- Category Pills --- */
@@ -186,14 +191,21 @@
 
         .pill {
             padding: 0;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 500;
+            font-size: 1.02rem;
             text-transform: none;
             letter-spacing: 0;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #3f3f46;
+            color: #444;
+            font-family: 'Lato', sans-serif;
+            justify-content: center;
+        }
+
+        .pill span {
+            font-size: 1.7rem;
+            line-height: 1;
         }
 
         /* --- Feature Grid --- */
@@ -206,43 +218,49 @@
 
         .section-tag {
             text-align: center;
-            color: var(--accent);
-            font-weight: 900;
+            color: #228B22;
+            font-weight: 700;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.4em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             display: block;
+            font-family: 'Lato', sans-serif;
         }
 
         .section-title {
             text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
             font-size: 3.5rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 2.5rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            color: #1C1917;
         }
 
         .section-lead-title {
             text-align: center;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
             font-size: clamp(1.4rem, 3.3vw, 2.3rem);
+            color: #1C1917;
             line-height: 1.15;
             letter-spacing: -0.03em;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
             max-width: 980px;
         }
 
         .section-lead-subtitle {
             text-align: center;
-            color: var(--muted);
+            color: #666;
             font-size: clamp(1rem, 2.05vw, 1.2rem);
             line-height: 1.6;
-            margin: 0 auto 3rem;
+            margin: 0 auto 4rem;
             max-width: 980px;
-            font-weight: 500;
+            font-weight: 400;
+            font-family: 'Lato', sans-serif;
         }
 
         .grid {
@@ -285,25 +303,31 @@
         }
 
         .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
             font-size: 1.6rem;
-            margin-bottom: 0.65rem;
+            margin-bottom: 1rem;
+            color: #1C1917;
         }
 
         .feature-card .lead {
-            color: #3f3f46;
+            color: #1C1917;
             font-size: 1.02rem;
             line-height: 1.35;
-            font-weight: 700;
+            font-weight: 600;
             max-width: 32ch;
             margin: 0 auto 0.75rem;
+            font-family: 'Lato', sans-serif;
         }
 
         .feature-card p {
-            color: var(--muted);
+            color: #666;
             font-size: 1rem;
             line-height: 1.7;
             max-width: 33ch;
             margin: 0 auto;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
         }
 
         /* --- Footer --- */
@@ -333,6 +357,10 @@
             .category-scroll { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .grid { grid-template-columns: 1fr; }
             .feature-card { padding: 2rem; }
+            .section-title { font-size: clamp(2rem, 10vw, 2.6rem); margin-bottom: 1.5rem; }
+            .section-lead-title { font-size: clamp(1.2rem, 6vw, 1.7rem); margin-bottom: 1rem; }
+            .section-tag { letter-spacing: 0.22em; }
+            .cta-button { min-width: 0; width: min(100%, 20rem); padding: 0.95rem 1.3rem; }
         }
     </style>
 </head>
@@ -346,7 +374,6 @@
         <h1 class="hero-title">El <span class="title-regalo">Regalo</span> Ideal en dos <span class="title-clics">Clics</span></h1>
         <h2 class="hero-kicker">Deja de buscar. Empieza a encontrar.</h2>
         <p class="hero-subtitle">Navegamos por el caos de Amazon por ti. Una selección corta, inteligente y directa para que elijas el regalo perfecto en menos de 2 minutos.</p>
-        <p class="preview-body">Elige tu configuración y genera tu lista personalizada en la app.</p>
         <div class="category-scroll">
             <div class="pill"><span>👨</span> Para Papá</div>
             <div class="pill"><span>👩</span> Para Mamá</div>
@@ -363,8 +390,8 @@
         </div>
 
         <div style="margin-top: 3rem; text-align: center;">
-            <a href="https://noworries.gift/" class="cta-button" style="background-color: #00bb2d; box-shadow: 0 10px 25px -5px rgba(0, 187, 45, 0.35);">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 10px;">
+            <a href="https://noworries.gift/" class="cta-button" style="background-color: #228B22; box-shadow: 0 12px 26px -12px rgba(34, 139, 34, 0.7);">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
                     <path d="M6.5 8c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zm10 0c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zM12 3C6.48 3 2 7.48 2 13s4.48 10 10 10 10-4.48 10-10S17.52 3 12 3zm3.5 13c0 1.93-1.57 3.5-3.5 3.5S8.5 17.93 8.5 16 10.07 12.5 12 12.5s3.5 1.57 3.5 3.5z" fill="currentColor"/>
                 </svg>
                 Regalo rápido
@@ -381,7 +408,7 @@
 
     <section class="features">
         <div class="container">
-            <span class="section-tag" style="color: #15803D; margin-bottom: 2rem;">NO MÁS ESTRÉS</span>
+            <span class="section-tag" style="color: #228B22; margin-bottom: 2rem;">NO MÁS ESTRÉS</span>
 
             <h2 class="section-title" style="margin-bottom: 2.5rem;">Tan simple como práctico</h2>
             <h3 class="section-lead-title">Acierta siempre, incluso con los que «tienen de todo».</h3>
@@ -418,9 +445,15 @@
                 </div>
             </div>
 
+            <div style="text-align: center; margin-top: 5rem;">
+                <span class="section-tag" style="margin-bottom: 2rem;">GARANTÍA NO WORRIES</span>
+                <h2 class="section-title" style="margin-bottom: 1.5rem;">Selección manual libre de estrés</h2>
+                <h3 class="section-lead-title" style="margin-bottom: 0.5rem;">Con las mejores opciones de Amazon.</h3>
+            </div>
+
             <div style="text-align: center; margin-top: 6rem;">
-                <a href="https://noworries.gift/" class="cta-button" style="background-color: #00bb2d; box-shadow: 0 10px 25px -5px rgba(0, 187, 45, 0.35);">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 10px;">
+                <a href="https://noworries.gift/" class="cta-button" style="background-color: #228B22; box-shadow: 0 12px 26px -12px rgba(34, 139, 34, 0.7);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
                         <path d="M6.5 8c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zm10 0c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5-.672-1.5-1.5-1.5-1.5.672-1.5 1.5zM12 3C6.48 3 2 7.48 2 13s4.48 10 10 10 10-4.48 10-10S17.52 3 12 3zm3.5 13c0 1.93-1.57 3.5-3.5 3.5S8.5 17.93 8.5 16 10.07 12.5 12 12.5s3.5 1.57 3.5 3.5z" fill="currentColor"/>
                     </svg>
                     ¡Busco un regalo!
