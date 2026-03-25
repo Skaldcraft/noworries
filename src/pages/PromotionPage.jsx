@@ -11,6 +11,7 @@ const AmazonIcon = () => (
 const pills = [
     { emoji: '👨', text: 'Para Papá' },
     { emoji: '👩', text: 'Para Mamá' },
+    { emoji: '🎅', text: 'Amigo invisible' },
     { emoji: '💕', text: 'Pareja' },
     { emoji: '🎧', text: 'Adolescentes' },
     { emoji: '✈️', text: 'Viajeros' },
@@ -18,7 +19,8 @@ const pills = [
     { emoji: '🛠️', text: 'Manitas' },
     { emoji: '🐾', text: 'Mascotas' },
     { emoji: '🕹️', text: 'Gamers / Tecnológicos' },
-    { emoji: '📚', text: 'Lectores' }
+    { emoji: '📚', text: 'Lectores' },
+    { emoji: '✨', text: 'Y muchos más' }
 ];
 
 function PromotionPage() {
@@ -29,7 +31,7 @@ function PromotionPage() {
                 <meta name="description" content="Déjate de búsquedas agobiantes. Selección curada de regalos perfectos por perfiles y presupuestos." />
             </Helmet>
 
-            <header className="container mx-auto px-6 pt-28 pb-12 flex justify-center">
+            <header className="container mx-auto px-6 pt-20 pb-8 flex justify-center">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -40,7 +42,7 @@ function PromotionPage() {
             </header>
 
             <main>
-                <section className="container mx-auto px-6 py-24 text-center">
+                <section className="container mx-auto px-6 pt-14 pb-22 text-center">
                     <motion.h1
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -77,28 +79,19 @@ function PromotionPage() {
                         Elige tu configuración y genera tu lista personalizada en la app.
                     </motion.p>
 
-                    <div className="max-w-3xl mx-auto mb-16 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-left">
+                    <div className="max-w-5xl mx-auto mb-16 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 text-left">
                         {pills.map((pill, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 0.1 * i, duration: 0.5 }}
-                                className="font-semibold text-[0.95rem] text-zinc-700 flex items-center gap-2"
+                                className="font-semibold text-[1.08rem] text-zinc-700 flex items-center gap-2"
                             >
-                                <span className="text-lg leading-none">{pill.emoji}</span>
+                                <span className="text-2xl leading-none">{pill.emoji}</span>
                                 <span>{pill.text}</span>
                             </motion.div>
                         ))}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 1.2 }}
-                            className="font-semibold text-[0.95rem] text-emerald-700 flex items-center gap-2"
-                        >
-                            <span className="text-lg leading-none">✨</span>
-                            <span>Y muchos más</span>
-                        </motion.div>
                     </div>
 
                     <motion.div
@@ -151,23 +144,55 @@ function PromotionPage() {
                         <motion.span
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="block text-center text-green-600 font-black tracking-[0.4em] text-sm mb-6 uppercase"
+                            className="block text-center text-green-600 font-black tracking-[0.4em] text-sm mb-8 uppercase"
                         >
                             NO MÁS ESTRÉS
                         </motion.span>
-                        <h2 className="font-['Outfit'] font-black text-5xl sm:text-7xl text-center mb-24 tracking-tighter">Tan simple como práctico</h2>
+                        <h2 className="font-['Outfit'] font-black text-5xl sm:text-7xl text-center mb-10 tracking-tighter">Tan simple como práctico</h2>
                         <h3 className="font-['Outfit'] font-black text-[clamp(1.4rem,3.3vw,2.3rem)] text-center tracking-tight mb-4">
                             Acierta siempre, incluso con los que «tienen de todo».
                         </h3>
-                        <p className="mx-auto max-w-4xl text-center text-zinc-600 text-[clamp(1rem,2.05vw,1.2rem)] font-medium leading-relaxed mb-16">
+                        <p className="mx-auto max-w-4xl text-center text-zinc-600 text-[clamp(1rem,2.05vw,1.2rem)] font-medium leading-relaxed mb-12">
                             Filtramos las opciones más originales según su personalidad y tu presupuesto. Menos opciones mediocres, más aciertos memorables. Desde el gran regalo de amor hasta el pequeño detalle de compromiso.
                         </p>
 
-                        <div className="grid md:grid-cols-3 gap-8 items-stretch">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="mt-12 mb-24 mx-auto"
+                        >
+                            <video 
+                                autoPlay 
+                                loop 
+                                muted 
+                                className="w-full max-w-2xl mx-auto rounded-3xl shadow-xl"
+                            >
+                                <source src="/images/no-mas-estres.mp4" type="video/mp4" />
+                                Tu navegador no soporta video HTML5
+                            </video>
+                        </motion.div>
+
+                        <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
                             {[
-                                { icon: '🎯', title: 'Define', desc: 'Perfil + presupuesto = regalo en dos clics' },
-                                { icon: '✨', title: 'Filtramos', desc: 'Seleccionamos lo más adecuado, acortamos el camino.' },
-                                { icon: '🎁', title: 'Acierta', desc: 'Regalo perfecto, estrés cero.' }
+                                {
+                                    icon: '🎯',
+                                    title: 'Define',
+                                    lead: 'Define el perfil y tu presupuesto',
+                                    desc: 'Dinos para quién buscas y cuánto quieres gastar. Sin cuestionarios eternos, solo lo que importa para empezar.'
+                                },
+                                {
+                                    icon: '✨',
+                                    title: 'Filtra',
+                                    lead: 'Mira nuestra selección (al grano)',
+                                    desc: 'Olvida las 50 pestañas abiertas. Filtramos el caos de Amazon por ti para mostrarte solo 4 o 5 opciones que realmente encajan.'
+                                },
+                                {
+                                    icon: '🎁',
+                                    title: 'Acierta',
+                                    lead: 'Acierta y olvídate',
+                                    desc: 'Elige tu favorito, cómpralo con un clic y disfruta de la tranquilidad de haber encontrado el detalle perfecto sin agobios.'
+                                }
                             ].map((feature, i) => (
                                 <motion.div
                                     key={i}
@@ -175,11 +200,12 @@ function PromotionPage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.2 }}
                                     whileHover={{ y: -10 }}
-                                    className="bg-white p-12 rounded-[3.5rem] text-center shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] border border-black/5 hover:shadow-2xl transition-all duration-500 h-full min-h-[24rem] flex flex-col justify-start"
+                                    className="bg-white p-8 rounded-[2.25rem] text-center shadow-[0_10px_32px_-16px_rgba(0,0,0,0.08)] border border-black/5 hover:shadow-2xl transition-all duration-500 h-full min-h-[21.5rem] flex flex-col justify-start"
                                 >
-                                    <div className="text-6xl mb-8 drop-shadow-lg">{feature.icon}</div>
-                                    <h3 className="font-['Outfit'] font-black text-2xl mb-4">{feature.title}</h3>
-                                    <p className="text-zinc-500 font-medium leading-relaxed max-w-[28ch] mx-auto">{feature.desc}</p>
+                                    <div className="text-5xl mb-6 drop-shadow-lg">{feature.icon}</div>
+                                    <h3 className="font-['Outfit'] font-black text-[1.6rem] mb-3">{feature.title}</h3>
+                                    <p className="text-zinc-700 font-bold leading-snug mb-3 max-w-[30ch] mx-auto">{feature.lead}</p>
+                                    <p className="text-zinc-500 font-medium leading-relaxed max-w-[33ch] mx-auto">{feature.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
