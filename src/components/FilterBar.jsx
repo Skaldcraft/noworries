@@ -68,23 +68,23 @@ function FilterBar({ onFilterChange, activeFilters }) {
             >
               Presupuesto
             </h3>
-            <div className="flex flex-wrap justify-center gap-2.5 max-w-[760px] mx-auto">
+            <div className="flex flex-wrap justify-center gap-2 max-w-[760px] mx-auto lg:flex-nowrap">
               {budgetRanges.map((budget) => (
                 <button
                   key={budget.value}
                   onClick={() => onFilterChange('budget', budget.value)}
                   aria-pressed={activeFilters.budget === budget.value}
-                  className={`px-4 sm:px-[18px] py-2.5 sm:py-[11px] rounded-[10px] transition-all duration-300 border border-transparent flex flex-col items-center justify-center min-w-[108px] sm:min-w-[118px] shadow-[0_4px_10px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-2 hover:translate-y-[-1px] ${activeFilters.budget === budget.value
+                  className={`px-3 sm:px-4 lg:px-3 xl:px-4 py-2 sm:py-2.5 lg:py-2 rounded-[10px] transition-all duration-300 border border-transparent flex flex-col items-center justify-center min-w-[92px] sm:min-w-[102px] lg:min-w-[94px] xl:min-w-[102px] shadow-[0_4px_10px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-2 hover:translate-y-[-1px] ${activeFilters.budget === budget.value
                     ? 'bg-[#f39c12] text-white shadow-[0_5px_15px_rgba(243,156,18,0.3)]'
                     : 'bg-[#f0f0f0] text-[#444] hover:bg-[#ebebeb]'
                     }`}
                   style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
                 >
-                  <div className={`text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.08em] leading-tight transition-colors ${activeFilters.budget === budget.value ? 'text-white/85' : 'text-[#777]'}`}>
+                  <div className={`text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] font-semibold uppercase tracking-[0.08em] leading-tight transition-colors ${activeFilters.budget === budget.value ? 'text-white/85' : 'text-[#777]'}`}>
                     {budget.label}
                   </div>
                   {budget.sublabel && (
-                    <div className={`text-[13px] sm:text-[14px] font-semibold mt-0.5 transition-colors ${activeFilters.budget === budget.value ? 'text-white' : 'text-[#444]'}`}>
+                    <div className={`text-[12px] sm:text-[13px] lg:text-[12px] xl:text-[13px] font-semibold mt-0.5 transition-colors ${activeFilters.budget === budget.value ? 'text-white' : 'text-[#444]'}`}>
                       {budget.sublabel}
                     </div>
                   )}
@@ -102,13 +102,13 @@ function FilterBar({ onFilterChange, activeFilters }) {
                 Para quién buscas
               </h3>
             </div>
-            <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 max-w-[840px] mx-auto">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 lg:gap-1.5 xl:gap-2.5 max-w-[840px] mx-auto lg:flex-nowrap">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => onFilterChange('tier', cat.id)}
                   aria-pressed={activeFilters.tier === cat.id}
-                  className={`px-5 sm:px-7 py-3 min-h-[46px] rounded-full text-[13px] sm:text-[14px] font-bold border border-transparent transition-all duration-300 shadow-[0_4px_10px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-2 ${activeFilters.tier === cat.id
+                  className={`px-4 sm:px-5 lg:px-3.5 xl:px-5 py-2.5 lg:py-2 min-h-[40px] lg:min-h-[36px] rounded-full text-[12px] sm:text-[13px] lg:text-[11px] xl:text-[13px] font-bold border border-transparent transition-all duration-300 shadow-[0_4px_10px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-2 ${activeFilters.tier === cat.id
                     ? 'bg-[#f39c12] text-white shadow-[0_5px_15px_rgba(243,156,18,0.3)]'
                     : 'bg-[#f0f0f0] text-[#444] hover:bg-[#ebebeb]'
                     }`}
@@ -141,7 +141,7 @@ function FilterBar({ onFilterChange, activeFilters }) {
                       key={profile.id}
                       onClick={() => onFilterChange('profile', profile.id)}
                       aria-pressed={activeFilters.profile === profile.id}
-                      className={`shrink-0 px-5 sm:px-7 py-3 rounded-full text-[12px] sm:text-[13px] font-bold transition-all whitespace-nowrap border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-1 shadow-[0_4px_10px_rgba(0,0,0,0.05)] ${activeFilters.profile === profile.id
+                      className={`shrink-0 px-4 sm:px-5 py-2.5 rounded-full text-[11px] sm:text-[12px] font-bold transition-all whitespace-nowrap border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-1 shadow-[0_4px_10px_rgba(0,0,0,0.05)] ${activeFilters.profile === profile.id
                         ? 'bg-[#f39c12] text-white border-transparent shadow-[0_5px_15px_rgba(243,156,18,0.3)]'
                         : 'bg-white text-[#444] border-[#eeeeee] hover:bg-[#f7f7f7]'
                         }`}
