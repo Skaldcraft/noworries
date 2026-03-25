@@ -2,10 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = process.cwd();
-const source = path.join(root, 'public', 'regalos-sin-agobios.html');
+const source = path.join(root, 'regalos_sin_estres.html');
 const redirectsSource = path.join(root, 'public', '_redirects');
 const targetDir = path.join(root, 'dist');
-const target = path.join(targetDir, 'regalos-sin-agobios.html');
+const target = path.join(targetDir, 'regalos_sin_estres.html');
 const redirectsTarget = path.join(targetDir, '_redirects');
 
 if (!fs.existsSync(source)) {
