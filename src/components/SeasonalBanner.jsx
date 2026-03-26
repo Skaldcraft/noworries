@@ -124,18 +124,18 @@ function SeasonalBanner() {
   }
 
   return (
-    <div className="sticky top-0 z-40 bg-[#1C1917] text-white py-2.5 px-6 border-b border-white/10 hover:bg-[#262220] transition-colors">
+    <div className="sticky top-0 z-40 bg-[#fff7f0] text-[#c26b3c] py-2.5 px-6 border-b border-[#e8cbb5] hover:bg-[#ffe8d6] transition-colors" style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}>
       <div className="max-w-[1100px] mx-auto flex items-center justify-between relative group">
         <Link
           to={banner.path}
-          className="flex-grow flex items-center justify-center gap-2 text-[13px] sm:text-[14px] font-bold group-hover:text-amber-400 transition-colors py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1917] rounded"
+          className="flex-grow flex items-center justify-center gap-2 text-[13px] font-medium leading-[1.4] group-hover:text-[#a0552e] transition-colors py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c26b3c]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#fff7f0] rounded"
         >
           <span className="line-clamp-1 sm:line-clamp-none text-center">{banner.text}</span>
-          <ArrowRight size={14} className="hidden sm:block opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 shrink-0" />
+          <ArrowRight size={14} className="hidden sm:block opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 shrink-0 text-[#c26b3c]" />
         </Link>
         <button
           onClick={handleDismiss}
-          className="p-1.5 hover:bg-white/10 rounded-full transition-colors shrink-0 ml-4 opacity-70 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+          className="p-1.5 hover:bg-[#c26b3c]/10 rounded-full transition-colors shrink-0 ml-4 opacity-70 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c26b3c]/40"
           aria-label="Cerrar banner estacional"
         >
           <X size={16} />

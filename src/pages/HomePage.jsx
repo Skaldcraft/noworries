@@ -281,13 +281,13 @@ function HomePage() {
             {/* Banner de Modo Demo eliminado para Producción */}
 
             {!isInitialLoading && (
-              <p className="mb-5 text-[0.88rem] text-[#888] font-normal leading-relaxed animate-in fade-in duration-700" style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}>
+              <p className="mb-5 text-[0.98rem] text-[#555555] font-normal leading-[1.6] animate-in fade-in duration-700" style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}>
                 Ten siempre a mano ideas de regalos que funcionan de verdad, sin perderte en el scroll infinito de Amazon.
               </p>
             )}
 
             {!isInitialLoading && filteredGifts.length > 0 && (
-              <p className="mb-6 text-[13px] font-bold text-muted-foreground animate-in fade-in duration-700" aria-live="polite">
+              <p className="mb-6 text-[12px] font-medium text-[#999999] animate-in fade-in duration-700" style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }} aria-live="polite">
                 {t('home.results', { count: filteredGifts.length })}
               </p>
             )}

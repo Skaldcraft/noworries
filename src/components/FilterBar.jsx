@@ -45,39 +45,32 @@ function FilterBar({ onFilterChange, activeFilters }) {
           <span className="inline-block">{t('filters.legal')}</span>
         </div>
 
-        <div className="mx-auto max-w-[760px] mb-8 sm:mb-10">
+        <div className="mx-auto max-w-[720px] mb-10">
           <h1
-            className="text-[2rem] sm:text-[2.35rem] lg:text-[2.6rem] font-extrabold text-[#1a7431] leading-[1.08] tracking-[-0.03em]"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            className="text-[2.4rem] lg:text-[2.7rem] font-bold text-[#111111] leading-[1.15] tracking-[-0.01em]"
+            style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
           >
             Encuentra el regalo perfecto sin romperte la cabeza
           </h1>
           <p
-            className="mt-3 mx-auto max-w-[42rem] text-[0.98rem] sm:text-[1.05rem] font-medium text-[#666] leading-relaxed"
-            style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
+            className="mt-3 mx-auto max-w-[42rem] text-[1rem] font-normal text-[#5a5a5a] leading-[1.6]"
+            style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
           >
-            Filtra por presupuesto y perfil y evita el laberinto de Amazon.
-          </p>
-          <p
-            className="mt-2 mx-auto max-w-[42rem] text-[0.9rem] sm:text-[0.95rem] font-normal text-[#888] leading-relaxed"
-            style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
-          >
-            Solo dinos cuánto quieres gastar y para quién es el regalo. Nosotros filtramos el ruido y te enseñamos solo ideas que encajan.
+            Solo dinos cuánto quieres gastar y para quién es el regalo.<br />Lo filtramos por ti y te enseñamos ideas que encajan.
           </p>
         </div>
 
-        <p
-          className="text-[11px] sm:text-[12px] font-bold text-[#1a7431] uppercase tracking-[0.22em] mb-5 text-center"
-          style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
-        >
-          EMPIEZA POR AQUÍ
-        </p>
-
         <div className="flex flex-col items-center gap-8 sm:gap-10">
           <div className="w-full">
+            <p
+              className="text-[13px] font-semibold text-[#9b9b9b] uppercase tracking-[0.12em] mb-5 text-center"
+              style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
+            >
+              Filtra por presupuesto y perfil y evita el laberinto de Amazon
+            </p>
             <h3
-              className="text-[13px] sm:text-[14px] font-bold text-[#1a7431] uppercase tracking-[0.18em] mb-4"
-              style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
+              className="text-[12px] font-bold text-[#550000] uppercase tracking-[0.16em] mb-3"
+              style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
             >
               Presupuesto
             </h3>
@@ -87,9 +80,9 @@ function FilterBar({ onFilterChange, activeFilters }) {
                   key={budget.value}
                   onClick={() => onFilterChange('budget', budget.value)}
                   aria-pressed={activeFilters.budget === budget.value}
-                  className={`px-3 sm:px-4 lg:px-3 xl:px-4 py-2 sm:py-2.5 lg:py-2 rounded-[10px] transition-all duration-300 border border-transparent flex flex-col items-center justify-center min-w-[92px] sm:min-w-[102px] lg:min-w-[94px] xl:min-w-[102px] shadow-[0_4px_10px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-2 hover:translate-y-[-1px] ${activeFilters.budget === budget.value
-                    ? 'bg-[#f39c12] text-white shadow-[0_5px_15px_rgba(243,156,18,0.3)]'
-                    : 'bg-[#f0f0f0] text-[#444] hover:bg-[#ebebeb]'
+                  className={`px-3 sm:px-4 lg:px-3 xl:px-4 py-2 sm:py-2.5 lg:py-2 rounded-[10px] transition-all duration-300 border flex flex-col items-center justify-center min-w-[92px] sm:min-w-[102px] lg:min-w-[94px] xl:min-w-[102px] shadow-[0_4px_10px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-2 hover:translate-y-[-1px] ${activeFilters.budget === budget.value
+                    ? 'bg-[#f39c12] text-white shadow-[0_5px_15px_rgba(243,156,18,0.3)] border-transparent'
+                    : 'bg-[#f0f0f0] text-[#444] hover:bg-[#ebebeb] border-[#d8d8d8]'
                     }`}
                   style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
                 >
@@ -109,8 +102,8 @@ function FilterBar({ onFilterChange, activeFilters }) {
           <div className="w-full">
             <div className="flex justify-center">
               <h3
-                className="text-[13px] sm:text-[14px] font-bold text-[#1a7431] uppercase tracking-[0.18em] mb-4"
-                style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
+                className="text-[12px] font-bold text-[#550000] uppercase tracking-[0.16em] mb-3"
+                style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
               >
                 Para quién buscas
               </h3>
@@ -121,9 +114,9 @@ function FilterBar({ onFilterChange, activeFilters }) {
                   key={cat.id}
                   onClick={() => onFilterChange('tier', cat.id)}
                   aria-pressed={activeFilters.tier === cat.id}
-                  className={`px-4 sm:px-5 lg:px-3.5 xl:px-5 py-2.5 lg:py-2 min-h-[40px] lg:min-h-[36px] rounded-full text-[12px] sm:text-[13px] lg:text-[11px] xl:text-[13px] font-bold border border-transparent transition-all duration-300 shadow-[0_4px_10px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-2 ${activeFilters.tier === cat.id
-                    ? 'bg-[#f39c12] text-white shadow-[0_5px_15px_rgba(243,156,18,0.3)]'
-                    : 'bg-[#f0f0f0] text-[#444] hover:bg-[#ebebeb]'
+                  className={`px-4 sm:px-5 lg:px-3.5 xl:px-5 py-2.5 lg:py-2 min-h-[40px] lg:min-h-[36px] rounded-full text-[12px] sm:text-[13px] lg:text-[11px] xl:text-[13px] font-bold border transition-all duration-300 shadow-[0_4px_10px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-2 ${activeFilters.tier === cat.id
+                    ? 'bg-[#f39c12] text-white shadow-[0_5px_15px_rgba(243,156,18,0.3)] border-transparent'
+                    : 'bg-[#f0f0f0] text-[#444] hover:bg-[#ebebeb] border-[#d8d8d8]'
                     }`}
                   style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
                 >
@@ -133,8 +126,8 @@ function FilterBar({ onFilterChange, activeFilters }) {
             </div>
 
             <div className="pt-5 sm:pt-6">
-              <h3 className="text-[10px] sm:text-[11px] font-bold text-[#888] uppercase tracking-[0.18em] mb-3 text-center"
-                style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}>
+              <h3 className="text-[11px] font-medium text-[#b0b0b0] uppercase tracking-[0.16em] mb-3 text-center"
+                style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}>
                 O elige un perfil específico
               </h3>
               <div className="relative">
@@ -154,11 +147,11 @@ function FilterBar({ onFilterChange, activeFilters }) {
                       key={profile.id}
                       onClick={() => onFilterChange('profile', profile.id)}
                       aria-pressed={activeFilters.profile === profile.id}
-                      className={`shrink-0 px-4 sm:px-5 py-2.5 rounded-full text-[11px] sm:text-[12px] font-bold transition-all whitespace-nowrap border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-1 shadow-[0_4px_10px_rgba(0,0,0,0.05)] ${activeFilters.profile === profile.id
-                        ? 'bg-[#f39c12] text-white border-transparent shadow-[0_5px_15px_rgba(243,156,18,0.3)]'
-                        : 'bg-white text-[#444] border-[#eeeeee] hover:bg-[#f7f7f7]'
+                      className={`shrink-0 px-4 sm:px-5 py-2.5 rounded-full text-[12px] transition-all whitespace-nowrap border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f39c12]/35 focus-visible:ring-offset-1 shadow-[0_4px_10px_rgba(0,0,0,0.05)] ${activeFilters.profile === profile.id
+                        ? 'bg-[#f39c12] text-white border-transparent shadow-[0_5px_15px_rgba(243,156,18,0.3)] font-semibold'
+                        : 'bg-white text-[#444444] border-[#eeeeee] hover:bg-[#f7f7f7] font-medium'
                         }`}
-                      style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
+                      style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
                     >
                       {profile.label}
                     </button>
