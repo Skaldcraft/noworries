@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const GIFTS_PATH = path.join(__dirname, 'src/data/gifts.json');
-const SECONDARY_PATH = path.join(__dirname, 'src/data/secondary-products.json');
+const SECONDARY_PATH = path.join(__dirname, 'src/data/secondary-gifts-es.json');
 const IMAGES_DIR = path.join(__dirname, 'public/images');
 
 function loadData() {
