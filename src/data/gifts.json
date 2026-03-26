@@ -808,5 +808,35 @@
     "marketplace": "www.amazon.es",
     "affiliate_url_format": "https://www.amazon.es/dp/B0154TI9TU/?tag=skaldcraft-21",
     "image": "/images/cultivo-setas.jpg"
+  },
+  {
+    "id": "basicos-utiles-15-35-B0DFYN7K8H",
+    "recipient": "BÁSICOS ÚTILES",
+    "emoji": "🧲",
+    "tier": "occasion",
+    "price_range": "15-35",
+    "asin": "B0DFYN7K8H",
+    "product_name": "Comprobador de enchufes eléctrico – Tester rápido de tomas",
+    "justification": "Da mucha tranquilidad en casa: lo enchufas y en segundos te dice si la toma está bien conectada o tiene algún fallo de cableado o tierra, sin tocar cables ni saber de electricidad.",
+    "why_it_works": "Este cacharrito sí es útil de verdad: se enchufa antes de poner una regleta, una lavadora o montar un despacho y listo, dura años en la caja de herramientas familiar y sirve a cualquiera que estrene piso.",
+    "tag": "skaldcraft-21",
+    "marketplace": "www.amazon.es",
+    "affiliate_url_format": "https://www.amazon.es/dp/B0DFYN7K8H/?tag=skaldcraft-21",
+    "image": "/images/comprobador-enchufes.jpg"
+  },
+  {
+    "id": "basicos-utiles-35-70-B0DBVDWB6G",
+    "recipient": "BÁSICOS ÚTILES",
+    "emoji": "🧲",
+    "tier": "occasion",
+    "price_range": "35-70",
+    "asin": "B0DBVDWB6G",
+    "product_name": "Monitor para calidad del aire interior",
+    "justification": "Para saber al instante si el aire de la casa está cargado: pantalla grande con CO2, temperatura, humedad y nivel de confort, más app móvil para ver históricos y ajustar alarmas l gusto.",
+    "why_it_works": "Lo dejas en una estantería y te olvidas: mide solo, avisa si el aire empeora y aguanta años gracias a sus sensores de calidad y uso sencillo, válido para piso pequeño, despacho o habitación infantil.",
+    "tag": "skaldcraft-21",
+    "marketplace": "www.amazon.es",
+    "affiliate_url_format": "https://www.amazon.es/dp/B0DBVDWB6G/?tag=skaldcraft-21",
+    "image": "/images/calidad_aire.jpg"
   }
 ]

@@ -27,7 +27,8 @@ export const idToProfileMap = {
   'farewell': 'despedida',
   'small-gift': 'detalle',
   'just-because': 'solo_porque_si',
-  'for-someone-who-has-everything': 'quien_lo_tiene_todo'
+  'for-someone-who-has-everything': 'quien_lo_tiene_todo',
+  'basicos-utiles': 'basicos_utiles'
 };
 
 export const profileDisplayLabels = {
@@ -59,7 +60,8 @@ export const profileDisplayLabels = {
   despedida: 'Despedida',
   detalle: 'El detalle',
   solo_porque_si: 'Solo porque sí',
-  quien_lo_tiene_todo: 'Para quien lo tiene todo'
+  quien_lo_tiene_todo: 'Para quien lo tiene todo',
+  basicos_utiles: 'Básicos útiles'
 };
 
 export const getProfileIdFromGiftId = (giftId) => {

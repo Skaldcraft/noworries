@@ -1,10 +1,13 @@
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const giftsPath = 'c:/Users/tradu/OneDrive/Documentos/Aplicaciones/OneClickFix/src/data/gifts.json';
-const secondaryPath = 'c:/Users/tradu/OneDrive/Documentos/Aplicaciones/OneClickFix/src/data/secondary-products.json';
-const imagesDir = 'c:/Users/tradu/OneDrive/Documentos/Aplicaciones/OneClickFix/public/images';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const giftsPath = path.join(__dirname, 'src/data/gifts.json');
+const secondaryPath = path.join(__dirname, 'src/data/secondary-products.json');
+const imagesDir = path.join(__dirname, 'public/images');
 
 const gifts = JSON.parse(fs.readFileSync(giftsPath, 'utf8'));
 const secondary = JSON.parse(fs.readFileSync(secondaryPath, 'utf8'));

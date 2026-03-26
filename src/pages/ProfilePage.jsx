@@ -10,6 +10,7 @@ import { getMarketGifts } from '@/data/market-gifts';
 import styleGuide from '@/config/style-guide.json';
 import { getImageUrl } from '../utils/getImageUrl';
 import { useTranslation } from 'react-i18next';
+import { idToProfileMap, getProfileIdFromGiftId } from '@/lib/profiles';
 
 const AmazonIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -17,7 +18,7 @@ const AmazonIcon = () => (
     </svg>
 );
 
-// Mapeo corregido para coincidir con los nuevos IDs de gifts.json
+// Mapeo de perfil → prefijo de ID de regalo (usado para filtrar gifts.json)
 const profileToGiftId = {
     'pareja': 'for-couple', 'mama': 'for-mom', 'papa': 'for-dad',
     'bebes': 'for-babies', 'ninos': 'for-kids', 'adolescentes': 'for-teens',
@@ -32,7 +33,8 @@ const profileToGiftId = {
     'ecologistas': 'for-eco-friendly', 'gente_casera': 'for-homebodies',
     'amigo_invisible': 'for-invisible-friend', 'despedida': 'farewell',
     'detalle': 'small-gift', 'solo_porque_si': 'just-because',
-    'quien_lo_tiene_todo': 'for-someone-who-has-everything'
+    'quien_lo_tiene_todo': 'for-someone-who-has-everything',
+    'basicos_utiles': 'basicos-utiles'
 };
 
 const getPriceLabel = (range) => {
@@ -43,29 +45,6 @@ const getPriceLabel = (range) => {
         '70-150': '70€-150€'
     };
     return labels[range] || range;
-};
-
-// Mapeo entre prefijo de ID y Perfil dinámico (Mismo orden y claves)
-const idToProfileMap = {
-    'for-couple': 'pareja', 'for-mom': 'mama', 'for-dad': 'papa',
-    'for-babies': 'bebes', 'for-kids': 'ninos', 'for-teens': 'adolescentes',
-    'for-grandparents': 'abuelos', 'for-best-friend': 'mejor_amigo',
-    'for-coworker': 'companeros', 'for-birthday': 'cumpleanios',
-    'for-selfcare': 'cuidarse', 'for-fitness': 'deportistas',
-    'for-traveler': 'viajeros', 'for-petowner': 'mascotas',
-    'for-techies': 'gente_tecnologica', 'for-diy': 'manitas',
-    'for-newparents': 'nuevos_papis', 'new-home': 'nuevo_hogar',
-    'new-job': 'nuevo_trabajo', 'for-cooks': 'cocinillas',
-    'for-creative-persons': 'creativos', 'for-readers': 'lectores',
-    'for-eco-friendly': 'ecologistas', 'for-homebodies': 'gente_casera',
-    'for-invisible-friend': 'amigo_invisible', 'farewell': 'despedida',
-    'small-gift': 'detalle', 'just-because': 'solo_porque_si',
-    'for-someone-who-has-everything': 'quien_lo_tiene_todo'
-};
-
-const getProfileIdFromGiftId = (giftId) => {
-    const baseId = Object.keys(idToProfileMap).find(prefix => giftId.startsWith(prefix));
-    return baseId ? idToProfileMap[baseId] : null;
 };
 
 function ProfilePage() {
@@ -164,6 +143,9 @@ function ProfilePage() {
                                 <h1 className="text-[36px] sm:text-[48px] font-black text-foreground leading-tight mb-4 uppercase tracking-tight">{profileInfo.title}</h1>
                                 <div className="h-2 w-20 bg-primary mb-6 rounded-full mx-auto sm:mx-0" />
                                 <p className="text-[16px] sm:text-[18px] text-muted-foreground leading-relaxed max-w-[600px] font-medium">{profileInfo.public_description}</p>
+                                {profileInfo.support_text && (
+                                    <p className="text-[14px] sm:text-[15px] text-muted-foreground/75 leading-relaxed max-w-[600px] font-normal mt-3">{profileInfo.support_text}</p>
+                                )}
                             </div>
                         </div>
                     </div>

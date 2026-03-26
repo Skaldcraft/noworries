@@ -4,29 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getImageUrl } from '../utils/getImageUrl';
+import { idToProfileMap } from '@/lib/profiles';
 
 function GiftCard({ gift, productData, loading }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
-
-  // Mapeo entre prefijo de ID y Perfil dinámico (Mismo orden y claves que en ProfilePage)
-  const idToProfileMap = {
-      'for-couple': 'pareja', 'for-mom': 'mama', 'for-dad': 'papa',
-      'for-babies': 'bebes', 'for-kids': 'ninos', 'for-teens': 'adolescentes',
-      'for-grandparents': 'abuelos', 'for-best-friend': 'mejor_amigo',
-      'for-coworker': 'companeros', 'for-birthday': 'cumpleanios',
-      'for-selfcare': 'cuidarse', 'for-fitness': 'deportistas',
-      'for-traveler': 'viajeros', 'for-petowner': 'mascotas',
-      'for-techies': 'gente_tecnologica', 'for-diy': 'manitas',
-      'for-newparents': 'nuevos_papis', 'new-home': 'nuevo_hogar',
-      'new-job': 'nuevo_trabajo', 'for-cooks': 'cocinillas',
-      'for-creative-persons': 'creativos', 'for-readers': 'lectores',
-      'for-eco-friendly': 'ecologistas', 'for-homebodies': 'gente_casera',
-      'for-invisible-friend': 'amigo_invisible', 'farewell': 'despedida',
-      'small-gift': 'detalle', 'just-because': 'solo_porque_si',
-      'for-someone-who-has-everything': 'quien_lo_tiene_todo'
-  };
 
   const getProfileIdFromGiftId = (giftId) => {
       const baseId = Object.keys(idToProfileMap).find(prefix => giftId.startsWith(prefix));

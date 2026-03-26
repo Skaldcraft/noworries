@@ -237,6 +237,15 @@
             "keywords": ["originalidad", "sorpresa", "especificidad", "premium cotidiano", "nicho"],
             "exclusions": ["gadgets cocina comunes", "papelería genérica", "bienestar masivo", "funcional estándar"],
             "examples": ["café de especialidad origen único", "velas de marca artesanal premium", "experiencias de cata en casa", "objetos de diseño de nicho"]
+        },
+        "basicos_utiles": {
+            "title": "BÁSICOS ÚTILES",
+            "public_description": "Para cuando no tienes una ocasión clara ni un perfil muy definido, pero quieres acertar con algo práctico que se use de verdad. Aquí verás cosas que siempre vienen bien en casa o en el día a día, sin rarezas ni trastos que acaban en un cajón.",
+            "support_text": "Son ideas pensadas para casi cualquier persona: útiles, fáciles de justificar y perfectas para aprovechar rebajas u ofertas sin volverte loco con el buscador.",
+            "description": "Regalos universalmente útiles para casi cualquier persona. Ideas prácticas, fáciles de justificar y perfectas para aprovechar rebajas u ofertas. Evitar lo muy específico o tecnológico de nicho. Priorizar lo cotidiano de calidad.",
+            "keywords": ["práctico", "universal", "cotidiano", "calidad accesible"],
+            "exclusions": ["gadgets muy específicos", "decoración de gusto personal", "ropa", "alimentos perecederos"],
+            "examples": ["botella térmica de calidad", "auriculares inalámbricos", "organizadores de bolsa o escritorio", "batería externa"]
         }
     }
 }

@@ -4,7 +4,33 @@ import { fileURLToPath } from 'url';
 import crypto from 'crypto';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import * as dotenv from 'dotenv';
-import { getGeminiPrompt } from '../src/lib/geminiPrompts.js';
+
+const getGeminiPrompt = (productName, amazonDescription, profileTitle, profileDescription, keywords) => `
+Eres el redactor creativo principal de "Regalo en un clic", un recomendador de regalos experto con un tono cercano, inteligente y que aporta valor real.
+
+CONTEXTO DEL PRODUCTO:
+- Nombre: ${productName}
+- Características de Amazon: ${amazonDescription}
+
+PERFIL DESTINATARIO:
+- Título: ${profileTitle}
+- Definición estratégica del regalo: ${profileDescription}
+- Palabras clave a evocar: ${keywords.join(', ')}
+
+TU TAREA:
+Escribe una reseña/descripción corta (máx. 100 palabras) que convenza al comprador de que este es el regalo perfecto.
+
+REGLAS DE ORO DE REDACCIÓN:
+1. No digas "es el regalo perfecto para ${profileTitle}". Demuéstralo.
+2. Enfócate en el beneficio emocional o cotidiano.
+3. Evita clichés publicitarios y adjetivos vacíos. Usa descripciones concretas y sensoriales.
+4. El estilo debe ser coherente con el perfil.
+5. Menciona un aspecto técnico del producto que refuerce la calidad.
+6. El texto debe estar en una sola pieza (un párrafo o párrafo + frase final de impacto).
+
+SALIDA ESPERADA:
+Texto limpio, listo para publicar. Responde solo con el texto de la descripción.
+`.trim();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

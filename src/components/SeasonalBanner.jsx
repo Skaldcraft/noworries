@@ -3,115 +3,92 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, X } from 'lucide-react';
 
+const BANNER_SCHEDULE = [
+  // Enero
+  { month: 0,  from: 1,  to: 6,  text: "👑 Reyes Magos: remata los últimos regalos sin agobios",                                    path: "/perfil/festividades" },
+  { month: 0,  from: 7,  to: 10, text: "❄️ Rebajas de enero: buen momento para esos regalos pendientes",                            path: "/perfil/basicos_utiles" },
+  { month: 0,  from: 11, to: 17, text: "🏃‍♂️ Un empujón al eterno propósito de ponerse en forma",                                    path: "/perfil/deportistas" },
+  { month: 0,  from: 18, to: 24, text: "✨ Este año nos vamos a cuidar un poco más",                                                 path: "/perfil/cuidarse" },
+  { month: 0,  from: 25, to: 31, text: "🏡 Detalles para un invierno más a gusto en casa",                                          path: "/perfil/gente_casera" },
+
+  // Febrero
+  { month: 1,  from: 1,  to: 14, text: "💘 San Valentín: detalles para tu pareja sin dramas de última hora",                        path: "/perfil/pareja" },
+  { month: 1,  from: 15, to: 28, text: "🎁 Día del Padre: ve eligiendo regalo con algo de margen",                                  path: "/perfil/papa" },
+
+  // Marzo
+  { month: 2,  from: 1,  to: 18, text: "👔 Día del Padre (19 marzo): aún estás a tiempo de acertar",                               path: "/perfil/papa" },
+  { month: 2,  from: 19, to: 31, text: "🌷 Ya es primavera: cualquier excusa es buena para un detalle",                             path: "/perfil/solo_porque_si" },
+  { month: 2,  from: 19, to: 31, text: "🌷 Ya es primavera: pequeños detalles sin gran ocasión",                                    path: "/perfil/detalle" },
+  { month: 2,  from: 19, to: 31, text: "🌷 Ya es primavera: ideas para quien ya lo tiene todo",                                     path: "/perfil/quien_lo_tiene_todo" },
+
+  // Abril
+  { month: 3,  from: 1,  to: 7,  text: "🐣 Pascua: detalles dulces y pequeños regalos para peques",                                path: "/perfil/ninos" },
+  { month: 3,  from: 8,  to: 15, text: "🧳 Escapadas de primavera: detalles para viajes y mini escapadas",                         path: "/perfil/viajeros" },
+  { month: 3,  from: 16, to: 30, text: "🌸 Día de la Madre: mejor pensar el regalo con calma desde ya",                            path: "/perfil/mama" },
+
+  // Mayo
+  { month: 4,  from: 1,  to: 7,  text: "🌸 Día de la Madre: últimos días para encontrar algo especial",                            path: "/perfil/mama" },
+  { month: 4,  from: 8,  to: 20, text: "🛍️ Bodas y comuniones: temporada alta de sobres y detallitos",                             path: "/perfil/boda" },
+  { month: 4,  from: 21, to: 31, text: "📸 Que las fotos no se queden en el móvil: álbumes y recuerdos",                           path: "/perfil/basicos_utiles" },
+
+  // Junio
+  { month: 5,  from: 1,  to: 20, text: "🎓 Fin de curso: detalles para profes y compis que se lo han ganado",                      path: "/perfil/companeros" },
+  { month: 5,  from: 21, to: 30, text: "🏖️ Verano a la vista: prepara tus escapadas con algún detallito",                          path: "/perfil/viajeros" },
+
+  // Julio
+  { month: 6,  from: 1,  to: 20, text: "☀️ Verano: viajes, piscina y mil excusas para un pequeño regalo",                          path: "/perfil/viajeros" },
+  { month: 6,  from: 21, to: 31, text: "😎 Verano tranquilo: libros, juegos y planes para desconectar",                            path: "/perfil/lectores" },
+
+  // Agosto
+  { month: 7,  from: 1,  to: 15, text: "🌊 Agosto: pequeños caprichos para playa, montaña o sofá",                                 path: "/perfil/gente_casera" },
+  { month: 7,  from: 16, to: 31, text: "🗂️ Vuelta suave: empieza a pensar en organizarte mejor a la vuelta",                       path: "/perfil/basicos_utiles" },
+
+  // Septiembre
+  { month: 8,  from: 1,  to: 15, text: "🎒 Vuelta al cole: para prevenir y empezar bien el curso",                                 path: "/perfil/ninos" },
+  { month: 8,  from: 16, to: 30, text: "💼 Nuevo curso y oficina: pequeños detalles para compis y jefes",                          path: "/perfil/companeros" },
+
+  // Octubre — grupo rutina (mismo texto, destino rotativo)
+  { month: 9,  from: 1,  to: 15, text: "🎃 La vuelta a la rutina y la calma antes de las fiestas",                                 path: "/perfil/detalle" },
+  { month: 9,  from: 1,  to: 15, text: "🎃 La vuelta a la rutina y la calma antes de las fiestas",                                 path: "/perfil/gente_casera" },
+  { month: 9,  from: 1,  to: 15, text: "🎃 La vuelta a la rutina y la calma antes de las fiestas",                                 path: "/perfil/nuevo_hogar" },
+  { month: 9,  from: 16, to: 31, text: "🕯️ Finales de octubre: piensa en regalos ahora y evita prisas luego",                      path: "/perfil/basicos_utiles" },
+
+  // Noviembre
+  { month: 10, from: 1,  to: 19, text: "🖤 Black Friday a la vista: decide qué quieres antes de las ofertas",                      path: "/perfil/gente_tecnologica" },
+  // grupo black_semana (mismo texto, destino rotativo)
+  { month: 10, from: 20, to: 30, text: "🛍️ Semana Black Friday: buen momento para tachar regalos de la lista",                     path: "/perfil/manitas" },
+  { month: 10, from: 20, to: 30, text: "🛍️ Semana Black Friday: buen momento para tachar regalos de la lista",                     path: "/perfil/deportistas" },
+  { month: 10, from: 20, to: 30, text: "🛍️ Semana Black Friday: buen momento para tachar regalos de la lista",                     path: "/perfil/gente_tecnologica" },
+
+  // Diciembre
+  { month: 11, from: 1,  to: 10, text: "🎄 Navidad: si vas con tiempo, regalar deja de ser un marrón",                             path: "/perfil/festividades" },
+  { month: 11, from: 11, to: 20, text: "🎄 Navidad se acerca: mejor cerrar los regalos cuanto antes",                              path: "/perfil/festividades" },
+  { month: 11, from: 21, to: 24, text: "⚡ Última hora Navidad: ahora sí, toca ir a por lo rápido y seguro",                       path: "/perfil/festividades" },
+  { month: 11, from: 25, to: 31, text: "👑 Se acercan los Reyes: último sprint de regalos bien pensados",                          path: "/perfil/festividades" },
+];
+
+function selectBanner(month, day) {
+  const candidates = BANNER_SCHEDULE.filter(
+    e => e.month === month && day >= e.from && day <= e.to
+  );
+  if (candidates.length === 0) return null;
+  if (candidates.length === 1) return candidates[0];
+  // Rotación determinista: mismo resultado todo el día, distinto cada día del periodo
+  return candidates[(day - 1) % candidates.length];
+}
+
 function SeasonalBanner() {
   const [isDismissed, setIsDismissed] = useState(false);
   const [banner, setBanner] = useState({ text: '', path: '' });
 
   useEffect(() => {
-    // Check if banner was previously dismissed
-    const dismissed = sessionStorage.getItem('seasonalBannerDismissed');
-    if (dismissed === 'true') {
+    if (sessionStorage.getItem('seasonalBannerDismissed') === 'true') {
       setIsDismissed(true);
       return;
     }
-
     const now = new Date();
-    const month = now.getMonth();
-    const day = now.getDate();
-
-    let text = '';
-    let path = '';
-
-    // Enero
-    if (month === 0) {
-      if (day <= 5) {
-        text = "👑 ¡Que vienen los Reyes Magos! (6 de enero) — Envíos rápidos ⚡";
-        path = "/perfil/festividades";
-      } else {
-        text = "❄️ Rebajas de Enero — Date ese capricho que te mereces";
-        path = "/";
-      }
-    }
-    // Febrero
-    else if (month === 1) {
-      if (day <= 14) {
-        text = "💘 San Valentín (14 feb) — Demuéstrale cuánto te importa";
-        path = "/perfil/pareja";
-      } else {
-        text = "🎁 El Día del Padre se acerca (19 de marzo) — Encuentra el regalo perfecto";
-        path = "/perfil/papa";
-      }
-    }
-    // Marzo
-    else if (month === 2) {
-      if (day <= 18) {
-        text = "👔 Día del Padre (19 de marzo) — Acierta seguro";
-        path = "/perfil/papa";
-      } else {
-        text = "🌷 ¡Ya es primavera! — Sorpresas para cada ocasión";
-        path = "/";
-      }
-    }
-    // Abril
-    else if (month === 3) {
-      text = "🌸 El Día de la Madre se acerca (1er domingo de mayo) — Compra con antelación";
-      path = "/perfil/mama";
-    }
-    // Mayo
-    else if (month === 4) {
-      if (day <= 7) {
-        text = "🌸 Día de la Madre — ¡No lo dejes para el último minuto!";
-        path = "/perfil/mama";
-      } else {
-        text = "🛍️ Temporada de Bodas y Comuniones — El detalle ideal";
-        path = "/perfil/boda";
-      }
-    }
-    // Junio
-    else if (month === 5) {
-      text = "🎓 Fin de Curso — Un agradecimiento a los profesores por su esfuerzo";
-      path = "/perfil/companeros";
-    }
-    // Julio / Agosto
-    else if (month === 6 || month === 7) {
-      text = "☀️ Ofertas de Verano — Los imprescindibles para tus vacaciones";
-      path = "/perfil/viajeros";
-    }
-    // Septiembre
-    else if (month === 8) {
-      text = "🎒 La Vuelta a la Rutina — Empieza ahorrando tiempo y dinero";
-      path = "/";
-    }
-    // Octubre
-    else if (month === 9) {
-      text = "🎃 Anticipa tus compras para los próximos meses y evita prisas";
-      path = "/";
-    }
-    // Noviembre
-    else if (month === 10) {
-      if (day < 20) {
-        text = "🖤 Empieza a preparar tu lista de regalos para el Black Friday";
-        path = "/";
-      } else {
-        text = "🛍️ ¡Semana Black Friday! Adelanta tus regalos de Navidad a buen precio";
-        path = "/perfil/festividades";
-      }
-    }
-    // Diciembre
-    else if (month === 11) {
-      if (day <= 20) {
-        text = "🎄 Regalos de Papá Noel y Navidad — Pídelos ya para que lleguen a tiempo";
-        path = "/perfil/festividades";
-      } else if (day <= 24) {
-        text = "⚡ ¡Última Hora! (Navidad) — Fíjate bien que tengan envío rápido Prime";
-        path = "/perfil/festividades";
-      } else {
-        text = "👑 ¡Se acercan los Reyes Magos! (6 de enero) — Pide la magia anticipada";
-        path = "/perfil/festividades";
-      }
-    }
-
-    setBanner({ text, path });
+    const selected = selectBanner(now.getMonth(), now.getDate());
+    if (selected) setBanner({ text: selected.text, path: selected.path });
   }, []);
 
   const handleDismiss = () => {
@@ -119,12 +96,13 @@ function SeasonalBanner() {
     setIsDismissed(true);
   };
 
-  if (isDismissed || !banner.text) {
-    return null;
-  }
+  if (isDismissed || !banner.text) return null;
 
   return (
-    <div className="sticky top-0 z-40 bg-[#fff7f0] text-[#c26b3c] py-2.5 px-6 border-b border-[#e8cbb5] hover:bg-[#ffe8d6] transition-colors" style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}>
+    <div
+      className="sticky top-0 z-40 bg-[#fff7f0] text-[#c26b3c] py-2.5 px-6 border-b border-[#e8cbb5] hover:bg-[#ffe8d6] transition-colors"
+      style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
+    >
       <div className="max-w-[1100px] mx-auto flex items-center justify-between relative group">
         <Link
           to={banner.path}
