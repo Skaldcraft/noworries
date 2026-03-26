@@ -131,7 +131,7 @@
 
         /* --- Hero Section --- */
         .hero {
-            padding: 5rem 0 8.75rem;
+            padding: 5rem 0 3.5rem;
             text-align: center;
             position: relative;
             color: #444;
@@ -246,7 +246,7 @@
 
         /* --- Feature Grid --- */
         .features {
-            padding: 9rem 0;
+            padding: 5.5rem 0 9rem;
             background-color: #FAFAFA;
             border-radius: 6rem 6rem 0 0;
             position: relative;
@@ -266,7 +266,7 @@
 
         @media (min-width: 1280px) {
             .features {
-                padding: 10rem 0;
+                padding: 7rem 0 10rem;
             }
         }
 
@@ -434,7 +434,7 @@
         /* --- Responsive --- */
         @media (max-width: 768px) {
             header { padding: 4.75rem 0 2.25rem; }
-            .hero { padding: 4.25rem 0 7rem; }
+            .hero { padding: 4.25rem 0 3rem; }
             .hero-title { font-size: clamp(1.65rem, 8vw, 2.5rem); }
             .category-scroll { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .grid { grid-template-columns: 1fr; }
@@ -482,7 +482,7 @@
             <p style="margin-top: 0.75rem; color: #999; font-style: italic; font-size: clamp(0.9rem, 2vw, 1rem);">Pruébalo, es más rápido que preguntarle a tu grupo de WhatsApp.</p>
         </div>
 
-        <div class="reveal-on-scroll" style="--reveal-delay: 0.08s; margin-top: 7rem; padding-top: 7rem; border-top: 1px solid #e5e7eb; max-width: 42rem; margin-left: auto; margin-right: auto; animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.65s backwards;">
+        <div class="reveal-on-scroll" style="--reveal-delay: 0.08s; margin: 2.5rem auto; max-width: 56rem; padding: 2.5rem 2.5rem 0.75rem; border-radius: 1.25rem; border: 1px solid #e4e4e7; box-shadow: 0 4px 24px -8px rgba(0,0,0,0.09); animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.65s backwards;">
             <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.32rem, 3.1vw, 2.1rem); font-weight: 700; color: #1C1917; text-align: center; margin-bottom: 1.25rem; letter-spacing: -0.03em;">El atajo inteligente entre tú y el regalo ideal</h2>
             <p style="color: #666; font-size: clamp(0.98rem, 1.95vw, 1.14rem); line-height: 1.68; text-align: center; font-weight: 400; max-width: 40rem; margin: 0 auto;">Ni miles de pestañas abiertas ni horas perdidas. Solo los mejores perfiles y presupuestos organizados para que regalar sea, por fin, superfácil.</p>
         </div>
@@ -497,11 +497,15 @@
             <h3 class="section-lead-title">Acierta siempre, incluso con los que «tienen de todo».</h3>
             <p class="section-lead-subtitle">Filtramos las opciones más originales según su personalidad y tu presupuesto. Menos opciones mediocres, más aciertos memorables. Desde el gran regalo de amor hasta el pequeño detalle de compromiso.</p>
             
-            <div class="reveal-on-scroll" style="--reveal-delay: 0.04s; margin: 3rem auto 6rem; max-width: 800px; border-radius: 1.75rem; overflow: hidden; box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);">
-                <video autoplay loop muted playsinline poster="/images/cabecera.jpg" preload="metadata" style="width: 100%; display: block;">
-                    <source src="/images/no-mas-estres.mp4" type="video/mp4" />
-                    Tu navegador no soporta video HTML5
-                </video>
+            <div class="reveal-on-scroll" style="--reveal-delay: 0.04s; margin: 3rem auto 6rem; max-width: 800px;">
+                <p style="font-family: 'Lato', sans-serif; font-size: clamp(1rem, 2.1vw, 1.3rem); color: #666; text-align: center; margin-bottom: 1.5rem; line-height: 1.65; font-weight: 400; max-width: 44rem; margin-left: auto; margin-right: auto;">Un regalo menos del que preocuparte, un momento más para disfrutar</p>
+                <a href="https://noworries.gift/" target="_blank" rel="noopener noreferrer" style="display: block; border-radius: 1.75rem; overflow: hidden; box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);">
+                    <video autoplay loop muted playsinline poster="/images/cabecera.jpg" preload="metadata" style="width: 100%; display: block;">
+                        <source src="/images/no-mas-estres.mp4" type="video/mp4" />
+                        Tu navegador no soporta video HTML5
+                    </video>
+                </a>
+                <p style="font-family: 'Lato', sans-serif; color: #666; font-size: clamp(0.98rem, 1.95vw, 1.14rem); line-height: 1.68; text-align: center; font-weight: 400; max-width: 40rem; margin: 1.25rem auto 0;">Clica en el vídeo, respira hondo y piensa solo en la persona,<br>no en el caos de opciones.</p>
             </div>
             
             <div class="grid" style="gap: 1.75rem;">

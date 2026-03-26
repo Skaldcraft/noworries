@@ -280,6 +280,12 @@ function HomePage() {
           <div className="max-w-[1100px] mx-auto">
             {/* Banner de Modo Demo eliminado para Producción */}
 
+            {!isInitialLoading && (
+              <p className="mb-5 text-[0.88rem] text-[#888] font-normal leading-relaxed animate-in fade-in duration-700" style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}>
+                Ten siempre a mano ideas de regalos que funcionan de verdad, sin perderte en el scroll infinito de Amazon.
+              </p>
+            )}
+
             {!isInitialLoading && filteredGifts.length > 0 && (
               <p className="mb-6 text-[13px] font-bold text-muted-foreground animate-in fade-in duration-700" aria-live="polite">
                 {t('home.results', { count: filteredGifts.length })}

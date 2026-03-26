@@ -50,15 +50,28 @@ function FilterBar({ onFilterChange, activeFilters }) {
             className="text-[2rem] sm:text-[2.35rem] lg:text-[2.6rem] font-extrabold text-[#1a7431] leading-[1.08] tracking-[-0.03em]"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Ideas de regalo para perfiles y presupuestos a medida
+            Encuentra el regalo perfecto sin romperte la cabeza
           </h1>
           <p
             className="mt-3 mx-auto max-w-[42rem] text-[0.98rem] sm:text-[1.05rem] font-medium text-[#666] leading-relaxed"
             style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
           >
-            Utiliza los filtros y encuentra buenas opciones rápido, sin ruido y sin estrés.
+            Filtra por presupuesto y perfil y evita el laberinto de Amazon.
+          </p>
+          <p
+            className="mt-2 mx-auto max-w-[42rem] text-[0.9rem] sm:text-[0.95rem] font-normal text-[#888] leading-relaxed"
+            style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
+          >
+            Solo dinos cuánto quieres gastar y para quién es el regalo. Nosotros filtramos el ruido y te enseñamos solo ideas que encajan.
           </p>
         </div>
+
+        <p
+          className="text-[11px] sm:text-[12px] font-bold text-[#1a7431] uppercase tracking-[0.22em] mb-5 text-center"
+          style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
+        >
+          EMPIEZA POR AQUÍ
+        </p>
 
         <div className="flex flex-col items-center gap-8 sm:gap-10">
           <div className="w-full">

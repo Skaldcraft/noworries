@@ -34,7 +34,7 @@ function PromotionPage() {
                     <meta name="description" content="Déjate de búsquedas agobiantes. Selección curada de regalos perfectos por perfiles y presupuestos." />
                 </Helmet>
 
-                <header className="container mx-auto px-6 pt-20 pb-10 md:pt-24 md:pb-12 flex justify-center">
+                <header className="container mx-auto px-6 pt-10 pb-4 md:pt-12 md:pb-5 flex justify-center">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ function PromotionPage() {
                 </header>
 
                 <main>
-                    <section className="container mx-auto px-6 pt-16 pb-28 text-center md:pt-20 md:pb-28 lg:pt-24 lg:pb-32">
+                    <section className="container mx-auto px-6 pt-16 pb-14 text-center md:pt-20 md:pb-14 lg:pt-24 lg:pb-16">
                     <motion.h1
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ function PromotionPage() {
                         initial={{ opacity: 0, y: 28 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "circOut" }}
-                        className="font-['Playfair Display'] text-[clamp(1.28rem,3.05vw,2.05rem)] font-bold tracking-tight mb-7 text-[#1C1917]"
+                        className="font-['Playfair Display'] text-[clamp(1.28rem,3.05vw,2.05rem)] font-bold tracking-tight mt-8 mb-7 text-[#1C1917]"
                     >
                         Deja de buscar. Empieza a encontrar.
                     </motion.h2>
@@ -144,7 +144,7 @@ function PromotionPage() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.9 }}
-                        className="mt-28 pt-28 border-t border-zinc-200 max-w-[42rem] mx-auto text-center"
+                        className="mt-10 mb-4 pt-10 pb-3 px-10 rounded-2xl border border-zinc-200 shadow-[0_4px_24px_-8px_rgba(0,0,0,0.09)] max-w-[56rem] mx-auto text-center"
                     >
                         <h2 className="font-['Playfair Display'] font-bold text-[clamp(1.32rem,3.1vw,2.1rem)] text-center tracking-tight mb-5 text-[#1C1917]">
                             El atajo inteligente entre tú y el regalo ideal
@@ -156,7 +156,7 @@ function PromotionPage() {
 
                 </section>
 
-                    <section className="bg-zinc-50 rounded-[5rem_5rem_0_0] py-36 border-t border-black/5 md:rounded-[3.25rem_3.25rem_1.5rem_1.5rem] lg:rounded-[4.5rem_4.5rem_2.5rem_2.5rem] xl:py-40">
+                    <section className="bg-zinc-50 rounded-[5rem_5rem_0_0] pt-20 pb-36 border-t border-black/5 md:rounded-[3.25rem_3.25rem_1.5rem_1.5rem] lg:rounded-[4.5rem_4.5rem_2.5rem_2.5rem] xl:pt-24 xl:pb-40">
                         <div className="container mx-auto px-6">
                         <motion.span
                             initial={{ opacity: 0 }}
@@ -179,18 +179,26 @@ function PromotionPage() {
                             transition={{ duration: 0.8 }}
                             className="mt-12 mb-24 mx-auto"
                         >
-                            <video 
-                                autoPlay 
-                                loop 
-                                muted 
-                                playsInline
-                                poster="/images/cabecera.jpg"
-                                preload="metadata"
-                                className="w-full max-w-2xl mx-auto rounded-3xl shadow-xl"
-                            >
-                                <source src="/images/no-mas-estres.mp4" type="video/mp4" />
-                                Tu navegador no soporta video HTML5
-                            </video>
+                            <p className="font-['Lato'] text-[#666] text-[clamp(1rem,2.1vw,1.3rem)] font-normal leading-[1.65] text-center mb-6 max-w-[44rem] mx-auto">
+                                Un regalo menos del que preocuparte, un momento más para disfrutar
+                            </p>
+                            <a href="https://noworries.gift/" target="_blank" rel="noopener noreferrer" className="block max-w-2xl mx-auto">
+                                <video
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    poster="/images/cabecera.jpg"
+                                    preload="metadata"
+                                    className="w-full rounded-3xl shadow-xl"
+                                >
+                                    <source src="/images/no-mas-estres.mp4" type="video/mp4" />
+                                    Tu navegador no soporta video HTML5
+                                </video>
+                            </a>
+                            <p className="font-['Lato'] text-[#666] text-[clamp(0.98rem,1.95vw,1.14rem)] leading-[1.68] text-center mt-5 max-w-[40rem] mx-auto font-normal">
+                                Clica en el vídeo, respira hondo y piensa solo en la persona,<br />no en el caos de opciones.
+                            </p>
                         </motion.div>
 
                         <div className="grid md:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
@@ -225,7 +233,7 @@ function PromotionPage() {
                                     <div className="text-5xl mb-6 drop-shadow-lg">{feature.icon}</div>
                                     <h3 className="font-['Playfair Display'] font-bold text-[1.6rem] mb-4 text-[#1C1917]">{feature.title}</h3>
                                     <p className="font-['Lato'] text-[#1C1917] font-semibold leading-snug mb-3 max-w-[30ch] mx-auto text-base">{feature.lead}</p>
-                                    <p className="font-['Lato'] text-[#666] font-normal leading-relaxed max-w-[33ch] mx-auto text-sm">{feature.desc}</p>
+                                    <p className="font-['Lato'] text-[#666] font-normal leading-relaxed max-w-[33ch] mx-auto text-[1rem]">{feature.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
