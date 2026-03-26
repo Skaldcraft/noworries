@@ -9,6 +9,52 @@ const GIFTS_PATH = path.join(__dirname, 'src/data/gifts.json');
 const SECONDARY_PATH = path.join(__dirname, 'src/data/secondary-gifts-es.json');
 const IMAGES_DIR = path.join(__dirname, 'public/images');
 
+// Mapeo de prefijos antiguos a nuevos para mantener consistencia
+const PREFIX_MAP = {
+    'invisible-friend': 'for-invisible-friend',
+    'detalle': 'small-gift',
+    'solo-porque-si': 'just-because',
+    'quien-lo-tiene-todo': 'for-someone-who-has-everything'
+};
+
+// Mapeo de recipient a prefijo correcto
+const RECIPIENT_PREFIX_MAP = {
+    'PARA AMIGO INVISIBLE': 'for-invisible-friend',
+    'EL DETALLE': 'small-gift',
+    'SOLO PORQUE SÍ': 'just-because',
+    'PARA QUIEN LO TIENE TODO': 'for-someone-who-has-everything',
+    'BÁSICOS ÚTILES': 'basicos-utiles'
+};
+
+function getCorrectPrefix(product) {
+    // Primero verificar si el recipient tiene mapeo directo
+    const recipientUpper = product.recipient?.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    for (const [key, value] of Object.entries(RECIPIENT_PREFIX_MAP)) {
+        const keyNormalized = key.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        if (recipientUpper.includes(keyNormalized)) {
+            return value;
+        }
+    }
+    
+    // Si no, verificar si el prefijo actual necesita corrección
+    for (const [oldPrefix, newPrefix] of Object.entries(PREFIX_MAP)) {
+        if (product.id.startsWith(oldPrefix + '-')) {
+            return newPrefix;
+        }
+    }
+    
+    // Devolver el prefijo original
+    return product.id.split('-').slice(0, 2).join('-');
+}
+
+function getProfileFromId(giftId) {
+    const prefix = giftId.split('-').slice(0, 2).join('-');
+    for (const [oldPrefix, newPrefix] of Object.entries(PREFIX_MAP)) {
+        if (prefix === oldPrefix) return newPrefix;
+    }
+    return prefix;
+}
+
 function loadData() {
     const gifts = JSON.parse(fs.readFileSync(GIFTS_PATH, 'utf8'));
     const secondary = JSON.parse(fs.readFileSync(SECONDARY_PATH, 'utf8'));
@@ -59,18 +105,63 @@ function promote(idOrAsin) {
         return;
     }
     
-    const product = secondary[index];
+    const product = JSON.parse(JSON.stringify(secondary[index])); // Clonar para no mutar el original
     
-    // Check if ASIN already in gifts
-    if (gifts.some(p => p.asin === product.asin)) {
+    // Corregir prefijo del ID si es necesario
+    const correctPrefix = getCorrectPrefix(product);
+    let oldPrefix = '';
+    
+    for (const [old, newPrefix] of Object.entries(PREFIX_MAP)) {
+        if (product.id.startsWith(old + '-')) {
+            oldPrefix = old;
+            break;
+        }
+    }
+    
+    if (oldPrefix && oldPrefix !== correctPrefix) {
+        const newId = product.id.replace(oldPrefix + '-', correctPrefix + '-');
+        console.log(`\n[*] Corrigiendo ID: ${product.id} → ${newId}`);
+        product.id = newId;
+    }
+    
+    // Check if ASIN already in gifts (only if ASIN is not empty)
+    if (product.asin && gifts.some(p => p.asin === product.asin)) {
         console.log(`\n[!] Error: El producto '${product.product_name}' ya existe en el escaparate.`);
         return;
     }
     
+    // Check if there's already a product with same profile and price_range
+    const productProfile = getProfileFromId(product.id);
+    const existingIndex = gifts.findIndex(g => {
+        const gProfile = getProfileFromId(g.id);
+        return gProfile === productProfile && g.price_range === product.price_range;
+    });
+    
+    if (existingIndex !== -1) {
+        const existing = gifts[existingIndex];
+        console.log(`\n[*] Moviendo producto anterior '${existing.product_name}' al almacén...`);
+        gifts.splice(existingIndex, 1);
+        secondary.push(existing);
+    }
+    
     // Check image
     if (product.image && product.image.trim() !== "") {
-        const imgName = product.image.replace('/images/', '').split('?')[0];
-        if (!fs.existsSync(path.join(IMAGES_DIR, imgName))) {
+        let imgName = product.image.replace('/images/', '').split('?')[0];
+        let imgExists = false;
+        
+        // Buscar archivos sin extensión o con cualquier extensión
+        if (fs.existsSync(path.join(IMAGES_DIR, imgName))) {
+            imgExists = true;
+        } else {
+            const files = fs.readdirSync(IMAGES_DIR);
+            const match = files.find(f => f.startsWith(imgName + '.') || f === imgName);
+            if (match) {
+                imgExists = true;
+                product.image = '/images/' + match;
+            }
+        }
+        
+        if (!imgExists) {
             console.log(`\n[?] Aviso: La imagen '${imgName}' no existe, pero el producto será promovido igual.`);
         }
     } else {

@@ -100,20 +100,20 @@ function SeasonalBanner() {
 
   return (
     <div
-      className="sticky top-0 z-40 bg-[#fff7f0] text-[#c26b3c] py-2.5 px-6 border-b border-[#e8cbb5] hover:bg-[#ffe8d6] transition-colors"
+      className="sticky top-0 z-40 bg-black/85 text-[#f5f0e6] py-2.5 px-6 border-b border-black/20 hover:bg-black/75 transition-colors backdrop-blur-sm"
       style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
     >
       <div className="max-w-[1100px] mx-auto flex items-center justify-between relative group">
         <Link
           to={banner.path}
-          className="flex-grow flex items-center justify-center gap-2 text-[13px] font-medium leading-[1.4] group-hover:text-[#a0552e] transition-colors py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c26b3c]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#fff7f0] rounded"
+          className="flex-grow flex items-center justify-center gap-2 text-[13px] font-medium leading-[1.4] group-hover:text-white transition-colors py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f0e6]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-black/85 rounded"
         >
           <span className="line-clamp-1 sm:line-clamp-none text-center">{banner.text}</span>
-          <ArrowRight size={14} className="hidden sm:block opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 shrink-0 text-[#c26b3c]" />
+          <ArrowRight size={14} className="hidden sm:block opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 shrink-0 text-[#f5f0e6]" />
         </Link>
         <button
           onClick={handleDismiss}
-          className="p-1.5 hover:bg-[#c26b3c]/10 rounded-full transition-colors shrink-0 ml-4 opacity-70 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c26b3c]/40"
+          className="p-1.5 hover:bg-white/10 rounded-full transition-colors shrink-0 ml-4 opacity-70 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5f0e6]/40 text-[#f5f0e6]"
           aria-label="Cerrar banner estacional"
         >
           <X size={16} />

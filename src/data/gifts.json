@@ -375,6 +375,21 @@
     "image": "/images/smartwatch.jpg"
   },
   {
+    "id": "for-traveler-under-15-B0DQ8JRWWM",
+    "recipient": "PARA GENTE VIAJERA",
+    "emoji": "✈️",
+    "tier": "personality",
+    "price_range": "under-15",
+    "asin": "B0DQ8JRWWM",
+    "product_name": "Botella de Agua Plegable de Silicona 475 ml",
+    "justification": "Ideal para quien siempre va de un lado para otro: cuando se vacía, se pliega en un bulto mínimo, sin olores, soporta frío y calor y el mosquetón permite colgarla fuera para no perder espacio dentro.",
+    "why_it_works": "Soluciona cualquier compromiso viajero: sirve para oficina, gimnasio y sobre todo para ocupar poco espacio en la maleta en las escapadas. No pesa casi nada, no gotea y aguanta años porque es de silicona alimentaria y no se abolla ni se rompe como las rígidas.",
+    "tag": "skaldcraft-21",
+    "marketplace": "www.amazon.es",
+    "affiliate_url_format": "https://www.amazon.es/dp/B0DQ8JRWWM/?tag=skaldcraft-21",
+    "image": "/images/botella-plegable.jpg"
+  },
+  {
     "id": "for-traveler-15-35-B0C23CTDTV",
     "recipient": "PARA GENTE VIAJERA",
     "emoji": "✈️",
@@ -614,7 +629,7 @@
     "affiliate_url_format": "https://www.amazon.es/dp/B0FQHY8LBR/?tag=skaldcraft-21",
     "image": "/images/atril.jpg"
   },
-   {
+  {
     "id": "for-readers-15-35-B0FP4PWJQW",
     "recipient": "PARA LECTORES",
     "emoji": "📖",
@@ -705,6 +720,21 @@
     "image": "/images/calcetines-potmodernos.jpg"
   },
   {
+    "id": "for-invisible-friend-under15-B0CMPXSH34",
+    "recipient": "PARA AMIGO INVISIBLE",
+    "emoji": "🕵️‍♂️",
+    "tier": "occasion",
+    "price_range": "under15",
+    "asin": "B0CMPXSH34",
+    "product_name": "Esponja Scrub Mommy Doble Cara (Pack)",
+    "justification": "Una gracia entre amigos/compañeros, la «famosa esponja de TikTok»; primero unas risas, pero luego engancha: un lado duro o blandito según el agua para los restos chungos y otro superabsorbente que hace mucha espuma sin rayar.",
+    "why_it_works": "Para  cumplir con el compromiso, pero con un toque de humor y algo que además es útil: no hay por qué cosas que simplemente generan residuos y se olvidan.",
+    "tag": "skaldcraft-21",
+    "marketplace": "www.amazon.es",
+    "affiliate_url_format": "https://www.amazon.es/dp/B0CMPXSH34/?tag=skaldcraft-21",
+    "image": "/images/scrub-mommy.jpg"
+  },
+  {
     "id": "farewell-15-35-B08LP1F4V9",
     "recipient": "DESPEDIDA",
     "emoji": "🏆",
@@ -748,21 +778,6 @@
     "marketplace": "www.amazon.es",
     "affiliate_url_format": "https://www.amazon.es/dp/B0CCPFDRH5/?tag=skaldcraft-21",
     "image": "/images/set-te.jpg"
-  },
-  {
-    "id": "just-because-under15-B093R7R4QB",
-    "recipient": "SOLO PORQUE SÍ",
-    "emoji": "💪",
-    "tier": "occasion",
-    "price_range": "under15",
-    "asin": "B093R7R4QB",
-    "product_name": "Vela aromática salvia y canela",
-    "justification": "Un «me he acordado de ti» sin más: la enciendes y salvia y canela llenan la habitación de calma inmediata, bajan revoluciones y acompañan lecturas, baños largos o simplemente estar, sin hacer nada más.",
-    "why_it_works": "Es ese detalle que se disfruta al instante y se alarga durante semanas: 33 horas de luz suave, aroma limpio y tarro reutilizable que convierte cualquier rato normal en un pequeño ritual compartido.",
-    "tag": "skaldcraft-21",
-    "marketplace": "www.amazon.es",
-    "affiliate_url_format": "https://www.amazon.es/dp/B093R7R4QB/?tag=skaldcraft-21",
-    "image": "/images/vela-aromatica.jpg"
   },
   {
     "id": "just-because-15-35-B0BFVFYJWF",
@@ -838,5 +853,35 @@
     "marketplace": "www.amazon.es",
     "affiliate_url_format": "https://www.amazon.es/dp/B0DBVDWB6G/?tag=skaldcraft-21",
     "image": "/images/calidad_aire.jpg"
+  },
+  {
+    "id": "basicos-utiles-15-35-B0BZVPDLX2",
+    "recipient": "BÁSICOS ÚTILES",
+    "emoji": "🧲",
+    "tier": "occasion",
+    "price_range": "15-35",
+    "asin": "B0BZVPDLX2",
+    "product_name": "Quitapelusas Eléctrico con Pantalla LCD",
+    "justification": "Da gusto ver la ropa como nueva en dos pasadas: este quitapelusas recargable con pantalla LCD y 3 velocidades elimina bolas y pelusas de jerseys, abrigos o sofás sin enganchar ni dañar el tejido.",
+    "why_it_works": "Saca de apuros y cuida la ropa delicada. Se carga por USB‑C, pasa por toda la casa (jerseys, mantas, cojines) y aguanta años con sus cuchillas de acero y sistema de seguridad.",
+    "tag": "skaldcraft-21",
+    "marketplace": "www.amazon.es",
+    "affiliate_url_format": "https://www.amazon.es/dp/B0BZVPDLX2/?tag=skaldcraft-21",
+    "image": "/images/quitapelusas.jpg"
+  },
+  {
+    "id": "basicos-utiles-under15-B09PG6JYPW",
+    "recipient": "BÁSICOS ÚTILES",
+    "emoji": "🧲",
+    "tier": "occasion",
+    "price_range": "under15",
+    "asin": "B09PG6JYPW",
+    "product_name": "Organizador / Protector de Cables 3 m",
+    "justification": "Ordena en un minuto ese lío de cables de la mesa o detrás de la tele: metes 3‑5 cables dentro y la funda se cierra sola, queda limpio, protegido del calor y puedes cortarla a la medida que necesites.",
+    "why_it_works": "Te saca del apuro porque sirve para casi cualquiera: vale para escritorio, TV, equipo de música o el rincón del PC gaming, se corta y recoloca según cambie su setup y además protege los cables de mordiscos y rozaduras.",
+    "tag": "skaldcraft-21",
+    "marketplace": "www.amazon.es",
+    "affiliate_url_format": "https://www.amazon.es/dp/B09PG6JYPW/?tag=skaldcraft-21",
+    "image": "/images/organizador-cables.jpg"
   }
 ]

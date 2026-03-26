@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback, useMemo, useLayoutEffect } fro
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-import { Activity, ChevronUp, ChevronDown, RefreshCw, Trash2, Info, X } from 'lucide-react';
+import { Activity, ChevronUp, ChevronDown, RefreshCw, Trash2, Info, X, Search } from 'lucide-react';
 import Footer from '@/components/Footer';
 import SeasonalBanner from '@/components/SeasonalBanner';
 import FilterBar from '@/components/FilterBar';
@@ -42,6 +42,7 @@ function HomePage() {
     failedProducts: []
   });
   const [isDebugOpen, setIsDebugOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const [cacheInfo, setCacheInfo] = useState({ stats: null, size: 0, contents: [] });
   const giftsData = useMemo(() => getMarketGifts(), []);
 
@@ -260,7 +261,19 @@ function HomePage() {
     const tierMatch = activeFilters.tier === 'all' || gift.tier === activeFilters.tier;
     const budgetMatch = activeFilters.budget === 'all' || gift.price_range === activeFilters.budget;
     const profileMatch = activeFilters.profile === 'all' || pId === activeFilters.profile;
-    return tierMatch && budgetMatch && profileMatch;
+    const searchMatch = searchQuery === '' || 
+      gift.product_name.toLowerCase().includes(searchQuery.toLowerCase());
+    return tierMatch && budgetMatch && profileMatch && searchMatch;
+  }).sort((a, b) => {
+    const pIdA = getProfileIdFromGiftId(a.id) || a.recipient;
+    const pIdB = getProfileIdFromGiftId(b.id) || b.recipient;
+    if (pIdA !== pIdB) {
+      const idxA = gifts.findIndex(g => g.id === a.id);
+      const idxB = gifts.findIndex(g => g.id === b.id);
+      return idxA - idxB;
+    }
+    const priceOrder = { 'under15': 0, '15-35': 1, '35-75': 2, '75-150': 3, '150-300': 4 };
+    return (priceOrder[a.price_range] ?? 99) - (priceOrder[b.price_range] ?? 99);
   });
 
   const isInitialLoading = loading && gifts.length === 0;
@@ -278,18 +291,32 @@ function HomePage() {
 
         <main className="flex-grow py-8 sm:py-12 px-4 sm:px-6" aria-busy={isInitialLoading}>
           <div className="max-w-[1100px] mx-auto">
-            {/* Banner de Modo Demo eliminado para Producción */}
-
             {!isInitialLoading && (
-              <p className="mb-5 text-[0.98rem] text-[#555555] font-normal leading-[1.6] animate-in fade-in duration-700" style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}>
-                Ten siempre a mano ideas de regalos que funcionan de verdad, sin perderte en el scroll infinito de Amazon.
-              </p>
-            )}
-
-            {!isInitialLoading && filteredGifts.length > 0 && (
-              <p className="mb-6 text-[12px] font-medium text-[#999999] animate-in fade-in duration-700" style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }} aria-live="polite">
-                {t('home.results', { count: filteredGifts.length })}
-              </p>
+              <div className="mb-6 animate-in fade-in duration-700">
+                <div className="relative max-w-md">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                  <input
+                    type="text"
+                    placeholder="Buscar artículos por nombre..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-12 pr-12 py-3 bg-white border border-gray-200 rounded-xl text-[15px] focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all shadow-sm"
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                    >
+                      <X size={18} />
+                    </button>
+                  )}
+                </div>
+                {searchQuery && (
+                  <p className="mt-3 text-[12px] font-medium text-[#999999]">
+                    {filteredGifts.length} resultado{filteredGifts.length !== 1 ? 's' : ''} para "{searchQuery}"
+                  </p>
+                )}
+              </div>
             )}
 
             {isInitialLoading ? (

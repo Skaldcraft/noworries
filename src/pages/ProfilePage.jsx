@@ -248,7 +248,7 @@ function ProfilePage() {
                                             <h3 className="text-[18px] font-black text-foreground mb-3 line-clamp-2 leading-tight">{item.title}</h3>
                                             <p className="text-[14px] text-muted-foreground italic mb-6 line-clamp-3 font-medium opacity-80 leading-relaxed">&ldquo;{item.ai_description}&rdquo;</p>
                                             <div className="flex items-center justify-between mt-auto pt-6 border-t border-border/50">
-                                                <span className="text-[16px] font-black text-[#1C1917] uppercase tracking-tight">{item.price}</span>
+                                                <span className="text-[16px] font-black text-[#008000] uppercase tracking-tight">{item.price}</span>
                                                 <Link
                                                     to={`/perfil/${profileId}?id=${item.id}`}
                                                     onClick={() => window.scrollTo(0, 0)}
