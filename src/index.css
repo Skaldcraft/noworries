@@ -1,3 +1,6 @@
+.gift-section-grid {
+  row-gap: 88px !important;
+}
 @media (max-width: 640px) {
   .gift-grid {
     gap: 1rem !important;

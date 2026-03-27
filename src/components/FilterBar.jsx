@@ -128,7 +128,8 @@ function FilterBar({ onFilterChange, activeFilters }) {
                 </button>
                 <div
                   ref={scrollContainerRef}
-                  className="gift-profiles"
+                  className="gift-profiles overflow-x-auto whitespace-nowrap"
+                  style={{ scrollSnapType: 'x mandatory' }}
                 >
                   {orderedProfiles.map((profile) => (
                     <button

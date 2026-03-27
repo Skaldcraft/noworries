@@ -45,8 +45,13 @@ function GiftCard({ gift, productData, loading }) {
       {/* 1. Emoji | Perfil | Rango de precio */}
       <div className="flex flex-col items-center justify-center mb-3 mt-1">
         <div className="w-12 h-12 flex items-center justify-center bg-muted/5 rounded-full mb-2 group-hover/card:scale-110 transition-transform duration-500">
-          <span className="text-[40px] leading-none filter drop-shadow-sm" role="img" aria-label={gift.recipient}>
-            {gift.emoji}
+          <span
+            className="text-[40px] leading-none filter drop-shadow-sm"
+            role="img"
+            aria-label={gift.recipient}
+            style={gift.emoji === '👴👵' ? { fontFamily: 'Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Android Emoji,EmojiSymbols', letterSpacing: '-0.4em' } : {}}
+          >
+            {gift.recipient.includes('NUEVOS PAPÁS') ? '👨‍🍼' : gift.emoji}
           </span>
         </div>
         <p className="text-[11px] uppercase tracking-[0.18em] text-foreground font-black text-center opacity-80">
@@ -108,7 +113,7 @@ function GiftCard({ gift, productData, loading }) {
 
       {/* 3. Nombre del producto */}
       <div className="flex-grow flex flex-col justify-end">
-        <h3 className="gift-title text-foreground line-clamp-2 text-center group-hover/card:text-primary transition-colors duration-300 max-h-[2.7em] overflow-hidden">
+        <h3 className="title text-foreground line-clamp-2 text-center group-hover/card:text-primary transition-colors duration-300 max-h-[2.7em] overflow-hidden">
           {displayTitle}
         </h3>
       </div>
