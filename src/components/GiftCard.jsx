@@ -40,7 +40,7 @@ function GiftCard({ gift, productData, loading }) {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -8, scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="bg-card rounded-2xl shadow-soft hover:shadow-xl transition-shadow duration-500 p-3 sm:p-4 flex flex-col relative overflow-hidden h-full border border-border group/card"
+      className="bg-card rounded-2xl shadow-soft hover:shadow-xl transition-shadow duration-500 p-3 sm:p-4 flex flex-col relative overflow-hidden h-full border border-[#C8E63A] group/card"
     >
       {/* 1. Emoji | Perfil | Rango de precio */}
       <div className="flex flex-col items-center justify-center mb-3 mt-1">

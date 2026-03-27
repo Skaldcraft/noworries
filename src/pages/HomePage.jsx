@@ -312,6 +312,12 @@ function HomePage() {
 
       <div className="min-h-screen flex flex-col relative pb-16" style={{ backgroundColor: 'var(--nw-bg)' }}>
         <SeasonalBanner />
+        <div className="max-w-3xl mx-auto mt-6 mb-0 px-2">
+          <p className="text-[12px] sm:text-[13px] text-[#444] font-normal text-center leading-snug" style={{marginTop: 0}}>
+            Ofrecemos información de precios aproximados clasificados por rangos. Los precios pueden variar de rango por unos euros.<br />
+            El precio final es el de la web oficial de Amazon, verifica siempre antes de comprar.
+          </p>
+        </div>
         <FilterBar onFilterChange={handleFilterChange} activeFilters={activeFilters} />
 
         <main className="flex-grow py-8 sm:py-12 px-4 sm:px-6" aria-busy={isInitialLoading}>
@@ -351,7 +357,7 @@ function HomePage() {
             {isInitialLoading ? (
               <div className="gift-section-grid">
                 {Array.from({ length: 6 }).map((_, i) => (
-                  <div key={`skeleton-${i}`} className="bg-card rounded-2xl shadow-sm border border-border p-6 h-[410px] animate-pulse">
+                  <div key={`skeleton-${i}`} className="bg-card rounded-2xl shadow-sm border border-[#C8E63A] p-6 h-[410px] animate-pulse">
                     <div className="h-4 w-32 bg-muted/20 rounded mx-auto mb-3" />
                     <div className="h-4 w-20 bg-muted/20 rounded mx-auto mb-6" />
                     <div className="h-[190px] bg-muted/10 rounded-xl mb-6" />

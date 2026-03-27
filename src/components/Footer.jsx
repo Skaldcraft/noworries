@@ -4,8 +4,8 @@ function Footer() {
   return (
     <footer className="bg-foreground text-muted-foreground py-6 sm:py-8 border-t border-border/10">
       <div className="max-w-[1100px] mx-auto px-6 text-center space-y-4">
-        <p className="text-[13px] leading-relaxed max-w-2xl mx-auto text-[#F4F1E8]/90">
-          En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables según las condiciones establecidas por Amazon para afiliados.
+        <p className="text-[17px] leading-relaxed max-w-2xl mx-auto text-[#F4F1E8]/90 font-semibold">
+          Esta web contiene enlaces de afiliado de Amazon y podría recibir una comisión por las compras que realices. El precio no cambia para ti y la selección de productos es independiente.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[13px] text-[#F4F1E8]/85">
           <Link to="/aviso-legal" className="text-[#F4F1E8] hover:text-[#C8E63A] transition-colors">

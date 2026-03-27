@@ -50,14 +50,14 @@ function FilterBar({ onFilterChange, activeFilters }) {
             className="hero-title is-visible text-[2.4rem] lg:text-[2.7rem] font-bold text-[#111111] leading-[1.15] tracking-[-0.01em]"
             style={{ fontFamily: "Georgia, 'Times New Roman', Times, serif" }}
           >
-            Encuentra el regalo perfecto sin romperte la cabeza
+            Encuentra el regalo perfecto sin quebraderos de cabeza
           </h1>
           <p
             className="hero-subtitle is-visible mt-3 mx-auto max-w-[42rem] text-[1rem] font-normal text-[#5a5a5a] leading-[1.6]"
             style={{ fontFamily: "'Palatino Linotype', Palatino, 'Book Antiqua', serif", marginBottom: '-8px' }}
           >
-            Ofrecemos información de precios aproximados clasificados por rangos. Los precios pueden variar de rango por unos euros.<br />
-            El precio final es el de la web oficial de Amazon, verifica siempre antes de comprar.
+            Solo dinos cuánto quieres gastar y para quién es el regalo.<br />
+            Lo filtramos por ti y te enseñamos ideas que encajan.
           </p>
         </div>
 
