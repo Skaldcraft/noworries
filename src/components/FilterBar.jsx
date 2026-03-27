@@ -63,7 +63,7 @@ function FilterBar({ onFilterChange, activeFilters }) {
         <div className="flex flex-col items-center gap-8 sm:gap-10">
           <div className="w-full">
             <p
-              className="hero-microcopy is-visible text-[13px] font-semibold text-[#9b9b9b] uppercase tracking-[0.12em] mb-5 text-center"
+              className="hero-microcopy is-visible text-[13px] font-semibold text-[#9b9b9b] uppercase tracking-[0.12em] mb-3 text-center"
               style={{ fontFamily: "'Palatino Linotype', Palatino, 'Book Antiqua', serif" }}
             >
               Filtra por presupuesto y perfil y evita el laberinto de Amazon

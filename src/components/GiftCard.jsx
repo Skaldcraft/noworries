@@ -45,14 +45,31 @@ function GiftCard({ gift, productData, loading }) {
       {/* 1. Emoji | Perfil | Rango de precio */}
       <div className="flex flex-col items-center justify-center mb-3 mt-1">
         <div className="w-12 h-12 flex items-center justify-center bg-muted/5 rounded-full mb-2 group-hover/card:scale-110 transition-transform duration-500">
-          <span
-            className="text-[40px] leading-none filter drop-shadow-sm"
-            role="img"
-            aria-label={gift.recipient}
-            style={gift.emoji === '👴👵' ? { fontFamily: 'Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Android Emoji,EmojiSymbols', letterSpacing: '-0.4em' } : {}}
-          >
-            {gift.recipient.includes('NUEVOS PAPÁS') ? '👨‍🍼' : gift.emoji}
-          </span>
+          {gift.recipient.toUpperCase().includes('NUEVOS PAPÁS') || gift.recipient.toUpperCase().includes('NUEVOS MAMÁS') || gift.emoji.includes('👩‍👧') || gift.emoji.includes('👨‍👦') || gift.emoji.includes('🧑‍🦱') ? (
+            <span
+              className="text-[36px] leading-none filter drop-shadow-sm flex flex-row items-center justify-center"
+              role="img"
+              aria-label={gift.recipient}
+            >
+              {gift.emoji}
+            </span>
+          ) : gift.emoji === '👴👵' ? (
+            <span
+              className="text-[36px] leading-none filter drop-shadow-sm flex flex-row items-center justify-center"
+              role="img"
+              aria-label={gift.recipient}
+            >
+              <span style={{marginRight: '2px'}}>👴</span><span>👵</span>
+            </span>
+          ) : (
+            <span
+              className="text-[40px] leading-none filter drop-shadow-sm"
+              role="img"
+              aria-label={gift.recipient}
+            >
+              {gift.emoji}
+            </span>
+          )}
         </div>
         <p className="text-[11px] uppercase tracking-[0.18em] text-foreground font-black text-center opacity-80">
           {gift.recipient}

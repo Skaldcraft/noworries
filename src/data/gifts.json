@@ -212,7 +212,7 @@
   {
     "id": "for-teens-15-35-B0C3HCD34R",
     "recipient": "PARA ADOLESCENTES",
-    "emoji": "🎧",
+    "emoji": "🧑‍🦱🧑‍🦰",
     "tier": "person",
     "price_range": "15-35",
     "asin": "B0C3HCD34R",
@@ -377,7 +377,7 @@
   {
     "id": "for-traveler-under-15-B0DQ8JRWWM",
     "recipient": "PARA GENTE VIAJERA",
-    "emoji": "✈️",
+    "emoji": "🚄",
     "tier": "personality",
     "price_range": "under-15",
     "asin": "B0DQ8JRWWM",
@@ -392,7 +392,7 @@
   {
     "id": "for-traveler-15-35-B0C23CTDTV",
     "recipient": "PARA GENTE VIAJERA",
-    "emoji": "✈️",
+    "emoji": "🚄",
     "tier": "personality",
     "price_range": "15-35",
     "asin": "B0C23CTDTV",
@@ -407,7 +407,7 @@
   {
     "id": "for-traveler-15-35-B0DBLWY1SG",
     "recipient": "PARA GENTE VIAJERA",
-    "emoji": "✈️",
+    "emoji": "🚄",
     "tier": "personality",
     "price_range": "15-35",
     "asin": "B0DBLWY1SG",
@@ -527,7 +527,7 @@
   {
     "id": "for-newparents-35-70-B0BQ77KZJ8",
     "recipient": "PARA NUEVOS PAPÁS Y MAMÁS",
-    "emoji": "👪",
+    "emoji": "👨‍🍼👩‍🍼",
     "tier": "occasion",
     "price_range": "35-70",
     "asin": "B0BQ77KZJ8",
@@ -542,7 +542,7 @@
   {
     "id": "new-home-15-35-B0G69384QL",
     "recipient": "NUEVO HOGAR",
-    "emoji": "🏠",
+    "emoji": "📦",
     "tier": "occasion",
     "price_range": "15-35",
     "asin": "B0G69384QL",
@@ -557,7 +557,7 @@
   {
     "id": "new-job-15-35-B0DP3JFY1Q",
     "recipient": "NUEVO TRABAJO/ASCENSO",
-    "emoji": "🚀",
+    "emoji": "📈",
     "tier": "occasion",
     "price_range": "15-35",
     "asin": "B0DP3JFY1Q",
@@ -737,7 +737,7 @@
   {
     "id": "farewell-15-35-B08LP1F4V9",
     "recipient": "DESPEDIDA",
-    "emoji": "🏆",
+    "emoji": "👋",
     "tier": "occasion",
     "price_range": "15-35",
     "asin": "B08LP1F4V9",
