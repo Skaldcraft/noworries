@@ -201,6 +201,31 @@ function HomePage() {
     sessionStorage.removeItem('homeShouldRestoreScroll');
   }, []);
 
+  // Lazy load animations for hero and filters
+  useEffect(() => {
+    const targets = document.querySelectorAll(
+      '.hero-title, .hero-subtitle, .hero-microcopy, .filter-section'
+    );
+
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    targets.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleRetryFailed = () => {
     if (isManualProductMode) {
       return;
@@ -285,7 +310,7 @@ function HomePage() {
         <meta name="description" content={t('seo.home_description')} />
       </Helmet>
 
-      <div className="min-h-screen bg-[#f9f9f9] flex flex-col relative pb-16">
+      <div className="min-h-screen flex flex-col relative pb-16" style={{ backgroundColor: 'var(--nw-bg)' }}>
         <SeasonalBanner />
         <FilterBar onFilterChange={handleFilterChange} activeFilters={activeFilters} />
 
@@ -300,7 +325,7 @@ function HomePage() {
                     placeholder="Buscar artículos por nombre..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-12 pr-12 py-3 bg-white border border-gray-200 rounded-xl text-[15px] focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all shadow-sm"
+                    className="w-full pl-12 pr-12 py-3 bg-white border border-gray-200 rounded-full text-[15px] focus:outline-none focus:ring-2 focus:ring-[#C8E63A] focus:border-[#C8E63A] transition-all shadow-sm"
                   />
                   {searchQuery && (
                     <button
@@ -312,7 +337,7 @@ function HomePage() {
                   )}
                 </div>
                 {searchQuery && (
-                  <p className="mt-3 text-[12px] font-medium text-[#999999]">
+                  <p className="mt-3 text-[12px] font-medium text-[#888880]">
                     {filteredGifts.length} resultado{filteredGifts.length !== 1 ? 's' : ''} para "{searchQuery}"
                   </p>
                 )}
