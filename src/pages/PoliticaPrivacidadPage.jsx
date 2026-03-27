@@ -7,7 +7,7 @@ const sections = [
       'Identidad del Responsable: Ángel González Palenzuela',
       'Nombre comercial: noworries.gift',
       'NIF/CIF: 38078911L',
-      'Dirección: ',
+      'Dirección: Avenida de los telares, 30, 33401, Avilés, Asturias',
       'Correo electrónico: skald@skaldcraft.com',
       'Actividad: Recomendación de productos y regalos a través de programas de afiliación.'
     ]
