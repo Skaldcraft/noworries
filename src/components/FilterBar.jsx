@@ -40,31 +40,31 @@ function FilterBar({ onFilterChange, activeFilters }) {
 
   return (
     <div className="relative z-30 bg-white px-0 sm:px-0 pb-0 sm:pb-0 border-none">
-      <div className="max-w-[1100px] mx-auto bg-white px-0 sm:px-0 pt-4 sm:pt-5 pb-8 sm:pb-10 text-center border-none shadow-none rounded-none">
+      <div className="max-w-[1100px] mx-auto bg-white px-0 sm:px-0 pt-2 sm:pt-3 pb-4 sm:pb-6 text-center border-none shadow-none rounded-none">
         <div className="overflow-x-auto whitespace-nowrap text-[11px] leading-none text-[#888] pb-4 sm:pb-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <span className="inline-block">{t('filters.legal')}</span>
         </div>
 
-        <div className="mx-auto max-w-[720px] mb-10">
+        <div className="mx-auto max-w-[720px] mb-4">
           <h1
-            className="hero-title is-visible text-[2.4rem] lg:text-[2.7rem] font-bold text-[#111111] leading-[1.15] tracking-[-0.01em]"
+            className="hero-title is-visible text-[2.2rem] lg:text-[2.5rem] font-bold text-[#111111] leading-[1.13] tracking-[-0.01em] mt-0 mb-1"
             style={{ fontFamily: "Georgia, 'Times New Roman', Times, serif" }}
           >
             Encuentra el regalo perfecto sin quebraderos de cabeza
           </h1>
           <p
-            className="hero-subtitle is-visible mt-3 mx-auto max-w-[42rem] text-[1rem] font-normal text-[#5a5a5a] leading-[1.6]"
-            style={{ fontFamily: "'Palatino Linotype', Palatino, 'Book Antiqua', serif", marginBottom: '-8px' }}
+            className="hero-subtitle is-visible mt-2 mx-auto max-w-[42rem] text-[0.97rem] font-normal text-[#5a5a5a] leading-[1.5] mb-2"
+            style={{ fontFamily: "'Palatino Linotype', Palatino, 'Book Antiqua', serif", marginBottom: '-4px' }}
           >
             Solo dinos cuánto quieres gastar y para quién es el regalo.<br />
             Lo filtramos por ti y te enseñamos ideas que encajan.
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-8 sm:gap-10">
+        <div className="flex flex-col items-center gap-5 sm:gap-7">
           <div className="w-full">
             <p
-              className="hero-microcopy is-visible text-[13px] font-semibold text-[#9b9b9b] uppercase tracking-[0.12em] mb-3 text-center"
+              className="hero-microcopy is-visible text-[13px] font-semibold text-[#9b9b9b] uppercase tracking-[0.12em] mb-2 text-center"
               style={{ fontFamily: "'Palatino Linotype', Palatino, 'Book Antiqua', serif" }}
             >
               Filtra por presupuesto y perfil y evita el laberinto de Amazon

@@ -314,8 +314,8 @@ function HomePage() {
         <SeasonalBanner />
         <div className="max-w-3xl mx-auto mt-6 mb-0 px-2">
           <p className="text-[12px] sm:text-[13px] text-[#444] font-normal text-center leading-snug" style={{marginTop: 0}}>
-            Ofrecemos información de precios aproximados clasificados por rangos. Los precios pueden variar de rango por unos euros.<br />
-            El precio final es el de la web oficial de Amazon, verifica siempre antes de comprar.
+            Mostramos precios aproximados por rangos. Puede haber pequeñas variaciones.<br />
+            El precio final es el de Amazon; verifica siempre antes de comprar.
           </p>
         </div>
         <FilterBar onFilterChange={handleFilterChange} activeFilters={activeFilters} />
