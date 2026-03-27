@@ -40,19 +40,19 @@ function GiftCard({ gift, productData, loading }) {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -8, scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="bg-card rounded-2xl shadow-soft hover:shadow-xl transition-shadow duration-500 p-5 sm:p-6 flex flex-col relative overflow-hidden h-full border border-border group/card"
+      className="bg-card rounded-2xl shadow-soft hover:shadow-xl transition-shadow duration-500 p-3 sm:p-4 flex flex-col relative overflow-hidden h-full border border-border group/card"
     >
       {/* 1. Emoji | Perfil | Rango de precio */}
-      <div className="flex flex-col items-center justify-center mb-6 mt-1">
-        <div className="w-16 h-16 flex items-center justify-center bg-muted/5 rounded-full mb-3 group-hover/card:scale-110 transition-transform duration-500">
+      <div className="flex flex-col items-center justify-center mb-3 mt-1">
+        <div className="w-12 h-12 flex items-center justify-center bg-muted/5 rounded-full mb-2 group-hover/card:scale-110 transition-transform duration-500">
           <span className="text-[40px] leading-none filter drop-shadow-sm" role="img" aria-label={gift.recipient}>
             {gift.emoji}
           </span>
         </div>
-        <p className="text-[12px] uppercase tracking-[0.2em] text-foreground font-black text-center opacity-80">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-foreground font-black text-center opacity-80">
           {gift.recipient}
         </p>
-        <div className="flex items-center gap-2 mt-2">
+        <div className="flex items-center gap-1 mt-1">
           <p className="text-[11px] text-primary font-black uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded-full">
             {getPriceLabel(gift.price_range)}
           </p>
@@ -63,7 +63,7 @@ function GiftCard({ gift, productData, loading }) {
       </div>
 
       {/* 2. Imagen */}
-      <div className="relative bg-muted/5 rounded-2xl mb-6 flex items-center justify-center min-h-[190px] overflow-hidden group shadow-inner border border-border/50">
+      <div className="relative bg-muted/5 rounded-2xl mb-4 flex items-center justify-center min-h-[200px] overflow-hidden group shadow-inner border border-border/50">
         {loading ? (
           <div className="w-full h-[180px] flex flex-col items-center justify-center rounded-lg p-4 bg-white/50 backdrop-blur-sm">
             <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-3"></div>
@@ -81,7 +81,7 @@ function GiftCard({ gift, productData, loading }) {
             <img
               src={getImageUrl(gift.image || productData?.image)}
               alt={displayTitle}
-              className={`max-h-[180px] max-w-[85%] object-contain transition-all duration-700 group-hover:scale-110 ${imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+              className={`max-h-[180px] max-w-[90%] object-contain transition-all duration-700 group-hover:scale-110 ${imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
               loading="lazy"
               onLoad={() => setImageLoaded(true)}
               onError={(e) => {
@@ -107,14 +107,14 @@ function GiftCard({ gift, productData, loading }) {
       </div>
 
       {/* 3. Nombre del producto */}
-      <div className="mb-4 flex-grow flex flex-col justify-center">
-        <h3 className="text-[18px] font-black text-foreground line-clamp-2 leading-[1.3] text-center px-2 group-hover/card:text-primary transition-colors duration-300 mb-2">
+      <div className="mb-0 flex-grow flex flex-col justify-end">
+        <h3 className="text-[16px] font-black text-foreground line-clamp-2 leading-[1.25] text-center px-1 group-hover/card:text-primary transition-colors duration-300 mb-0 max-h-[2.7em] overflow-hidden">
           {displayTitle}
         </h3>
       </div>
 
       {/* 4. Botón: Ver características */}
-      <div className="flex flex-col gap-2 mt-auto">
+      <div className="flex flex-col gap-1 mt-auto">
         <button
           onClick={() => {
             const profileId = getProfileIdFromGiftId(gift.id);
@@ -123,10 +123,10 @@ function GiftCard({ gift, productData, loading }) {
             navigate(`/perfil/${profileId}?id=${gift.id}`);
           }}
           aria-label={`Ver características de ${displayTitle}`}
-          className="block w-full text-center py-7 rounded-xl font-black text-[16px] text-white hover:opacity-90 transition-all duration-300 shadow-md shadow-emerald-900/20 transform active:scale-[0.98] ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          style={{ backgroundColor: '#1B4332', minHeight: '64px', paddingTop: '1.5rem', paddingBottom: '1.5rem' }}
+          className="block w-full py-3 rounded-lg font-black text-[15px] text-white hover:opacity-90 transition-all duration-300 shadow-md shadow-emerald-900/20 transform active:scale-[0.98] ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          style={{ backgroundColor: '#1B4332', minHeight: '40px', paddingTop: '0.5rem', paddingBottom: '1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
         >
-          {t('card.view_details')}
+          <span style={{ textAlign: 'center', width: '100%' }}>{t('card.view_details')}</span>
         </button>
       </div>
     </motion.div>

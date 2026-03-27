@@ -349,7 +349,7 @@ function HomePage() {
             )}
 
             {isInitialLoading ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              <div className="gift-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 lg:gap-12 mx-auto max-w-7xl px-4 lg:px-12 py-12">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <div key={`skeleton-${i}`} className="bg-card rounded-2xl shadow-sm border border-border p-6 h-[410px] animate-pulse">
                     <div className="h-4 w-32 bg-muted/20 rounded mx-auto mb-3" />
@@ -372,7 +372,7 @@ function HomePage() {
                 {filteredGifts.map((gift, index) => (
                   <div 
                     key={gift.id} 
-                    className={`mb-8 animate-in fade-in slide-in-from-bottom stagger-${(index % 5) + 1}`}
+                    className={`gift-card bg-white/90 rounded-2xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 mb-8 animate-in fade-in slide-in-from-bottom stagger-${(index % 5) + 1}`}
                   >
                     <GiftCard
                       gift={gift}
