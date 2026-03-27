@@ -11,7 +11,7 @@ const sections = [
   {
     title: '2. Datos del titular',
     body: [
-      'Denominación social: Ángel González Palenzuela,
+      'Denominación social: Ángel González Palenzuela',
       'NIF/CIF: 38078911L',
       'Correo electrónico: skald@skaldcraft.com',
       'Domicilio social: Avenida de los telares, 30, 33401, Avilés, Asturias',
