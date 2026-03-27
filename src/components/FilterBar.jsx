@@ -38,9 +38,9 @@ function FilterBar({ onFilterChange, activeFilters }) {
     }
   };
 
-return (
-    <div className="relative z-30 bg-transparent px-4 sm:px-6 pb-6 sm:pb-8">
-      <div className="max-w-[1100px] mx-auto rounded-[0_0_30px_30px] bg-white px-4 sm:px-8 pt-4 sm:pt-5 pb-8 sm:pb-10 text-center shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+  return (
+    <div className="relative z-30 bg-white px-0 sm:px-0 pb-0 sm:pb-0 border-none">
+      <div className="max-w-[1100px] mx-auto bg-white px-0 sm:px-0 pt-4 sm:pt-5 pb-8 sm:pb-10 text-center border-none shadow-none rounded-none">
         <div className="overflow-x-auto whitespace-nowrap text-[11px] leading-none text-[#888] pb-4 sm:pb-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <span className="inline-block">{t('filters.legal')}</span>
         </div>
@@ -48,13 +48,13 @@ return (
         <div className="mx-auto max-w-[720px] mb-10">
           <h1
             className="hero-title is-visible text-[2.4rem] lg:text-[2.7rem] font-bold text-[#111111] leading-[1.15] tracking-[-0.01em]"
-            style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
+            style={{ fontFamily: "Georgia, 'Times New Roman', Times, serif" }}
           >
             Encuentra el regalo perfecto sin romperte la cabeza
           </h1>
           <p
             className="hero-subtitle is-visible mt-3 mx-auto max-w-[42rem] text-[1rem] font-normal text-[#5a5a5a] leading-[1.6]"
-            style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
+            style={{ fontFamily: "'Palatino Linotype', Palatino, 'Book Antiqua', serif", marginBottom: '-8px' }}
           >
             Solo dinos cuánto quieres gastar y para quién es el regalo.<br />Lo filtramos por ti y te enseñamos ideas que encajan.
           </p>
@@ -64,15 +64,12 @@ return (
           <div className="w-full">
             <p
               className="hero-microcopy is-visible text-[13px] font-semibold text-[#9b9b9b] uppercase tracking-[0.12em] mb-5 text-center"
-              style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
+              style={{ fontFamily: "'Palatino Linotype', Palatino, 'Book Antiqua', serif" }}
             >
               Filtra por presupuesto y perfil y evita el laberinto de Amazon
             </p>
-            <div className="filter-section is-visible">
-              <h3
-                className="filter-section-title"
-                style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
-              >
+            <div className="filter-section is-visible mt-0">
+              <h3 className="filter-section-title mt-0 mb-2">
                 Presupuesto
               </h3>
               <div className="filter-buttons-group">
@@ -81,17 +78,13 @@ return (
                     key={budget.value}
                     onClick={() => onFilterChange('budget', budget.value)}
                     aria-pressed={activeFilters.budget === budget.value}
-                    className={`px-3 sm:px-4 lg:px-3 xl:px-4 py-2 sm:py-2.5 lg:py-2 rounded-[10px] transition-all duration-300 border flex flex-col items-center justify-center min-w-[92px] sm:min-w-[102px] lg:min-w-[94px] xl:min-w-[102px] shadow-[0_4px_10px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8C420]/50 focus-visible:ring-offset-2 ${activeFilters.budget === budget.value
-                      ? 'bg-[#C8E63A] text-[#1A2A08] shadow-[0_5px_15px_rgba(200,230,58,0.3)] border-transparent'
-                      : 'bg-[#f0f0f0] text-[#444] hover:bg-[#C8E63A] hover:text-[#1A2A08] hover:border-transparent border-[#d8d8d8]'
-                      }`}
-                    style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
+                    className={`filter-button px-3 sm:px-4 lg:px-3 xl:px-4 py-2 sm:py-2.5 lg:py-2 flex flex-col items-center justify-center min-w-[92px] sm:min-w-[102px] lg:min-w-[94px] xl:min-w-[102px] ${activeFilters.budget === budget.value ? 'is-active' : ''}`}
                   >
-                    <div className={`text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] font-semibold uppercase tracking-[0.08em] leading-tight transition-colors ${activeFilters.budget === budget.value ? 'text-[#1A2A08]/80' : 'text-[#777]'}`}>
+                    <div className="text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[10px] font-semibold uppercase tracking-[0.08em] leading-tight">
                       {budget.label}
                     </div>
                     {budget.sublabel && (
-                      <div className={`text-[12px] sm:text-[13px] lg:text-[12px] xl:text-[13px] font-semibold mt-0.5 transition-colors ${activeFilters.budget === budget.value ? 'text-[#1A2A08]' : 'text-[#444]'}`}>
+                      <div className="text-[12px] sm:text-[13px] lg:text-[12px] xl:text-[13px] font-semibold mt-0.5">
                         {budget.sublabel}
                       </div>
                     )}
@@ -102,28 +95,17 @@ return (
           </div>
 
           <div className="w-full">
-            <div className="flex justify-center">
-              <div className="filter-section is-visible">
-                <h3
-                  className="filter-section-title"
-                  style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
-                >
-                  Para quién buscas
-                </h3>
-              </div>
-            </div>
             <div className="filter-section is-visible">
+              <h3 className="filter-section-title">
+                Para quién buscas
+              </h3>
               <div className="filter-buttons-group">
                 {categories.map((cat) => (
                   <button
                     key={cat.id}
                     onClick={() => onFilterChange('tier', cat.id)}
                     aria-pressed={activeFilters.tier === cat.id}
-                    className={`px-4 sm:px-5 lg:px-3.5 xl:px-5 py-2.5 lg:py-2 min-h-[40px] lg:min-h-[36px] rounded-full text-[12px] sm:text-[13px] lg:text-[11px] xl:text-[13px] font-bold border transition-all duration-300 shadow-[0_4px_10px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8C420]/50 focus-visible:ring-offset-2 ${activeFilters.tier === cat.id
-                      ? 'bg-[#C8E63A] text-[#1A2A08] shadow-[0_5px_15px_rgba(200,230,58,0.3)] border-transparent'
-                      : 'bg-[#f0f0f0] text-[#444] hover:bg-[#C8E63A] hover:text-[#1A2A08] hover:border-transparent border-[#d8d8d8]'
-                      }`}
-                    style={{ fontFamily: "'Inter', 'Lato', sans-serif" }}
+                    className={`filter-button px-4 sm:px-5 lg:px-3.5 xl:px-5 py-2.5 lg:py-2 min-h-[40px] lg:min-h-[36px] ${activeFilters.tier === cat.id ? 'is-active' : ''}`}
                   >
                     {cat.label}
                   </button>
@@ -153,9 +135,9 @@ return (
                       key={profile.id}
                       onClick={() => onFilterChange('profile', profile.id)}
                       aria-pressed={activeFilters.profile === profile.id}
-                      className={`shrink-0 px-4 sm:px-5 py-2.5 rounded-full text-[12px] transition-all whitespace-nowrap border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8C420]/50 focus-visible:ring-offset-1 shadow-[0_4px_10px_rgba(0,0,0,0.05)] ${activeFilters.profile === profile.id
-                          ? 'bg-[#C8E63A] text-[#1A2A08] border-transparent shadow-[0_5px_15px_rgba(200,230,58,0.3)] font-semibold'
-                          : 'bg-white text-[#444444] border-[#eeeeee] hover:bg-[#C8E63A] hover:text-[#1A2A08] hover:border-transparent font-medium'
+                      className={`profile-chip shrink-0 px-4 sm:px-5 py-2.5 text-[12px] whitespace-nowrap focus-visible:outline-none ${activeFilters.profile === profile.id
+                          ? 'is-active bg-[#f7f7f2] border-[#C8E63A] font-semibold'
+                          : 'bg-white border-[#C8E63A] font-medium'
                           }`}
                       style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
                     >

@@ -107,8 +107,8 @@ function GiftCard({ gift, productData, loading }) {
       </div>
 
       {/* 3. Nombre del producto */}
-      <div className="mb-8 flex-grow flex flex-col justify-center">
-        <h3 className="text-[18px] font-black text-foreground line-clamp-2 leading-[1.3] text-center px-2 group-hover/card:text-primary transition-colors duration-300">
+      <div className="mb-4 flex-grow flex flex-col justify-center">
+        <h3 className="text-[18px] font-black text-foreground line-clamp-2 leading-[1.3] text-center px-2 group-hover/card:text-primary transition-colors duration-300 mb-2">
           {displayTitle}
         </h3>
       </div>
@@ -123,8 +123,8 @@ function GiftCard({ gift, productData, loading }) {
             navigate(`/perfil/${profileId}?id=${gift.id}`);
           }}
           aria-label={`Ver características de ${displayTitle}`}
-          className="block w-full text-center py-4 rounded-xl font-black text-[15px] text-white hover:opacity-90 transition-all duration-300 shadow-md shadow-emerald-900/20 transform active:scale-[0.98] ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          style={{ backgroundColor: '#1B4332' }}
+          className="block w-full text-center py-7 rounded-xl font-black text-[16px] text-white hover:opacity-90 transition-all duration-300 shadow-md shadow-emerald-900/20 transform active:scale-[0.98] ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          style={{ backgroundColor: '#1B4332', minHeight: '64px', paddingTop: '1.5rem', paddingBottom: '1.5rem' }}
         >
           {t('card.view_details')}
         </button>

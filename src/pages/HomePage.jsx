@@ -319,22 +319,26 @@ function HomePage() {
             {!isInitialLoading && (
               <div className="mb-6 animate-in fade-in duration-700">
                 <div className="relative max-w-md">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-                  <input
-                    type="text"
-                    placeholder="Buscar artículos por nombre..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-12 pr-12 py-3 bg-white border border-gray-200 rounded-full text-[15px] focus:outline-none focus:ring-2 focus:ring-[#C8E63A] focus:border-[#C8E63A] transition-all shadow-sm"
-                  />
-                  {searchQuery && (
-                    <button
-                      onClick={() => setSearchQuery('')}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                    >
-                      <X size={18} />
-                    </button>
-                  )}
+                  <div className="flex items-center w-full h-full">
+                    <span className="flex items-center justify-center h-full absolute left-0 top-0 pl-4" style={{height: '100%'}}>
+                      <Search className="text-gray-400" size={20} />
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="Buscar regalos por el nombre"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full pl-12 pr-12 py-3 bg-white border border-gray-200 rounded-full text-[15px] focus:outline-none focus:ring-2 focus:ring-[#C8E63A] focus:border-[#C8E63A] transition-all shadow-sm"
+                    />
+                    {searchQuery && (
+                      <button
+                        onClick={() => setSearchQuery('')}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                      >
+                        <X size={18} />
+                      </button>
+                    )}
+                  </div>
                 </div>
                 {searchQuery && (
                   <p className="mt-3 text-[12px] font-medium text-[#888880]">
@@ -368,7 +372,7 @@ function HomePage() {
                 {filteredGifts.map((gift, index) => (
                   <div 
                     key={gift.id} 
-                    className={`animate-in fade-in slide-in-from-bottom stagger-${(index % 5) + 1}`}
+                    className={`mb-8 animate-in fade-in slide-in-from-bottom stagger-${(index % 5) + 1}`}
                   >
                     <GiftCard
                       gift={gift}

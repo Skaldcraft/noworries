@@ -13,8 +13,15 @@ import { useTranslation } from 'react-i18next';
 import { idToProfileMap, getProfileIdFromGiftId } from '@/lib/profiles';
 
 const AmazonIcon = () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M15.012 19.405c-1.114.721-2.674 1.144-4.321 1.144-2.887 0-5.385-.944-7.076-2.404-.325-.281-.132-.733.266-.643 2.126.471 4.417.721 6.772.721 2.217 0 4.398-.225 6.37-.655.45-.1.68.423.23.702.408-.073.344.028.188.135zm7.394-1.258c-.521.682-1.442 1.391-2.164 1.391-.722 0-1.402-.244-1.964-.606-.088-.057-.101-.179-.028-.276 1.096-1.447 2.564-2.28 4.167-2.207.088.004.156.082.152.171-.035.789-.163 1.527-.163 1.527zm-1.122-4.031c-1.84.053-3.513.911-4.57 2.378-.051.071-.144.088-.22.053-.51-.233-.974-.537-1.373-.895-.067-.06-.073-.158-.016-.225.86-1.02 2.113-1.761 3.513-2.072 1.4-.311 2.871-.24 4.126.24.1.037.147.161.09.25-.42.66-.889 1.257-1.55 2.271z" />
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g>
+            <path d="M8.5 25.5c3.5 2.5 11.5 2.5 15 0" stroke="#FF9900" strokeWidth="2" strokeLinecap="round"/>
+            <path d="M20.5 25c.5.5 1.5 1 2.5 1s2-.5 2.5-1" stroke="#FF9900" strokeWidth="1.2" strokeLinecap="round"/>
+            <path d="M10 7.5c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5c0 2.5-2 4.5-4.5 4.5S10 10 10 7.5Z" fill="#FF9900"/>
+            <text x="11.5" y="22.5" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="18" fill="#232F3E">a</text>
+            <path d="M13.5 26c2.5 1.5 6.5 1.5 9 0" stroke="#FF9900" strokeWidth="1.5" strokeLinecap="round"/>
+            <path d="M21.5 25.5c.2.2.6.5 1.5.5s1.3-.3 1.5-.5" stroke="#FF9900" strokeWidth="0.8" strokeLinecap="round"/>
+        </g>
     </svg>
 );
 
@@ -130,21 +137,21 @@ function ProfilePage() {
                 <Header />
 
                 {/* Hero del perfil */}
-                <div className="bg-card border-b border-border py-10 sm:py-16">
+                <div className="bg-card border-b border-border py-5 sm:py-6">
                     <div className="max-w-[860px] mx-auto px-6 animate-in fade-in slide-in-from-bottom duration-700">
-                        <Link to="/" className="inline-flex items-center gap-2 text-[14px] text-muted-foreground hover:text-foreground mb-10 transition-colors group">
-                            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Volver a la selección
+                        <Link to="/" className="inline-flex items-center gap-2 text-[13px] text-muted-foreground hover:text-foreground mb-4 transition-colors group">
+                            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Volver a la selección
                         </Link>
-                        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 text-center sm:text-left">
-                            <div className="w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center bg-muted/5 rounded-full shrink-0 shadow-inner border border-border/50">
-                                <span className="text-[64px] sm:text-[80px] leading-none shrink-0 filter drop-shadow-md">{currentGift?.emoji || '🎁'}</span>
+                        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
+                            <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center bg-muted/5 rounded-full shrink-0 shadow-inner border border-border/50">
+                                <span className="text-[40px] sm:text-[48px] leading-none shrink-0 filter drop-shadow-md">{currentGift?.emoji || '🎁'}</span>
                             </div>
                             <div>
-                                <h1 className="text-[36px] sm:text-[48px] font-black text-foreground leading-tight mb-4 uppercase tracking-tight">{profileInfo.title}</h1>
-                                <div className="h-2 w-20 bg-primary mb-6 rounded-full mx-auto sm:mx-0" />
-                                <p className="text-[16px] sm:text-[18px] text-muted-foreground leading-relaxed max-w-[600px] font-medium">{profileInfo.public_description}</p>
+                                <h1 className="text-[22px] sm:text-[28px] font-black text-foreground leading-tight mb-1 uppercase tracking-tight">{profileInfo.title}</h1>
+                                <div className="h-1.5 w-16 bg-primary mb-3 rounded-full mx-auto sm:mx-0" />
+                                <p className="text-[13px] sm:text-[14px] text-muted-foreground leading-relaxed max-w-[600px] font-medium">{profileInfo.public_description}</p>
                                 {profileInfo.support_text && (
-                                    <p className="text-[14px] sm:text-[15px] text-muted-foreground/75 leading-relaxed max-w-[600px] font-normal mt-3">{profileInfo.support_text}</p>
+                                    <p className="text-[13px] sm:text-[14px] text-muted-foreground/75 leading-relaxed max-w-[600px] font-normal mt-2">{profileInfo.support_text}</p>
                                 )}
                             </div>
                         </div>
@@ -196,22 +203,24 @@ function ProfilePage() {
                                         <p className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-2">Por qué funciona</p>
                                         <p className="text-[14px] sm:text-[15px] text-muted-foreground leading-relaxed font-medium">{currentGift.why_it_works}</p>
                                     </div>
-                                    <div className="flex flex-col sm:flex-row gap-3">
+                                    <div className="flex flex-col sm:flex-row gap-4">
                                         <motion.a 
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
-                                            href={currentGift.affiliate_url_format} target="_blank" rel="noopener noreferrer sponsored" className="flex-1 flex items-center justify-center gap-2 bg-[#FF9900] hover:bg-[#FF8C00] text-white font-black py-3.5 rounded-xl transition-all shadow-md shadow-orange-500/10 text-[14px]"
+                                            href={currentGift.affiliate_url_format} target="_blank" rel="noopener noreferrer sponsored"
+                                            className="flex-1 flex items-center justify-center gap-3 bg-[#FF9900] hover:bg-[#FF8C00] text-white font-black py-2.5 px-5 rounded-full transition-all shadow-md shadow-orange-500/10 text-[1.08rem]"
                                         >
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                                <path d="M13.058 18.5c-1.505.967-3.58 1.53-5.8 1.53-3.88 0-7.24-1.27-9.51-3.23-.44-.38-.18-.99.36-.87 2.86.63 5.94.97 9.1.97 2.98 0 5.91-.3 8.56-.88.6-.13.91.57.31.94.55-.1.46.04.25.18zm9.94-1.69c-.7.92-1.94 1.87-2.91 1.87-.97 0-1.89-.33-2.64-.81-.12-.08-.14-.24-.04-.37 1.47-1.95 3.45-3.07 5.6-2.97.12.01.21.11.2.23-.04 1.06-.22 2.05-.21 2.05zm-1.51-5.42c-2.47.07-4.72 1.22-6.14 3.2-.07.1-.19.12-.3.07-.68-.31-1.31-.72-1.85-1.2-.09-.08-.1-.21-.02-.3 1.15-1.37 2.84-2.37 4.72-2.78 1.88-.42 3.86-.32 5.54.32.14.05.2.22.12.34-.56.89-1.2 1.69-2.07 3.06z"/>
-                                            </svg> {t ? t('card.go_to_amazon', 'Ir a Amazon') : 'Ir a Amazon'} <ExternalLink size={14} />
+                                            <AmazonIcon />
+                                            <span style={{fontSize: '1.18em', fontWeight: 800, letterSpacing: '-0.01em'}}>Ir a Amazon</span>
                                         </motion.a>
                                         <motion.button 
-                                            whileHover={{ scale: 1.02, backgroundColor: "var(--background)" }}
                                             whileTap={{ scale: 0.98 }}
-                                            onClick={handleShare} className={`flex-1 flex items-center justify-center gap-2 font-bold py-3.5 rounded-xl border transition-all text-[14px] ${copied ? 'bg-green-50 border-green-300 text-green-700' : 'bg-card text-muted-foreground border-border hover:border-muted'}`}
+                                            onClick={handleShare}
+                                            className={`flex-1 flex items-center justify-center gap-3 font-bold py-2.5 px-5 rounded-full border transition-all text-[1.08rem] ${copied ? 'bg-white border-green-400 text-green-600' : 'bg-white text-muted-foreground border-[#C8E63A] hover:border-[#A8C420]'}`}
                                         >
-                                            {copied ? <><Check size={17} /> ¡Copiado!</> : <><Share2 size={17} /> Compartir</>}
+                                            {copied
+                                              ? (<><Check size={24} /> <span style={{fontSize: '1.18em', fontWeight: 800}}>¡Copiado!</span></>)
+                                              : (<><Share2 size={24} /> <span style={{fontSize: '1.18em', fontWeight: 800}}>Compartir</span></>)}
                                         </motion.button>
                                     </div>
                                 </motion.div>
