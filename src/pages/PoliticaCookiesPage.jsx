@@ -42,7 +42,7 @@ const sections = [
     title: 'C. Cookies de análisis',
     body: [
       'Utilizamos servicios de análisis para entender cómo interactúan los usuarios con el sitio.',
-      'Herramienta: {EJ. GOOGLE ANALYTICS / CLOUDFLARE}.',
+      'Herramienta: GOOGLE ANALYTICS.',
       'Recogen datos sobre el tipo de navegación, las secciones más utilizadas, productos consultados, idioma, etc. Esta información es estadística y anónima.'
     ]
   },
@@ -56,7 +56,7 @@ const sections = [
     title: '5. Más información',
     body: [
       <>Puedes consultar el reglamento sobre cookies publicado por la Agencia Española de Protección de Datos en su <a href="https://www.aepd.es/guias/guia-cookies.pdf" target="_blank" rel="noreferrer noopener" className="text-[#1C1917] underline decoration-[#C8E63A] underline-offset-4 hover:text-[#228B22]">Guía sobre el uso de las cookies</a>.</>,
-      'Última actualización: {FECHA ACTUAL}.'
+      'Última actualización: 27 de marzo de 2026.'
     ]
   }
 ];

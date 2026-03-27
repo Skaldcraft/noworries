@@ -11,12 +11,11 @@ const sections = [
   {
     title: '2. Datos del titular',
     body: [
-      'Denominación social: {TU NOMBRE COMPLETO O RAZÓN SOCIAL}',
-      'NIF/CIF: {TU NIF}',
-      'Correo electrónico: {TU EMAIL DE CONTACTO}',
-      'Domicilio social: {TU DIRECCIÓN EN AVILÉS O FISCAL}',
+      'Denominación social: Ángel González Palenzuela,
+      'NIF/CIF: 38078911L',
+      'Correo electrónico: skald@skaldcraft.com',
+      'Domicilio social: Avenida de los telares, 30, 33401, Avilés, Asturias',
       'Actividad: Recomendación de productos y regalos a través de programas de afiliación.',
-      'N.º de Registro Mercantil: {DATOS SI PROCEDE, SI NO, BORRAR ESTA LÍNEA}'
     ]
   },
   {
@@ -66,13 +65,13 @@ const sections = [
   {
     title: '9. Ley aplicable y jurisdicción',
     body: [
-      'Las relaciones entre noworries.gift y los usuarios se someten a la legislación y jurisdicción españolas y a los tribunales de {TU PROVINCIA, EJ. ASTURIAS}.'
+      'Las relaciones entre noworries.gift y los usuarios se someten a la legislación y jurisdicción españolas y a los tribunales de ASTURIAS.'
     ]
   },
   {
     title: '10. Contacto',
     body: [
-      'Si tienes cualquier duda sobre este Aviso Legal, escribe a {TU EMAIL DE CONTACTO}.',
+      'Si tienes cualquier duda sobre este Aviso Legal, escribe a skald@skaldcraft.com.',
       'Última actualización: 27 de marzo de 2026.'
     ]
   }

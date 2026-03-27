@@ -4,11 +4,11 @@ const sections = [
   {
     title: '1. Responsable del tratamiento',
     body: [
-      'Identidad del Responsable: {TU NOMBRE O RAZÓN SOCIAL}',
+      'Identidad del Responsable: Ángel González Palenzuela',
       'Nombre comercial: noworries.gift',
-      'NIF/CIF: {TU NIF}',
-      'Dirección: {TU DIRECCIÓN FISCAL EN AVILÉS O DONDE CORRESPONDA}',
-      'Correo electrónico: {TU EMAIL DE CONTACTO}',
+      'NIF/CIF: 38078911L',
+      'Dirección: ',
+      'Correo electrónico: skald@skaldcraft.com',
       'Actividad: Recomendación de productos y regalos a través de programas de afiliación.'
     ]
   },
@@ -23,7 +23,7 @@ const sections = [
   {
     title: '3. Finalidad del tratamiento',
     body: [
-      'La información recolectada se usa para analítica y para la gestión de afiliación.',
+      'La información recolectada se usa para métricas y para la gestión de afiliación.',
       'El objetivo es realizar estudios estadísticos sobre las visitas y el comportamiento de los usuarios para mejorar la usabilidad de la web.',
       'También se usa para garantizar el correcto funcionamiento de los enlaces de afiliados de Amazon y el seguimiento de las compras adscritas.'
     ]
@@ -38,8 +38,8 @@ const sections = [
     title: '5. Destinatarios',
     body: [
       'Amazon Services Europe: al hacer clic en un enlace de afiliado, Amazon utiliza cookies propias para rastrear la venta y atribuir la comisión correspondiente.',
-      'Hosting: {NOMBRE DE TU PROVEEDOR DE HOSTING}, que proporciona el espacio para el funcionamiento de la web.',
-      'Herramientas de análisis: {EJ. GOOGLE ANALYTICS O CLOUDFLARE}, que procesan datos de navegación de forma anonimizada.'
+      'Hosting: Hostinger, que proporciona el espacio para el funcionamiento de la web.',
+      'Herramientas de análisis: GOOGLE ANALYTICS, que procesa datos de navegación de forma anonimizada.'
     ]
   },
   {
@@ -47,7 +47,7 @@ const sections = [
     body: [
       'Cualquier persona tiene derecho a obtener confirmación sobre si en noworries.gift estamos tratando datos personales que le conciernen.',
       'Puedes solicitar el acceso, rectificación, supresión, limitación u oposición al tratamiento.',
-      'Para ejercer estos derechos, escribe a {TU EMAIL DE CONTACTO} adjuntando una fotocopia de tu DNI para acreditar tu identidad.',
+      'Para ejercer estos derechos, escribe a skald@skaldcraft.com adjuntando una fotocopia de tu DNI para acreditar tu identidad.',
       'También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD).'
     ]
   },
