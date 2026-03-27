@@ -1,20 +1,25 @@
-import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 function Footer() {
-  const { t } = useTranslation();
-
   return (
     <footer className="bg-foreground text-muted-foreground py-6 sm:py-8 border-t border-border/10">
       <div className="max-w-[1100px] mx-auto px-6 text-center space-y-4">
-        <p className="text-[13px] leading-relaxed max-w-2xl mx-auto opacity-80">
-          Ofrecemos información de precios aproximados clasificados por rangos. Los precios pueden variar de rango por unos euros.<br />
-          El precio final es el de la web oficial de Amazon, verifica siempre antes de comprar.
+        <p className="text-[13px] leading-relaxed max-w-2xl mx-auto text-[#F4F1E8]/90">
+          En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables según las condiciones establecidas por Amazon para afiliados.
         </p>
-        <p className="text-[13px] opacity-60">
-          Como Afiliado de Amazon obtenemos ingresos por las compras adscritas que cumplen los requisitos aplicables.
-        </p>
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[13px] text-[#F4F1E8]/85">
+          <Link to="/aviso-legal" className="text-[#F4F1E8] hover:text-[#C8E63A] transition-colors">
+            Aviso legal
+          </Link>
+          <Link to="/politica-privacidad" className="text-[#F4F1E8] hover:text-[#C8E63A] transition-colors">
+            Política de privacidad
+          </Link>
+          <Link to="/politica-cookies" className="text-[#F4F1E8] hover:text-[#C8E63A] transition-colors">
+            Política de cookies
+          </Link>
+        </div>
         <div className="pt-3 border-t border-muted/20">
-          <p className="text-[13px] font-black text-background uppercase tracking-widest">
+          <p className="text-[13px] font-black text-[#F4F1E8] uppercase tracking-widest">
             © 2026 Skaldcraft
           </p>
         </div>

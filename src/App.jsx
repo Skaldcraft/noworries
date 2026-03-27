@@ -6,6 +6,9 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage'));
 const PromotionPage = lazy(() => import('./pages/PromotionPage'));
+const AvisoLegalPage = lazy(() => import('./pages/AvisoLegalPage'));
+const PoliticaPrivacidadPage = lazy(() => import('./pages/PoliticaPrivacidadPage'));
+const PoliticaCookiesPage = lazy(() => import('./pages/PoliticaCookiesPage'));
 
 function App() {
   const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -19,6 +22,9 @@ function App() {
           <Route path="/perfil/:profileId" element={<ProfilePage />} />
           <Route path="/producto/:asin" element={<ProductDetailPage />} />
           <Route path="/regalos_sin_estres" element={<PromotionPage />} />
+          <Route path="/aviso-legal" element={<AvisoLegalPage />} />
+          <Route path="/politica-privacidad" element={<PoliticaPrivacidadPage />} />
+          <Route path="/politica-cookies" element={<PoliticaCookiesPage />} />
         </Routes>
       </Suspense>
     </Router>

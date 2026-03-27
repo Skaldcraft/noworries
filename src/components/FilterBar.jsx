@@ -56,7 +56,8 @@ function FilterBar({ onFilterChange, activeFilters }) {
             className="hero-subtitle is-visible mt-3 mx-auto max-w-[42rem] text-[1rem] font-normal text-[#5a5a5a] leading-[1.6]"
             style={{ fontFamily: "'Palatino Linotype', Palatino, 'Book Antiqua', serif", marginBottom: '-8px' }}
           >
-            Solo dinos cuánto quieres gastar y para quién es el regalo.<br />Lo filtramos por ti y te enseñamos ideas que encajan.
+            Ofrecemos información de precios aproximados clasificados por rangos. Los precios pueden variar de rango por unos euros.<br />
+            El precio final es el de la web oficial de Amazon, verifica siempre antes de comprar.
           </p>
         </div>
 
