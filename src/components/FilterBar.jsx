@@ -128,7 +128,7 @@ function FilterBar({ onFilterChange, activeFilters }) {
                 </button>
                 <div
                   ref={scrollContainerRef}
-                  className="flex flex-nowrap gap-2.5 overflow-x-auto pb-2 pr-1 custom-scrollbar -mx-4 px-6 sm:mx-0 sm:px-0"
+                  className="gift-profiles"
                 >
                   {orderedProfiles.map((profile) => (
                     <button

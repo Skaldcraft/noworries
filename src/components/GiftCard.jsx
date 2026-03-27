@@ -107,8 +107,8 @@ function GiftCard({ gift, productData, loading }) {
       </div>
 
       {/* 3. Nombre del producto */}
-      <div className="mb-0 flex-grow flex flex-col justify-end">
-        <h3 className="text-[16px] font-black text-foreground line-clamp-2 leading-[1.25] text-center px-1 group-hover/card:text-primary transition-colors duration-300 mb-0 max-h-[2.7em] overflow-hidden">
+      <div className="flex-grow flex flex-col justify-end">
+        <h3 className="gift-title text-foreground line-clamp-2 text-center group-hover/card:text-primary transition-colors duration-300 max-h-[2.7em] overflow-hidden">
           {displayTitle}
         </h3>
       </div>
@@ -123,8 +123,8 @@ function GiftCard({ gift, productData, loading }) {
             navigate(`/perfil/${profileId}?id=${gift.id}`);
           }}
           aria-label={`Ver características de ${displayTitle}`}
-          className="block w-full py-3 rounded-lg font-black text-[15px] text-white hover:opacity-90 transition-all duration-300 shadow-md shadow-emerald-900/20 transform active:scale-[0.98] ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          style={{ backgroundColor: '#1B4332', minHeight: '40px', paddingTop: '0.5rem', paddingBottom: '1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          className="gift-button font-black text-white hover:opacity-90 transition-all duration-300 shadow-md shadow-emerald-900/20 transform active:scale-[0.98] ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          style={{ backgroundColor: '#1B4332', minHeight: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
         >
           <span style={{ textAlign: 'center', width: '100%' }}>{t('card.view_details')}</span>
         </button>
