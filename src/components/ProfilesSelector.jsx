@@ -151,7 +151,7 @@ export function ProfilesSelector({
               }`}
               style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif", textTransform: 'none' }}
             >
-              {profile.label}
+              <span className="normal-case text-[11px] leading-none">{profile.label}</span>
             </button>
           ))}
         </div>
@@ -188,7 +188,7 @@ export function ProfilesSelector({
                       }`}
                       style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif", textTransform: 'none' }}
                     >
-                      {profile.label}
+                      <span className="normal-case text-[11px] leading-none">{profile.label}</span>
                     </button>
                   ))}
                 </div>
