@@ -315,6 +315,27 @@ h1 + p,
   gap: 0.6rem;
 }
 
+.nw-budget-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.nw-budget-buttons .nw-filter-card {
+  width: 160px;
+  flex: 0 1 160px;
+}
+
+@media (max-width: 640px) {
+  .nw-budget-buttons .nw-filter-card {
+    width: 100%;
+    flex-basis: 100%;
+  }
+}
+
 .nw-filter-card {
   border-radius: 0.85rem;
   border: 1px solid #c8e63a;
@@ -360,8 +381,10 @@ h1 + p,
 }
 
 .nw-filter-card__label {
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
   background: transparent !important;
 }
 
@@ -394,8 +417,10 @@ h1 + p,
   background: #f7f7f2 !important;
   padding: 0.5rem 1rem !important;
   border-radius: 999px;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
   color: #4a3f6b !important;
   box-shadow: 0 2px 8px rgba(200, 230, 58, 0.13);
@@ -659,10 +684,11 @@ h1 + p,
 }
 
 .nw-step-block__badge {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
   padding: 0.18rem 0.55rem;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.04);

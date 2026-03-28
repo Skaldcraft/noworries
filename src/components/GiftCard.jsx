@@ -20,6 +20,9 @@ function GiftCard({ gift, productData, loading }) {
   const hasError = !loading && productData?.hasApiError;
   const isMock = !loading && productData?.isMock;
   const isLive = !loading && productData && !productData.isMock && !productData.hasApiError;
+  const isNewParents = gift.recipient.toUpperCase().includes('NUEVOS PAPÁS') || gift.recipient.toUpperCase().includes('NUEVOS MAMÁS') || gift.emoji.includes('👩‍👧') || gift.emoji.includes('👨‍👦') || gift.emoji.includes('🧑‍🦱');
+  const isGrandparents = gift.emoji === '👴👵';
+  const isTeens = gift.recipient.toUpperCase().includes('ADOLESCENTES');
 
   const displayTitle = (gift.product_name || productData?.title || '').replace(/ \(ASIN: .*\)/g, '');
 
@@ -45,21 +48,21 @@ function GiftCard({ gift, productData, loading }) {
       {/* 1. Emoji | Perfil | Rango de precio */}
       <div className="flex flex-col items-center justify-center mb-3 mt-1">
         <div className="w-12 h-12 flex items-center justify-center bg-muted/5 rounded-full mb-2 group-hover/card:scale-110 transition-transform duration-500">
-          {gift.recipient.toUpperCase().includes('NUEVOS PAPÁS') || gift.recipient.toUpperCase().includes('NUEVOS MAMÁS') || gift.emoji.includes('👩‍👧') || gift.emoji.includes('👨‍👦') || gift.emoji.includes('🧑‍🦱') ? (
+          {isNewParents || isTeens ? (
             <span
-              className="text-[36px] leading-none filter drop-shadow-sm flex flex-row items-center justify-center"
+              className={`leading-none filter drop-shadow-sm flex flex-row items-center justify-center gap-0 whitespace-nowrap ${isTeens ? 'text-[34px]' : 'text-[32px]'}`}
               role="img"
               aria-label={gift.recipient}
             >
               {gift.emoji}
             </span>
-          ) : gift.emoji === '👴👵' ? (
+          ) : isGrandparents ? (
             <span
-              className="text-[36px] leading-none filter drop-shadow-sm flex flex-row items-center justify-center"
+              className="text-[32px] leading-none filter drop-shadow-sm flex flex-row items-center justify-center gap-0 whitespace-nowrap"
               role="img"
               aria-label={gift.recipient}
             >
-              <span style={{marginRight: '2px'}}>👴</span><span>👵</span>
+              <span style={{marginRight: '1px'}}>👴</span><span>👵</span>
             </span>
           ) : (
             <span

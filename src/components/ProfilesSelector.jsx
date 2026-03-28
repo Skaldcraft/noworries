@@ -20,7 +20,7 @@ const profileSegmentById = {
   abuelos: 'person',
   mejor_amigo: 'person',
   companeros: 'person',
-  nuevos_papis: 'person',
+  nuevos_papis: 'occasion',
   mascotas: 'personality',
   gente_tecnologica: 'personality',
   manitas: 'personality',
@@ -33,7 +33,6 @@ const profileSegmentById = {
   ecologistas: 'personality',
   gente_casera: 'personality',
   quien_lo_tiene_todo: 'personality',
-  basicos_utiles: 'personality',
   cumpleanios: 'occasion',
   nuevo_hogar: 'occasion',
   nuevo_trabajo: 'occasion',
@@ -41,6 +40,7 @@ const profileSegmentById = {
   despedida: 'occasion',
   detalle: 'occasion',
   solo_porque_si: 'occasion',
+  basicos_utiles: 'occasion',
 };
 
 const allProfileOption = {
@@ -59,20 +59,8 @@ export function ProfilesSelector({
   const giftsData = useMemo(() => getMarketGifts(), []);
 
   const orderedProfiles = useMemo(() => {
-    const order = Object.keys(styleGuide.profiles || {});
     const profiles = [];
     const seen = new Set();
-
-    order.forEach((profileId) => {
-      const segment = profileSegmentById[profileId];
-      if (!segment || seen.has(profileId)) return;
-      profiles.push({
-        id: profileId,
-        label: profileDisplayLabels[profileId] || styleGuide.profiles?.[profileId]?.title || profileId,
-        segment,
-      });
-      seen.add(profileId);
-    });
 
     giftsData.forEach((gift) => {
       const profileId = getProfileIdFromGiftId(gift.id);
@@ -80,7 +68,18 @@ export function ProfilesSelector({
       if (!profileId || !segment || seen.has(profileId)) return;
       profiles.push({
         id: profileId,
-        label: profileDisplayLabels[profileId] || gift.recipient || profileId,
+        label: profileDisplayLabels[profileId] || styleGuide.profiles?.[profileId]?.title || gift.recipient || profileId,
+        segment,
+      });
+      seen.add(profileId);
+    });
+
+    Object.keys(styleGuide.profiles || {}).forEach((profileId) => {
+      const segment = profileSegmentById[profileId];
+      if (!segment || seen.has(profileId)) return;
+      profiles.push({
+        id: profileId,
+        label: profileDisplayLabels[profileId] || styleGuide.profiles?.[profileId]?.title || profileId,
         segment,
       });
       seen.add(profileId);
