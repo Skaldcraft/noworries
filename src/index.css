@@ -349,22 +349,26 @@ h1 + p,
 .nw-filter-card--active .nw-filter-card__hint {
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
+  background: transparent !important;
   opacity: 1;
 }
 
 .nw-filter-card--active * {
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
+  background: transparent !important;
 }
 
 .nw-filter-card__label {
   font-weight: 600;
   font-size: 0.92rem;
+  background: transparent !important;
 }
 
 .nw-filter-card__hint {
   font-size: 0.8rem;
   opacity: 0.9;
+  background: transparent !important;
 }
 
 .profiles-selector {
@@ -376,7 +380,7 @@ h1 + p,
 .profiles-selector .segments {
   display: inline-flex;
   gap: 0.45rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.55rem;
   padding: 0.22rem;
   border-radius: 999px;
   background: #fff;
@@ -387,7 +391,7 @@ h1 + p,
 
 .profiles-selector .segment-button {
   border: 1px solid rgba(200, 230, 58, 0.75) !important;
-  background: #fff !important;
+  background: #f7f7f2 !important;
   padding: 0.5rem 1rem !important;
   border-radius: 999px;
   font-size: 0.95rem;
@@ -406,12 +410,6 @@ h1 + p,
   box-shadow: 0 4px 16px rgba(200, 230, 58, 0.22);
 }
 
-.profiles-selector .segment-button--active {
-  background: #c8e63a !important;
-  color: #fff !important;
-  border-color: #c8e63a !important;
-}
-
 .profiles-selector .profiles-grid {
   display: flex;
   flex-wrap: wrap;
@@ -425,13 +423,13 @@ h1 + p,
   padding: 0.5rem 1rem !important;
   font-size: 0.95rem;
   font-weight: 600;
-  background: #fff;
+  background: #f7f7f2;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .profiles-selector .profile-chip:hover {
-  background: #f3f0ff;
+  background: #f7f7f2;
   border-color: rgba(200, 230, 58, 0.95);
 }
 
@@ -443,6 +441,11 @@ h1 + p,
 
 .profiles-selector .profile-chip--all {
   font-weight: 700;
+}
+
+.profiles-selector .profile-chip *,
+.profiles-selector .segment-button * {
+  background: transparent !important;
 }
 
 .profiles-selector .profile-chip--secondary {
@@ -466,7 +469,11 @@ h1 + p,
 }
 
 .nw-filters-block .nw-filters-step + .nw-filters-step {
-  margin-top: 0.8rem;
+  margin-top: 1.1rem;
+}
+
+.profiles-selector .profiles-modal__content {
+  margin-top: 0.2rem;
 }
 
 .profiles-selector .profiles-modal__header {
@@ -771,6 +778,23 @@ h1 + p,
 [class*="card"] h2 a:hover,
 [class*="card"] h3 a:hover {
   color: var(--nw-text-1) !important;
+}
+
+.nw-filters-block .nw-filter-card {
+  background-color: #f7f7f2 !important;
+  color: #111 !important;
+}
+
+.nw-filters-block .nw-filter-card--active {
+  background-color: #c8e63a !important;
+  color: #fff !important;
+}
+
+.nw-filters-block .nw-filter-card--active .nw-filter-card__label,
+.nw-filters-block .nw-filter-card--active .nw-filter-card__hint,
+.nw-filters-block .nw-filter-card--active * {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 

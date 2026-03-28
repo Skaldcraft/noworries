@@ -122,8 +122,8 @@ export function ProfilesSelector({
         ))}
       </div>
 
-      <div className="pt-5 sm:pt-6">
-        <div className="flex flex-col items-center gap-2 mb-3">
+      <div className="pt-2 sm:pt-3">
+        <div className="flex flex-col items-center gap-1 mb-1.5">
           <h3 className="text-[11px] font-medium text-[#b0b0b0] uppercase tracking-[0.16em] text-center" style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}>
             {selectedTier === 'all' ? 'Todos los perfiles' : (segmentLabels[activeSegment] ? `Perfiles de ${segmentLabels[activeSegment].toLowerCase()}` : 'Perfiles destacados')}
           </h3>
@@ -138,7 +138,7 @@ export function ProfilesSelector({
           )}
         </div>
 
-        <div className="profiles-grid grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3">
+        <div className="profiles-grid grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5">
           {visibleWithAll.map((profile) => (
             <button
               key={profile.id}

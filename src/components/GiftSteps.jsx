@@ -7,7 +7,7 @@ export function GiftSteps({
   return (
     <section className="nw-steps-layout">
       <section className="nw-filters-block">
-        <section className="nw-step nw-filters-step mt-4 sm:mt-5">
+        <section className="nw-step nw-filters-step mt-2 sm:mt-3">
           <header className="nw-filters-block__header nw-step__header">
             <span className="nw-filters-block__eyebrow nw-step__badge">Paso 1</span>
             <h2 className="nw-step__title">💸 ¿Cuánto quieres gastar?</h2>
@@ -40,7 +40,7 @@ export function GiftSteps({
           </div>
         </section>
 
-        <section className="nw-step nw-filters-step">
+        <section className="nw-step nw-filters-step mt-4 sm:mt-5">
           <header className="nw-filters-block__header nw-step__header">
             <span className="nw-filters-block__eyebrow nw-step__badge">Paso 2</span>
             <h2 className="nw-step__title">🎯 ¿Para quién es el regalo?</h2>
