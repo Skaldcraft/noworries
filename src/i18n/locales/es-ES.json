@@ -28,13 +28,13 @@
     }
   },
   "card": {
-    "view_details": "Ver características",
+    "view_details": "Por qué puede encajar",
     "error": "Error al cargar datos",
     "unavailable": "No disponible",
     "no_image": "Sin imagen",
     "verifying": "Verificando...",
     "price_ready": "Ver en Amazon",
-    "go_to_amazon": "Ir a Amazon"
+    "go_to_amazon": "Ver en Amazon"
   },
   "home": {
     "no_results": "No hay coincidencias para esa combinación. Ajusta filtros o prueba otro presupuesto.",

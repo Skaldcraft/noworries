@@ -1,19 +1,20 @@
-
-import React, { useState, useEffect, useCallback, useMemo, useLayoutEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useCallback, useMemo, useLayoutEffect, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-import { Activity, ChevronUp, ChevronDown, RefreshCw, Trash2, Info, X, Search } from 'lucide-react';
+import { Activity, ChevronUp, ChevronDown, RefreshCw, Trash2 } from 'lucide-react';
 import Footer from '@/components/Footer';
 import SeasonalBanner from '@/components/SeasonalBanner';
-import FilterBar from '@/components/FilterBar';
-import GiftCard from '@/components/GiftCard';
+import { GiftSteps } from '@/components/GiftSteps';
+import { ProfilesSelector } from '@/components/ProfilesSelector';
+import { ResultsGrid } from '@/components/ResultsGrid';
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
 import { getMarketGifts } from '@/data/market-gifts';
 import { fetchProductData } from '@/lib/paapi';
 import { getCacheStats, getCacheSize, getCacheContents, clearCache } from '@/lib/cacheDebug';
 import { getProfileIdFromGiftId } from '@/lib/profiles';
+import { useGiftFilters } from '@/hooks/useGiftFilters';
 import { AMAZON_CONFIG } from '@/config';
 
 function HomePage() {
@@ -26,10 +27,20 @@ function HomePage() {
   const { toast } = useToast();
   const { t } = useTranslation();
 
-  const [activeFilters, setActiveFilters] = useState({
+  const {
+    tier,
+    budget,
+    profileId,
+    searchQuery,
+    setTier,
+    setBudget,
+    setProfileId,
+    setSearchQuery,
+  } = useGiftFilters({
     tier: searchParams.get('tier') || 'all',
     budget: searchParams.get('budget') || 'all',
-    profile: searchParams.get('profile') || 'all'
+    profileId: searchParams.get('profile') || 'all',
+    searchQuery: '',
   });
 
   const [debugStats, setDebugStats] = useState({
@@ -42,24 +53,21 @@ function HomePage() {
     failedProducts: []
   });
   const [isDebugOpen, setIsDebugOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
   const [cacheInfo, setCacheInfo] = useState({ stats: null, size: 0, contents: [] });
   const giftsData = useMemo(() => getMarketGifts(), []);
 
   const homepageGifts = useMemo(() => {
-    // Keep one card per profile+budget pair on home: newest entry stays on home,
-    // while older ones remain available in profile pages.
     const latestIndexByKey = new Map();
 
     giftsData.forEach((gift, index) => {
-      const profileId = getProfileIdFromGiftId(gift.id) || gift.recipient;
-      const key = `${profileId}::${gift.price_range}`;
+      const giftProfileId = getProfileIdFromGiftId(gift.id) || gift.recipient;
+      const key = `${giftProfileId}::${gift.price_range}`;
       latestIndexByKey.set(key, index);
     });
 
     return giftsData.filter((gift, index) => {
-      const profileId = getProfileIdFromGiftId(gift.id) || gift.recipient;
-      const key = `${profileId}::${gift.price_range}`;
+      const giftProfileId = getProfileIdFromGiftId(gift.id) || gift.recipient;
+      const key = `${giftProfileId}::${gift.price_range}`;
       return latestIndexByKey.get(key) === index;
     });
   }, [giftsData]);
@@ -89,9 +97,7 @@ function HomePage() {
     }
 
     setLoading(true);
-    let hasApiErrors = false;
     let usingMockData = false;
-
     let calls = 0;
     let success = 0;
     let fail = 0;
@@ -112,7 +118,6 @@ function HomePage() {
         }
 
         if (data.hasApiError) {
-          hasApiErrors = true;
           fail++;
           failedArr.push(gift.asin);
           lastErr = data;
@@ -126,17 +131,16 @@ function HomePage() {
         calls++;
         fail++;
         failedArr.push(gift.asin);
-        hasApiErrors = true;
         setLoadingProducts(prev => prev.filter(a => a !== gift.asin));
-        console.error(`Error al obtener producto ${gift.id}:`, error);
+        console.error('Error al obtener producto ' + gift.id + ':', error);
 
         const errObj = {
           title: gift.product_name,
           price: gift.price_range,
           available: false,
           image: null,
-          affiliate_url: `https://${gift.marketplace}/dp/${gift.asin}?tag=${gift.tag}`,
-          error: "Tenemos problemas para obtener los datos del producto. Inténtalo de nuevo más tarde.",
+          affiliate_url: 'https://' + gift.marketplace + '/dp/' + gift.asin + '?tag=' + gift.tag,
+          error: 'Tenemos problemas para obtener los datos del producto. Inténtalo de nuevo más tarde.',
           errorType: 'UNKNOWN',
           hasApiError: true,
           isMock: false
@@ -167,21 +171,9 @@ function HomePage() {
     });
 
     setShowDemoBanner(usingMockData);
-
-    /* Eliminado el toast de error para evitar asustar a los usuarios durante la fase inicial
-    if (hasApiErrors && !usingMockData) {
-      toast({
-        title: "Problema de conexión",
-        description: "Tenemos problemas para conectar con Amazon y obtener los precios en vivo.",
-        variant: "destructive",
-        duration: 5000,
-      });
-    }
-    */
-
     setProductDataMap(prev => ({ ...prev, ...dataMap }));
     setLoading(false);
-  }, [isManualProductMode, toast, updateCacheInfo]);
+  }, [isManualProductMode, updateCacheInfo]);
 
   useEffect(() => {
     setGifts(homepageGifts);
@@ -201,30 +193,27 @@ function HomePage() {
     sessionStorage.removeItem('homeShouldRestoreScroll');
   }, []);
 
-  // Lazy load animations for hero and filters
+  const handleSelectTier = (value) => {
+    setTier((current) => (current === value ? 'all' : value));
+    setProfileId('all');
+  };
+
+  const handleSelectProfile = (value) => {
+    setProfileId((current) => (current === value ? 'all' : value));
+    setTier('all');
+  };
+
+  const handleSelectBudget = (value) => {
+    setBudget((current) => (current === value ? 'all' : value));
+  };
+
   useEffect(() => {
-    const targets = document.querySelectorAll(
-      '.hero-title, .hero-subtitle, .hero-microcopy, .filter-section'
-    );
-
-    if (!targets.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    targets.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+    const newParams = {};
+    if (tier !== 'all') newParams.tier = tier;
+    if (budget !== 'all') newParams.budget = budget;
+    if (profileId !== 'all') newParams.profile = profileId;
+    setSearchParams(newParams);
+  }, [budget, profileId, setSearchParams, tier]);
 
   const handleRetryFailed = () => {
     if (isManualProductMode) {
@@ -240,68 +229,8 @@ function HomePage() {
   const handleClearCache = () => {
     clearCache();
     updateCacheInfo();
-    toast({ title: "Caché borrada" });
+    toast({ title: 'Caché borrada' });
   };
-
-  const handleFilterChange = (filterType, value) => {
-    setActiveFilters((prev) => {
-      // Lógica simple: tier y profile son mutuamente excluyentes
-      if (filterType === 'tier') {
-        // Hacemos toggle de tier. Si es igual, pasa a 'all'. Si es diferente, setea el nuevo valor
-        const newTier = prev.tier === value ? 'all' : value;
-        // Si setea un tier específico, limpia profile. Si es 'all', lo deja como está
-        const newProfile = newTier !== 'all' ? 'all' : prev.profile;
-        return { ...prev, tier: newTier, profile: newProfile };
-      }
-      
-      if (filterType === 'profile') {
-        // Hacemos toggle de profile. Si es igual, pasa a 'all'. Si es diferente, setea el nuevo valor
-        const newProfile = prev.profile === value ? 'all' : value;
-        // Si setea un profile específico, limpia tier. Si es 'all', lo deja como está
-        const newTier = newProfile !== 'all' ? 'all' : prev.tier;
-        return { ...prev, tier: newTier, profile: newProfile };
-      }
-      
-      if (filterType === 'budget') {
-        // Budget es independiente, simplemente toggle
-        const newBudget = prev.budget === value ? 'all' : value;
-        return { ...prev, budget: newBudget };
-      }
-      
-      return prev;
-    });
-  };
-
-  // Actualizar URL params cuando cambian los filtros
-  useEffect(() => {
-    const newParams = {};
-    if (activeFilters.tier !== 'all') newParams.tier = activeFilters.tier;
-    if (activeFilters.budget !== 'all') newParams.budget = activeFilters.budget;
-    if (activeFilters.profile !== 'all') newParams.profile = activeFilters.profile;
-    setSearchParams(newParams);
-  }, [activeFilters, setSearchParams]);
-
-  const filteredGifts = gifts.filter((gift) => {
-    const pId = getProfileIdFromGiftId(gift.id);
-    const tierMatch = activeFilters.tier === 'all' || gift.tier === activeFilters.tier;
-    const budgetMatch = activeFilters.budget === 'all' || gift.price_range === activeFilters.budget;
-    const profileMatch = activeFilters.profile === 'all' || pId === activeFilters.profile;
-    const searchMatch = searchQuery === '' || 
-      gift.product_name.toLowerCase().includes(searchQuery.toLowerCase());
-    return tierMatch && budgetMatch && profileMatch && searchMatch;
-  }).sort((a, b) => {
-    const pIdA = getProfileIdFromGiftId(a.id) || a.recipient;
-    const pIdB = getProfileIdFromGiftId(b.id) || b.recipient;
-    if (pIdA !== pIdB) {
-      const idxA = gifts.findIndex(g => g.id === a.id);
-      const idxB = gifts.findIndex(g => g.id === b.id);
-      return idxA - idxB;
-    }
-    const priceOrder = { 'under15': 0, '15-35': 1, '35-75': 2, '75-150': 3, '150-300': 4 };
-    return (priceOrder[a.price_range] ?? 99) - (priceOrder[b.price_range] ?? 99);
-  });
-
-  const isInitialLoading = loading && gifts.length === 0;
 
   return (
     <>
@@ -313,96 +242,66 @@ function HomePage() {
       <div className="min-h-screen flex flex-col relative pb-16" style={{ backgroundColor: 'var(--nw-bg)' }}>
         <SeasonalBanner />
         <div className="max-w-3xl mx-auto mt-6 mb-0 px-2">
-          <p className="text-[12px] sm:text-[13px] text-[#444] font-normal text-center leading-snug" style={{marginTop: 0}}>
-            Mostramos precios aproximados por rangos. Puede haber pequeñas variaciones.<br />
-            El precio final es el de Amazon; verifica siempre antes de comprar.
+          <p className="text-[12px] sm:text-[13px] text-[#444] font-normal text-center leading-snug" style={{ marginTop: 0 }}>
+            Algunos enlaces van a Amazon y son de afiliado (más info en{' '}
+            <Link to="/como-funciona" className="underline underline-offset-2 decoration-1 text-[#333] hover:text-[#111]">
+              Cómo funciona NoWorries
+            </Link>
+            ).
           </p>
         </div>
-        <FilterBar onFilterChange={handleFilterChange} activeFilters={activeFilters} />
 
-        <main className="flex-grow py-8 sm:py-12 px-4 sm:px-6" aria-busy={isInitialLoading}>
+        <main className="flex-grow py-8 sm:py-12 px-4 sm:px-6" aria-busy={loading && gifts.length === 0}>
           <div className="max-w-[1100px] mx-auto">
-            {!isInitialLoading && (
-              <div className="mb-6 animate-in fade-in duration-700">
-                <div className="relative max-w-md">
-                  <div className="flex items-center w-full h-full">
-                    <span className="flex items-center justify-center h-full absolute left-0 top-0 pl-4" style={{height: '100%'}}>
-                      <Search className="text-gray-400" size={20} />
-                    </span>
-                    <input
-                      type="text"
-                      placeholder="Buscar regalos por el nombre"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full pl-12 pr-12 py-3 bg-white border border-gray-200 rounded-full text-[15px] focus:outline-none focus:ring-2 focus:ring-[#C8E63A] focus:border-[#C8E63A] transition-all shadow-sm"
-                    />
-                    {searchQuery && (
-                      <button
-                        onClick={() => setSearchQuery('')}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                      >
-                        <X size={18} />
-                      </button>
-                    )}
-                  </div>
-                </div>
-                {searchQuery && (
-                  <p className="mt-3 text-[12px] font-medium text-[#888880]">
-                    {filteredGifts.length} resultado{filteredGifts.length !== 1 ? 's' : ''} para "{searchQuery}"
-                  </p>
-                )}
+            <div className="mx-auto max-w-[720px] mb-8 text-center">
+              <h1 className="hero-title is-visible text-[2.2rem] lg:text-[2.5rem] font-bold text-[#111111] leading-[1.13] tracking-[-0.01em] mt-0 mb-1" style={{ fontFamily: "Georgia, 'Times New Roman', Times, serif" }}>
+                {t('site.name')}
+              </h1>
+              <p className="hero-subtitle is-visible mt-2 mx-auto max-w-[42rem] text-[0.97rem] font-normal text-[#5a5a5a] leading-[1.5] mb-2" style={{ fontFamily: "'Palatino Linotype', Palatino, 'Book Antiqua', serif", marginBottom: '-4px' }}>
+                {t('site.tagline')}
+              </p>
+            </div>
+
+            {showDemoBanner && (
+              <div className="mb-6 rounded-2xl border border-[#e8e1c7] bg-[#fbf8ef] px-4 py-3 text-sm text-[#5e5a45]">
+                Modo demostración activo mientras se validan algunos datos de producto.
               </div>
             )}
 
-            {isInitialLoading ? (
-              <div className="gift-section-grid">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <div key={`skeleton-${i}`} className="bg-card rounded-2xl shadow-sm border border-[#C8E63A] p-6 h-[410px] animate-pulse">
-                    <div className="h-4 w-32 bg-muted/20 rounded mx-auto mb-3" />
-                    <div className="h-4 w-20 bg-muted/20 rounded mx-auto mb-6" />
-                    <div className="h-[190px] bg-muted/10 rounded-xl mb-6" />
-                    <div className="h-5 w-3/4 bg-muted/20 rounded mx-auto mb-3" />
-                    <div className="h-5 w-2/3 bg-muted/20 rounded mx-auto mb-8" />
-                    <div className="h-12 w-full bg-muted/30 rounded-xl" />
-                  </div>
-                ))}
-              </div>
-            ) : filteredGifts.length === 0 ? (
-              <div className="text-center py-20 animate-in fade-in slide-in-from-bottom duration-700" role="status" aria-live="polite">
-                <p className="text-[18px] text-muted-foreground font-medium">
-                  {t('home.no_results')}
-                </p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-                {filteredGifts.map((gift, index) => (
-                  <div 
-                    key={gift.id} 
-                    className={`gift-card animate-in fade-in slide-in-from-bottom stagger-${(index % 5) + 1}`}
-                  >
-                    <GiftCard
-                      gift={gift}
-                      productData={productDataMap[gift.id]}
-                      loading={loading && loadingProducts.includes(gift.asin)}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
+            <GiftSteps
+              selectedBudget={budget}
+              onSelectBudget={handleSelectBudget}
+              profileSelector={(
+                <ProfilesSelector
+                  selectedTier={tier}
+                  onSelectTier={handleSelectTier}
+                  selectedProfileId={profileId}
+                  onSelectProfile={handleSelectProfile}
+                />
+              )}
+              results={(
+                <ResultsGrid
+                  gifts={gifts}
+                  productDataMap={productDataMap}
+                  loading={loading}
+                  loadingProducts={loadingProducts}
+                  searchQuery={searchQuery}
+                  onSearchQueryChange={setSearchQuery}
+                  budget={budget}
+                  tier={tier}
+                  profileId={profileId}
+                />
+              )}
+            />
           </div>
         </main>
-
 
         <Footer />
         <Toaster />
 
-        {/* Panel de Depuración */}
         {IS_DEV && (
           <div className={`fixed bottom-0 left-0 right-0 bg-gray-900 text-green-400 font-mono text-xs z-50 border-t border-gray-700 transition-all duration-300 ${isDebugOpen ? 'h-72 overflow-y-auto' : 'h-10'}`}>
-            <div
-              className="flex items-center justify-between px-4 py-2 cursor-pointer bg-gray-800 sticky top-0"
-              onClick={() => setIsDebugOpen(!isDebugOpen)}
-            >
+            <div className="flex items-center justify-between px-4 py-2 cursor-pointer bg-gray-800 sticky top-0" onClick={() => setIsDebugOpen(!isDebugOpen)}>
               <div className="flex items-center gap-3">
                 <Activity size={16} className={debugStats.failures > 0 ? 'text-red-400' : 'text-green-400'} />
                 <span className="font-bold text-white">Panel Depuración PAAPI</span>

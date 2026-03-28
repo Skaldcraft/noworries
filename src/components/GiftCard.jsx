@@ -144,9 +144,9 @@ function GiftCard({ gift, productData, loading }) {
             sessionStorage.setItem('homeShouldRestoreScroll', '1');
             navigate(`/perfil/${profileId}?id=${gift.id}`);
           }}
-          aria-label={`Ver características de ${displayTitle}`}
-          className="gift-button font-black text-white hover:opacity-90 transition-all duration-300 shadow-md shadow-emerald-900/20 transform active:scale-[0.98] ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          style={{ backgroundColor: '#1B4332', minHeight: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          aria-label={`Por qué puede encajar de ${displayTitle}`}
+          className="gift-button font-semibold text-white hover:opacity-90 transition-all duration-300 shadow-md shadow-emerald-900/20 transform active:scale-[0.98] ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          style={{ backgroundColor: '#1B4332', minHeight: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', letterSpacing: '0.01em', fontSize: '1.05em' }}
         >
           <span style={{ textAlign: 'center', width: '100%' }}>{t('card.view_details')}</span>
         </button>

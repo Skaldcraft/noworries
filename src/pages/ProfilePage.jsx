@@ -13,14 +13,11 @@ import { useTranslation } from 'react-i18next';
 import { idToProfileMap, getProfileIdFromGiftId } from '@/lib/profiles';
 
 const AmazonIcon = () => (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g>
-            <path d="M8.5 25.5c3.5 2.5 11.5 2.5 15 0" stroke="#FF9900" strokeWidth="2" strokeLinecap="round"/>
-            <path d="M20.5 25c.5.5 1.5 1 2.5 1s2-.5 2.5-1" stroke="#FF9900" strokeWidth="1.2" strokeLinecap="round"/>
-            <path d="M10 7.5c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5c0 2.5-2 4.5-4.5 4.5S10 10 10 7.5Z" fill="#FF9900"/>
-            <text x="11.5" y="22.5" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="18" fill="#232F3E">a</text>
-            <path d="M13.5 26c2.5 1.5 6.5 1.5 9 0" stroke="#FF9900" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M21.5 25.5c.2.2.6.5 1.5.5s1.3-.3 1.5-.5" stroke="#FF9900" strokeWidth="0.8" strokeLinecap="round"/>
+            <text x="8" y="28" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="28" fill="#F9F6F2">a</text>
+            <path d="M13 30c4 3 10 3 14 0" stroke="#F9F6F2" strokeWidth="2.2" strokeLinecap="round"/>
+            <path d="M23 30c.5.7 1.5 1.4 3 1.4s2.5-.7 3-1.4" stroke="#F9F6F2" strokeWidth="1.2" strokeLinecap="round"/>
         </g>
     </svg>
 );
@@ -208,19 +205,21 @@ function ProfilePage() {
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
                                             href={currentGift.affiliate_url_format} target="_blank" rel="noopener noreferrer sponsored"
-                                            className="flex-1 flex items-center justify-center gap-3 bg-[#FF9900] hover:bg-[#FF8C00] text-white font-black py-2.5 px-5 rounded-full transition-all shadow-md shadow-orange-500/10 text-[1.08rem]"
+                                            className="flex-1 flex items-center justify-center gap-3 bg-[#FF9900] hover:bg-[#FF8C00] text-white py-2.5 px-5 rounded-full transition-all shadow-md shadow-orange-500/10 text-[1.08rem]"
+                                            style={{ textDecoration: 'none' }}
                                         >
                                             <AmazonIcon />
-                                            <span style={{fontSize: '1.18em', fontWeight: 800, letterSpacing: '-0.01em'}}>Ir a Amazon</span>
+                                            <span style={{fontSize: '1.13em', fontWeight: 500, letterSpacing: '-0.01em', fontFamily: 'Montserrat, Arial, sans-serif', textDecoration: 'none', textTransform: 'none', display: 'inline-block', marginLeft: 2 }}>Ver en Amazon</span>
                                         </motion.a>
                                         <motion.button 
                                             whileTap={{ scale: 0.98 }}
                                             onClick={handleShare}
-                                            className={`flex-1 flex items-center justify-center gap-3 font-bold py-2.5 px-5 rounded-full border transition-all text-[1.08rem] ${copied ? 'bg-white border-green-400 text-green-600' : 'bg-white text-muted-foreground border-[#C8E63A] hover:border-[#A8C420]'}`}
+                                            className={`flex-1 flex items-center justify-center gap-4 font-bold py-2.5 px-5 rounded-full border transition-all text-[1.08rem] ${copied ? 'bg-white border-green-400 text-green-600' : 'bg-white text-muted-foreground border-[#C8E63A] hover:border-[#A8C420]'}`}
+                                            style={{ justifyContent: 'center', alignItems: 'center' }}
                                         >
                                             {copied
-                                              ? (<><Check size={24} /> <span style={{fontSize: '1.18em', fontWeight: 800}}>¡Copiado!</span></>)
-                                              : (<><Share2 size={24} /> <span style={{fontSize: '1.18em', fontWeight: 800}}>Compartir</span></>)}
+                                              ? (<><Check size={24} style={{ marginRight: 10, verticalAlign: 'middle' }} /> <span style={{fontSize: '1.18em', fontWeight: 800, verticalAlign: 'middle'}}>¡Copiado!</span></>)
+                                              : (<><Share2 size={24} style={{ marginRight: 10, verticalAlign: 'middle' }} /> <span style={{fontSize: '1.18em', fontWeight: 800, verticalAlign: 'middle'}}>Compartir</span></>)}
                                         </motion.button>
                                     </div>
                                 </motion.div>

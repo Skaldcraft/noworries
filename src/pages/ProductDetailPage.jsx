@@ -126,9 +126,10 @@ function ProductDetailPage() {
                                         href={product.affiliate_url}
                                         target="_blank"
                                         rel="noopener noreferrer sponsored"
-                                        className="flex items-center justify-center gap-3 w-full bg-[#1C1917] hover:bg-[#F59E0B] text-white py-5 rounded-2xl font-black text-[18px] transition-all duration-300 shadow-xl hover:-translate-y-1 transform active:scale-95 group"
+                                        className="flex items-center justify-center gap-3 w-full bg-[#1C1917] hover:bg-[#F59E0B] text-white py-5 rounded-2xl text-[18px] transition-all duration-300 shadow-xl hover:-translate-y-1 transform active:scale-95 group"
+                                        style={{ textDecoration: 'none' }}
                                     >
-                                        Ir a Amazon <ExternalLink size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        Ver en Amazon <ExternalLink size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" style={{ marginLeft: 4, verticalAlign: 'middle' }} />
                                     </a>
                                 </div>
 
