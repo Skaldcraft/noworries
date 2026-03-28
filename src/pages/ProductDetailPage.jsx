@@ -1,4 +1,4 @@
-
+/* eslint-disable no-unused-vars */
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { ArrowLeft, ExternalLink, Calendar, ShieldCheck, Truck, Quote } from 'lucide-react';
@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import historyData from '@/data/history.json';
 import styleGuide from '@/config/style-guide.json';
 import { getImageUrl } from '../utils/getImageUrl';
+
 
 function ProductDetailPage() {
     const { asin } = useParams();

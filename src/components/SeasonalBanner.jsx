@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, X } from 'lucide-react';
 
 const BANNER_SCHEDULE = [
   // Enero

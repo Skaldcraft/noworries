@@ -56,7 +56,7 @@ const generateMockData = (asin, tag) => ({
   isMock:        true
 });
 
-export async function fetchProductData(asin, tag, marketplace) {
+export async function fetchProductData(asin, tag) {
   if (!asin || asin === 'ASIN_PLACEHOLDER') {
     return makeFallback(asin || 'unknown', tag);
   }

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { getMarketGifts } from '@/data/market-gifts';
 import styleGuide from '@/config/style-guide.json';
-import { getProfileIdFromGiftId, profileDisplayLabels } from '@/lib/profiles';
+import { getProfileIdFromGiftId } from '@/lib/profiles';
 
 const segmentLabels = {
   all: 'Todos',
@@ -49,6 +49,8 @@ const allProfileOption = {
   segment: null,
 };
 
+const toLowerLabel = (value) => (typeof value === 'string' ? value.toLocaleLowerCase('es-ES') : value);
+
 export function ProfilesSelector({
   selectedTier,
   onSelectTier,
@@ -68,7 +70,7 @@ export function ProfilesSelector({
       if (!profileId || !segment || seen.has(profileId)) return;
       profiles.push({
         id: profileId,
-        label: profileDisplayLabels[profileId] || styleGuide.profiles?.[profileId]?.title || gift.recipient || profileId,
+        label: toLowerLabel(gift.recipient || styleGuide.profiles?.[profileId]?.title || profileId),
         segment,
       });
       seen.add(profileId);
@@ -79,7 +81,7 @@ export function ProfilesSelector({
       if (!segment || seen.has(profileId)) return;
       profiles.push({
         id: profileId,
-        label: profileDisplayLabels[profileId] || styleGuide.profiles?.[profileId]?.title || profileId,
+        label: toLowerLabel(styleGuide.profiles?.[profileId]?.title || profileId),
         segment,
       });
       seen.add(profileId);
@@ -98,9 +100,8 @@ export function ProfilesSelector({
 
   const activeSegment = selectedTier !== 'all' ? selectedTier : 'all';
   const visibleProfiles = selectedTier === 'all' ? orderedProfiles : (profilesBySegment[selectedTier] || []);
-  const shortList = selectedTier === 'all' ? visibleProfiles : visibleProfiles.slice(0, 8);
-  const visibleWithAll = [allProfileOption, ...shortList];
-  const showAllButton = selectedTier !== 'all' && visibleProfiles.length > shortList.length;
+  const visibleWithAll = [allProfileOption, ...visibleProfiles];
+  const showAllButton = false;
 
   return (
     <section className="profiles-selector nw-profiles-selector">
@@ -148,7 +149,7 @@ export function ProfilesSelector({
                 ? 'profile-chip--selected is-active bg-[#c8e63a] border-[#c8e63a] font-semibold'
                 : 'bg-[#f7f7f2] border-[#c8e63a] font-medium'
               }`}
-              style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
+              style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif", textTransform: 'none' }}
             >
               {profile.label}
             </button>
@@ -185,7 +186,7 @@ export function ProfilesSelector({
                         ? 'profile-chip--selected is-active bg-[#c8e63a] border-[#c8e63a] font-semibold'
                         : 'bg-[#f7f7f2] border-[#c8e63a] font-medium'
                       }`}
-                      style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif" }}
+                      style={{ fontFamily: "'Montserrat', system-ui, -apple-system, sans-serif", textTransform: 'none' }}
                     >
                       {profile.label}
                     </button>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Suspense, lazy } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
@@ -23,7 +24,7 @@ function App() {
           <Route path="/perfil/:profileId" element={<ProfilePage />} />
           <Route path="/producto/:asin" element={<ProductDetailPage />} />
           <Route path="/regalos-sin-estrés" element={<PromotionPage />} />
-          <Route path="/regalos_sin_estres" element={<PromotionPage />} />
+          <Route path="/regalos-sin-estres" element={<PromotionPage />} />
           <Route path="/aviso-legal" element={<AvisoLegalPage />} />
           <Route path="/como-funciona" element={<ComoFuncionaPage />} />
           <Route path="/politica-privacidad" element={<PoliticaPrivacidadPage />} />

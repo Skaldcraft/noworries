@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { motion, useReducedMotion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { ExternalLink } from 'lucide-react';

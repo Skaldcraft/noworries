@@ -1,4 +1,5 @@
-import { useEffect, useCallback, useMemo, useLayoutEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { useEffect, useCallback, useMemo, useLayoutEffect, useState, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
@@ -10,12 +11,12 @@ import { ProfilesSelector } from '@/components/ProfilesSelector';
 import { ResultsGrid } from '@/components/ResultsGrid';
 import { useToast } from '@/hooks/use-toast';
 import { Toaster } from '@/components/ui/toaster';
-import { getMarketGifts } from '@/data/market-gifts';
 import { fetchProductData } from '@/lib/paapi';
 import { getCacheStats, getCacheSize, getCacheContents, clearCache } from '@/lib/cacheDebug';
-import { getProfileIdFromGiftId } from '@/lib/profiles';
 import { useGiftFilters } from '@/hooks/useGiftFilters';
 import { AMAZON_CONFIG } from '@/config';
+import { getMarketGifts } from '@/data/market-gifts';
+import { getSortedUniqueGifts } from '@/lib/profiles';
 
 function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,6 +25,8 @@ function HomePage() {
   const [loading, setLoading] = useState(true);
   const [loadingProducts, setLoadingProducts] = useState([]);
   const [showDemoBanner, setShowDemoBanner] = useState(false);
+  const [isFilterTransitioning, setIsFilterTransitioning] = useState(false);
+  const didMountRef = useRef(false);
   const { toast } = useToast();
   const { t } = useTranslation();
 
@@ -55,22 +58,7 @@ function HomePage() {
   const [isDebugOpen, setIsDebugOpen] = useState(false);
   const [cacheInfo, setCacheInfo] = useState({ stats: null, size: 0, contents: [] });
   const giftsData = useMemo(() => getMarketGifts(), []);
-
-  const homepageGifts = useMemo(() => {
-    const latestIndexByKey = new Map();
-
-    giftsData.forEach((gift, index) => {
-      const giftProfileId = getProfileIdFromGiftId(gift.id) || gift.recipient;
-      const key = `${giftProfileId}::${gift.price_range}`;
-      latestIndexByKey.set(key, index);
-    });
-
-    return giftsData.filter((gift, index) => {
-      const giftProfileId = getProfileIdFromGiftId(gift.id) || gift.recipient;
-      const key = `${giftProfileId}::${gift.price_range}`;
-      return latestIndexByKey.get(key) === index;
-    });
-  }, [giftsData]);
+  const displayGifts = useMemo(() => getSortedUniqueGifts(giftsData), [giftsData]);
 
   const IS_DEV = import.meta.env.DEV;
   const isManualProductMode = AMAZON_CONFIG.MANUAL_PRODUCT_MODE === true;
@@ -176,9 +164,9 @@ function HomePage() {
   }, [isManualProductMode, updateCacheInfo]);
 
   useEffect(() => {
-    setGifts(homepageGifts);
-    fetchAllProducts(homepageGifts);
-  }, [fetchAllProducts, homepageGifts]);
+    setGifts(displayGifts);
+    fetchAllProducts(displayGifts);
+  }, [displayGifts, fetchAllProducts]);
 
   useLayoutEffect(() => {
     const shouldRestore = sessionStorage.getItem('homeShouldRestoreScroll') === '1';
@@ -192,6 +180,19 @@ function HomePage() {
 
     sessionStorage.removeItem('homeShouldRestoreScroll');
   }, []);
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+
+    if (loading && gifts.length === 0) return;
+
+    setIsFilterTransitioning(true);
+    const timeoutId = window.setTimeout(() => setIsFilterTransitioning(false), 220);
+    return () => window.clearTimeout(timeoutId);
+  }, [budget, profileId, tier]);
 
   const handleSelectTier = (value) => {
     setTier((current) => (current === value ? 'all' : value));
@@ -253,8 +254,8 @@ function HomePage() {
 
         <main className="flex-grow py-8 sm:py-12 px-4 sm:px-6" aria-busy={loading && gifts.length === 0}>
           <div className="max-w-[1100px] mx-auto">
-            <div className="mx-auto max-w-[720px] mb-8 text-center">
-              <h1 className="hero-title is-visible text-[2.2rem] lg:text-[2.5rem] font-bold text-[#111111] leading-[1.13] tracking-[-0.01em] mt-0 mb-1" style={{ fontFamily: "Georgia, 'Times New Roman', Times, serif" }}>
+            <div className="mx-auto max-w-[720px] mb-8 text-center mt-0 sm:mt-0">
+              <h1 className="hero-title is-visible text-[2.2rem] lg:text-[2.5rem] font-bold text-[#111111] leading-[1.13] tracking-[-0.01em] mt-0 mb-1" style={{ fontFamily: "Georgia, 'Times New Roman', Times, serif", marginTop: 0 }}>
                 {t('site.name')}
               </h1>
               <p className="hero-subtitle is-visible mt-2 mx-auto max-w-[42rem] text-[0.97rem] font-normal text-[#5a5a5a] leading-[1.5] mb-2" style={{ fontFamily: "'Palatino Linotype', Palatino, 'Book Antiqua', serif", marginBottom: '-4px' }}>
@@ -282,8 +283,9 @@ function HomePage() {
               results={(
                 <ResultsGrid
                   gifts={gifts}
+                  searchGifts={giftsData}
                   productDataMap={productDataMap}
-                  loading={loading}
+                  isLoading={loading || isFilterTransitioning}
                   loadingProducts={loadingProducts}
                   searchQuery={searchQuery}
                   onSearchQueryChange={setSearchQuery}

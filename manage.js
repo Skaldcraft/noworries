@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import process from 'node:process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -111,7 +112,7 @@ function promote(idOrAsin) {
     const correctPrefix = getCorrectPrefix(product);
     let oldPrefix = '';
     
-    for (const [old, newPrefix] of Object.entries(PREFIX_MAP)) {
+    for (const [old, _newPrefix] of Object.entries(PREFIX_MAP)) {
         if (product.id.startsWith(old + '-')) {
             oldPrefix = old;
             break;

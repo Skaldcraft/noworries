@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Helmet } from 'react-helmet';
 import Footer from '@/components/Footer';
 

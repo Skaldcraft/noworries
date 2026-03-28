@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
+import { motion } from 'framer-motion';
+import { AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { AlertCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { getImageUrl } from '../utils/getImageUrl';
 import { idToProfileMap } from '@/lib/profiles';
 
@@ -18,7 +19,6 @@ function GiftCard({ gift, productData, loading }) {
 
   const isUnavailable = !loading && productData && !productData.available && !productData.hasApiError && !productData.isMock;
   const hasError = !loading && productData?.hasApiError;
-  const isMock = !loading && productData?.isMock;
   const isLive = !loading && productData && !productData.isMock && !productData.hasApiError;
   const isNewParents = gift.recipient.toUpperCase().includes('NUEVOS PAPÁS') || gift.recipient.toUpperCase().includes('NUEVOS MAMÁS') || gift.emoji.includes('👩‍👧') || gift.emoji.includes('👨‍👦') || gift.emoji.includes('🧑‍🦱');
   const isGrandparents = gift.emoji === '👴👵';

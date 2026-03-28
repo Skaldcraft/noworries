@@ -107,3 +107,115 @@ export const getOrderedProfileOptionsFromGifts = (gifts) => {
 
   return options;
 };
+
+const PRICE_ORDER = {
+  under15: 0,
+  '15-35': 1,
+  '35-70': 2,
+  '70-150': 3,
+};
+
+export const PRICE_LABELS = {
+  under15: 'Rango bajo',
+  '15-35': 'Rango medio-bajo',
+  '35-70': 'Rango medio-alto',
+  '70-150': 'Rango alto',
+};
+
+export const PRICE_COLORS = {
+  under15: '#f4d35a',
+  '15-35': '#95d1a5',
+  '35-70': '#779fcb',
+  '70-150': '#a88fd5',
+};
+
+const getPriceRank = (priceRange) => PRICE_ORDER[priceRange] ?? 99;
+const normalizePriceRange = (priceRange) => {
+  if (priceRange === 'under-15') return 'under15';
+  return priceRange;
+};
+
+const getProfileOrderFromGifts = (gifts) => {
+  const order = [];
+  const seen = new Set();
+
+  gifts.forEach((gift) => {
+    const profileId = getProfileIdFromGiftId(gift.id);
+    if (!profileId || seen.has(profileId)) return;
+    seen.add(profileId);
+    order.push(profileId);
+  });
+
+  return order;
+};
+
+export const getSortedUniqueGifts = (gifts) => {
+  const latestByKey = new Map();
+
+  gifts.forEach((gift, index) => {
+    const profileId = getProfileIdFromGiftId(gift.id) || gift.recipient;
+    const normalizedPriceRange = normalizePriceRange(gift.price_range);
+    const key = `${profileId}::${normalizedPriceRange}`;
+    latestByKey.set(key, {
+      gift,
+      index,
+      profileId,
+      priceRank: getPriceRank(normalizedPriceRange),
+    });
+  });
+
+  const profileOrder = getProfileOrderFromGifts(gifts);
+
+  return [...latestByKey.values()]
+    .map(({ gift, index, profileId, priceRank }) => ({
+      ...gift,
+      __sourceIndex: index,
+      __profileId: profileId,
+      __priceRank: priceRank,
+    }))
+    .sort((a, b) => {
+      const profileDiff = profileOrder.indexOf(a.__profileId) - profileOrder.indexOf(b.__profileId);
+      if (profileDiff !== 0) return profileDiff;
+
+      const priceDiff = a.__priceRank - b.__priceRank;
+      if (priceDiff !== 0) return priceDiff;
+
+      return a.__sourceIndex - b.__sourceIndex;
+    });
+};
+
+export const getPriceLabel = (range) => PRICE_LABELS[normalizePriceRange(range)] || range;
+
+export const getPriceColor = (range) => PRICE_COLORS[normalizePriceRange(range)] || '#008000';
+
+export const getProfileGiftCollections = (gifts, profileId) => {
+  const profileGifts = gifts.filter((gift) => getProfileIdFromGiftId(gift.id) === profileId);
+  const latestByPrice = new Map();
+  const displaced = [];
+
+  profileGifts.forEach((gift, index) => {
+    const normalizedPriceRange = normalizePriceRange(gift.price_range);
+    const key = normalizedPriceRange;
+    const entry = {
+      ...gift,
+      __sourceIndex: index,
+      __priceRank: getPriceRank(normalizedPriceRange),
+    };
+
+    if (latestByPrice.has(key)) {
+      displaced.push(latestByPrice.get(key));
+    }
+
+    latestByPrice.set(key, entry);
+  });
+
+  const primary = [...latestByPrice.values()].sort((a, b) => {
+    const priceDiff = a.__priceRank - b.__priceRank;
+    if (priceDiff !== 0) return priceDiff;
+    return a.__sourceIndex - b.__sourceIndex;
+  });
+
+  displaced.sort((a, b) => a.__priceRank - b.__priceRank || a.__sourceIndex - b.__sourceIndex);
+
+  return { primary, displaced };
+};

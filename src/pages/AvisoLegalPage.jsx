@@ -1,3 +1,5 @@
+
+/* eslint-disable no-unused-vars */
 import LegalPageLayout from '@/components/LegalPageLayout';
 
 const sections = [
